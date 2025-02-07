@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres salir conmigo, Montse?</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #e91e63;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 12px 25px;
+            margin: 0 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        #si {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #no {
+            background-color: #f44336;
+            color: white;
+        }
+
+        #si:hover {
+            background-color: #45a049;
+        }
+
+        #no:hover {
+            background-color: #d32f2f;
+        }
+
+        .date-options {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .date-options label {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .date-options input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        #confirmar {
+            background-color: #e91e63;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        #confirmar:hover {
+            background-color: #d81b60;
+        }
+
+        .hidden-message {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .hidden-message img {
+            max-width: 300px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¿Quieres salir conmigo el sábado 15 de febrero a las 2 o 3 de la tarde, Montse?</h1>
+        <div class="options">
+            <button id="si">Sí</button>
+            <button id="no">No</button>
+        </div>
+        <div class="date-options">
+            <h2>¡Genial! ¿Qué te parece alguna de estas opciones?</h2>
+            <label><input type="radio" name="date" value="kidzania">Kidzania de noche</label>
+            <label><input type="radio" name="date" value="coppola">Coppola vinyl pizza</label>
+            <label><input type="radio" name="date" value="inflalandia">Inflalandia Quack</label>
+            <label><input type="radio" name="date" value="escaperoom">Escape Room</label>
+            <label><input type="radio" name="date" value="gokarts">Go karts</label>
+            <label><input type="radio" name="date" value="pistadehielo">Pista de hielo</label>
+            <label><input type="radio" name="date" value="acuario">Acuario Inbursa (y museo Jumex y Soumaya)</label>
+            <label><input type="radio" name="date" value="boliche">Boliche Zona Esmeralda Bolibar</label>
+            <label><input type="radio" name="date" value="aztlan">Aztlán Parque y Rueda de la fortuna</label>
+            <label><input type="radio" name="date" value="cineteca">Cineteca Chapultepec</label>
+            <label><input type="radio" name="date" value="ladamadenegro">Obra de teatro La Dama de Negro</label>
+            <label><input type="radio" name="date" value="inspark">Inspark</label>
+            <label><input type="radio" name="date" value="adamanta">Escalar en Adamanta</label>
+            <label><input type="radio" name="date" value="kinezis">Kinezis</label>
+            <label><input type="radio" name="date" value="99records">99 records</label>
+            <label><input type="radio" name="date" value="immu">IMMMU</label>
+            <label><input type="radio" name="date" value="boboburguers">Bobo Burguers</label>
+            <label><input type="radio" name="date" value="hachas">Hachas</label>
+            <button id="confirmar">Confirmar</button>
+        </div>
+        <div class="hidden-message">
+            <h2>¡Por favor, di que sí! </h2>
+            <img src="/gato.gif" alt="Gato suplicando">
+        </div>
+    </div>
+
+    <script>
+        const siButton = document.getElementById('si');
+        const noButton = document.getElementById('no');
+        const dateOptions = document.querySelector('.date-options');
+        const hiddenMessage = document.querySelector('.hidden-message');
+        const confirmarButton = document.getElementById('confirmar');
+
+        siButton.addEventListener('click', () => {
+            dateOptions.style.display = 'block';
+            hiddenMessage.style.display = 'none';
+        });
+
+        noButton.addEventListener('click', () => {
+            dateOptions.style.display = 'none';
+            hiddenMessage.style.display = 'block';
+        });
+
+        confirmarButton.addEventListener('click', () => {
+            const selectedDate = document.querySelector('input[name="date"]:checked');
+            if (selectedDate) {
+                const place = selectedDate.value;
+                alert('¡Muchas gracias! Le confirmaré el lugar a André por WhatsApp.');
+            } else {
+                alert('Por favor, selecciona un lugar.');
+            }
+        });
+    </script>
+</body>
+</html>
