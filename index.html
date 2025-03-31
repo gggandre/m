@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿Vamos por sushi, Montse?</title>
     <style>
-        /* Estilos CSS */
+        /* Animaciones */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -17,6 +17,23 @@
             }
         }
 
+        @keyframes hearts {
+            0% { transform: translateY(0) rotate(0); opacity: 1; }
+            100% { transform: translateY(-800px) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes fadeInCoupon {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Estilos generales */
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #ff9a9e, #fad0c4);
@@ -25,29 +42,34 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
+            overflow: hidden;
             color: #333;
             animation: fadeIn 1.5s ease-in-out;
         }
 
         .container {
             background-color: white;
-            padding: 30px;
+            padding: 30px 20px;
             border-radius: 15px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             text-align: center;
             max-width: 500px;
+            width: 90%;
             animation: fadeIn 1.5s ease-in-out;
+            position: relative;
+            z-index: 10;
         }
 
         h1 {
             color: #e91e63;
             margin-bottom: 20px;
-            animation: fadeIn 1s ease-in-out;
+            font-size: 24px;
+            line-height: 1.4;
         }
 
         button {
             padding: 12px 20px;
-            margin: 10px;
+            margin: 10px 5px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -82,27 +104,122 @@
             color: #d81b60;
             font-weight: bold;
         }
+
+        .chatbox {
+            margin-top: 25px;
+            border-top: 1px dashed #ccc;
+            padding-top: 20px;
+            font-size: 16px;
+        }
+
+        .chatbot-response {
+            margin-top: 10px;
+            background: #fce4ec;
+            padding: 10px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .coupon {
+            display: none;
+            margin-top: 25px;
+            background: #fff3e0;
+            padding: 20px;
+            border: 2px dashed #ff9800;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            animation: fadeInCoupon 1s ease-in-out;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.5s ease-in-out;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Heart_icon_red_hollow.svg/2048px-Heart_icon_red_hollow.svg.png');
+            background-size: cover;
+            animation: hearts 6s linear infinite;
+        }
+
+        audio {
+            display: none;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            .coupon {
+                font-size: 15px;
+            }
+
+            button {
+                font-size: 15px;
+                padding: 10px 15px;
+            }
+        }
     </style>
 </head>
 <body>
+    <audio autoplay loop>
+        <source src="https://www.bensound.com/bensounds-music/bensound-romantic.mp3" type="audio/mp3">
+    </audio>
+
     <div class="container">
-        <h1>¿Vamos por sushi el 25 de febrero del 2025, Montse? 🍣</h1>
+        <h1>¿Vamos por sushi el martes 1 de abril, Montse? 🍣</h1>
         <button id="si">Sí</button>
         <button id="leerNota">Lee esta nota</button>
         
         <div class="hidden-message" id="nota">
-            "Espero que ya se te quite lo penuda de ese día, porque te juro que me quedé con muchas ganas de besarte."
+            "Ese día te daré muchos abrazos de oso, porque se que han sido días díficiles, te quiero mucho y siento que un abrazo te ayudará. 💕"
+        </div>
+
+        <div class="chatbox">
+            🤖 <strong>SushiBot:</strong> ¿Aceptas la misión de tener una date con sushi y buena compañía?
+            <div class="chatbot-response" id="respuestaBot">¡Perfecto! Estoy agendando tu cita... 💌</div>
+        </div>
+
+        <div class="coupon" id="cupón">
+            🎟️ Vale por: <br>
+            Una cita con <strong>Montse</strong> y sushi delicioso 🍣<br><br>
+            💖 Además incluye:<br>
+            • Un <em>ternurín</em> especial<br>
+            • Una foto mía, por bonita y aceptar 💌<br><br>
+            <small>(Canjeable el 1 de abril. Te quiero mucho.)</small>
         </div>
     </div>
 
     <script>
         document.getElementById('si').addEventListener('click', function() {
             alert('¡Genial! Nos vemos para comer sushi 🍣💕');
+            document.getElementById('respuestaBot').style.display = 'block';
+            setTimeout(() => {
+                const cupón = document.getElementById('cupón');
+                cupón.style.display = 'block';
+                setTimeout(() => {
+                    cupón.style.opacity = '1';
+                    cupón.style.transform = 'scale(1)';
+                }, 50);
+            }, 2000);
         });
 
         document.getElementById('leerNota').addEventListener('click', function() {
             document.getElementById('nota').style.display = 'block';
         });
+
+        // Corazoncitos flotando
+        for (let i = 0; i < 15; i++) {
+            let heart = document.createElement("div");
+            heart.className = "heart";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 5 + 5) + "s";
+            heart.style.top = "100vh";
+            document.body.appendChild(heart);
+        }
     </script>
 </body>
 </html>
