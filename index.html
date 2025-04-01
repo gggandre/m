@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Vamos por sushi, Montse?</title>f
+    <title>¿Vamos por sushi, Montse?</title>
     <style>
         /* Animaciones */
         @keyframes fadeIn {
@@ -45,6 +45,7 @@
             overflow: hidden;
             color: #333;
             animation: fadeIn 1.5s ease-in-out;
+            position: relative; /* agregado */
         }
 
         .container {
@@ -142,6 +143,7 @@
             background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Heart_icon_red_hollow.svg/2048px-Heart_icon_red_hollow.svg.png');
             background-size: cover;
             animation: hearts 6s linear infinite;
+            z-index: 1; /* añadido */
         }
 
         audio {
@@ -175,7 +177,7 @@
         <button id="leerNota">Lee esta nota</button>
         
         <div class="hidden-message" id="nota">
-            "Te daré muchos abrazos de oso, porque se que han sido días díficiles, te quiero mucho y siento que un abrazo te ayudará. 💕"
+            "Te daré muchos abrazos de oso, porque sé que han sido días difíciles, te quiero mucho y siento que un abrazo te ayudará. 💕"
         </div>
 
         <div class="chatbox">
@@ -217,7 +219,7 @@
             heart.className = "heart";
             heart.style.left = Math.random() * 100 + "vw";
             heart.style.animationDuration = (Math.random() * 5 + 5) + "s";
-            heart.style.top = "100vh";
+            heart.style.top = "90vh"; // Ajustado para que empiecen visibles
             document.body.appendChild(heart);
         }
     </script>
