@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎪 Montse, ¡Una cita mágica en el Circo! 🎟️</title>
+    <title>💌 Montse, ¿nos vemos mañana? 💖</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background: url('circus.jpg') no-repeat center center fixed;
+            background: url('fondo-romantico.jpg') no-repeat center center fixed;
             background-size: cover;
             display: flex;
             justify-content: center;
@@ -29,7 +29,6 @@
         }
 
         h1 {
-            font-family: 'Roboto', sans-serif;
             font-size: 2em;
             margin-bottom: 15px;
         }
@@ -47,70 +46,66 @@
             color: white;
         }
 
-        #mensaje, #ticket, #payaso, #globo, #minijuego { display: none; margin-top: 20px; }
+        #mensaje, #plan, #sorpresa, #corazon { 
+            display: none; 
+            margin-top: 20px; 
+        }
 
-        .palomita {
+        .corazoncito {
             position: fixed;
             width: 30px;
             height: 30px;
-            background: url('popcorns.png');
+            background: url('heart.png');
             background-size: cover;
             animation: float 5s infinite;
         }
 
-        @keyframes float { to { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
-
+        @keyframes float {
+            to {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>🎪 ¡Montse, Vamos al Circo! 🎟️</h1>
-    <button id="aceptar" class="btn">¡Sí, acepto! 🎉</button>
-    <button id="mensajeBtn" class="btn">✨ Abrir mensaje ✨</button>
+    <h1>💌 Montse, ¿nos vemos mañana? 💖</h1>
+    <button id="aceptar" class="btn">¡Sí, quiero verte! 🥰</button>
+    <button id="mensajeBtn" class="btn">💬 Ver mensaje 💬</button>
 
-    <div id="mensaje">Contigo cada momento es mágico, Montse. Vamos a crear más recuerdos este finde.💖🎪</div>
+    <div id="mensaje">Montse, me encantas y me haces muy feliz. Quiero verte mañana, darte tus ates, pastel, lasaña... y muchos abrazos. 💕</div>
 
-    <div id="ticket">🎟️<strong>Boleto Especial:</strong><br>Montse & André al Circo<br>📍Atizapán<br>🗓️Este fin de semana</div>
+    <div id="plan">📅 <strong>22 de abril:</strong> Verte, compartir momentos y sonrissas.</div>
 
-    <img id="payaso" src="payaso.png" width="150">
+    <div id="sorpresa">🎁 Te tengo un detalle especial… ¡Y muchos besitos también!</div>
 
-    <div id="globo">🎈<strong>Montse</strong>🎈</div>
-
-    <div id="minijuego">🎯 ¡Toca aquí para lanzar el dardo y ganar una sorpresa! 🎁</div>
+    <div id="corazon">❤️ <strong>Te quiero mucho</strong>, Montse ❤️</div>
 </div>
 
 <script>
     document.getElementById('aceptar').onclick = () => {
-        document.getElementById('ticket').style.display = 'block';
-        document.getElementById('payaso').style.display = 'block';
-        document.getElementById('globo').style.display = 'block';
-        document.getElementById('minijuego').style.display = 'block';
-        palomitas();
+        document.getElementById('plan').style.display = 'block';
+        document.getElementById('sorpresa').style.display = 'block';
+        document.getElementById('corazon').style.display = 'block';
+        corazoncitos();
     };
 
     document.getElementById('mensajeBtn').onclick = () => {
         document.getElementById('mensaje').style.display = 'block';
     };
 
-    function palomitas(){
+    function corazoncitos(){
         for(let i=0;i<25;i++){
-            let pop=document.createElement('div');
-            pop.className='palomita';
-            pop.style.left=Math.random()*100+'vw';
-            pop.style.animationDuration=Math.random()*3+2+'s';
-            document.body.appendChild(pop);
-            setTimeout(()=>pop.remove(),6000);
+            let heart=document.createElement('div');
+            heart.className='corazoncito';
+            heart.style.left=Math.random()*100+'vw';
+            heart.style.animationDuration=Math.random()*3+2+'s';
+            document.body.appendChild(heart);
+            setTimeout(()=>heart.remove(),6000);
         }
     }
-
-    document.getElementById('minijuego').onclick=()=>{
-        alert('¡Ganaste un beso y unos ates:)!');
-    };
-
-    const globo=document.getElementById('globo');
-    globo.style.animation='float 4s infinite alternate';
-
 </script>
 </body>
 </html>
