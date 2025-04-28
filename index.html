@@ -3,109 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💌 Montse, ¿nos vemos mañana? 💖</title>
+    <title>🎓 ¡Felicidades, Graduada más bonita! 🎉❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background: url('fondo-romantico.jpg') no-repeat center center fixed;
-            background-size: cover;
+            background: #ffe6eb; /* Fondo rosita pastel */
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            color: white;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+            color: #5c0a27; /* Texto en tono rosa oscuro */
+            text-shadow: 1px 1px 2px rgba(255, 192, 203, 0.7);
         }
 
         .container {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             text-align: center;
-            max-width: 500px;
+            max-width: 600px;
+            animation: aparecer 1s ease;
+        }
+
+        @keyframes aparecer {
+            from { opacity: 0; transform: scale(0.8);}
+            to { opacity: 1; transform: scale(1);}
         }
 
         h1 {
-            font-size: 2em;
-            margin-bottom: 15px;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            color: #d6336c;
         }
 
         .btn {
-            padding: 10px 20px;
+            padding: 12px 25px;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 1.1em;
             margin: 10px;
             transition: all 0.3s ease;
             font-weight: bold;
-            background: #ff4081;
+            background: #ff6f91;
             color: white;
         }
 
-        #mensaje, #plan, #sorpresa, #corazon { 
+        .btn:hover {
+            transform: scale(1.1);
+            background: #ff4081;
+        }
+
+        #mensaje, #plan, #formulario, #sorpresa, #corazon { 
             display: none; 
             margin-top: 20px; 
+            animation: aparecer 1s ease;
         }
 
-        .corazoncito {
+        .confetti {
             position: fixed;
-            width: 30px;
-            height: 30px;
-            background: url('heart.png');
-            background-size: cover;
-            animation: float 5s infinite;
+            width: 15px;
+            height: 15px;
+            background: gold;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: confettiFall 5s infinite;
         }
 
-        @keyframes float {
-            to {
-                transform: translateY(-110vh) rotate(360deg);
-                opacity: 0;
-            }
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotate(0deg);}
+            100% { transform: translateY(100vh) rotate(720deg);}
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>💌 Montse, ¿nos vemos mañana? 💖</h1>
-    <button id="aceptar" class="btn">¡Sí, quiero verte! 🥰</button>
+    <h1>🎓 ¡Felicidades, Montse! 🎉</h1>
+    <button id="festejar" class="btn">🎉 ¡Vamos a celebrar! 🎉</button>
     <button id="mensajeBtn" class="btn">💬 Ver mensaje 💬</button>
 
-    <div id="mensaje">Montse, me encantas y me haces muy feliz. Quiero verte mañana, darte tus ates, pastel, lasaña... y muchos abrazos. 💕</div>
+    <div id="mensaje">Eres la graduada más bonita y brillante del universo. Estoy muy orgulloso de ti. ¡Es momento de festejar tu maestría como se merece! ✨</div>
 
-    <div id="plan">📅 <strong>22 de abril:</strong> Verte, compartir momentos y sonrissas.</div>
+    <div id="plan">
+        🍖 ¡Te invito a comer o cenar al buffet de espadas brasileñas!  
+        Haz clic abajo para elegir el día y la hora que tú prefieras. 🥂
+    </div>
 
-    <div id="sorpresa">🎁 Te tengo un detalle especial… ¡Y muchos besitos también!</div>
+    <div id="formulario">
+        <a href="http://book.nimblr.co/Andre" target="_blank" class="btn">📅 Elige aquí el horario que prefieras jiji 📅</a>
+    </div>
 
-    <div id="corazon">❤️ <strong>Te quiero mucho</strong>, Montse ❤️</div>
+    <div id="sorpresa">🎁 ¡Y además te tengo una sorpresa muy especial ese día! (Incluye mucho cariño, abrazos y sonrisas infinitas.)</div>
+
+    <div id="corazon">❤️ ¡Te admiro, te quiero y te celebro, Montse! ❤️</div>
 </div>
 
 <script>
-    document.getElementById('aceptar').onclick = () => {
+    document.getElementById('festejar').onclick = () => {
         document.getElementById('plan').style.display = 'block';
+        document.getElementById('formulario').style.display = 'block';
         document.getElementById('sorpresa').style.display = 'block';
         document.getElementById('corazon').style.display = 'block';
-        corazoncitos();
+        lanzarConfetti();
     };
 
     document.getElementById('mensajeBtn').onclick = () => {
         document.getElementById('mensaje').style.display = 'block';
     };
 
-    function corazoncitos(){
-        for(let i=0;i<25;i++){
-            let heart=document.createElement('div');
-            heart.className='corazoncito';
-            heart.style.left=Math.random()*100+'vw';
-            heart.style.animationDuration=Math.random()*3+2+'s';
-            document.body.appendChild(heart);
-            setTimeout(()=>heart.remove(),6000);
+    function lanzarConfetti(){
+        for(let i=0; i<50; i++){
+            let confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.background = `hsl(${Math.random()*360}, 100%, 75%)`;
+            confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 5000);
         }
     }
 </script>
+
 </body>
 </html>
