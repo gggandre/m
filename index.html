@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <!-- Carrusel debajo -->
+    <!-- Carrusel -->
     <div id="carrusel" class="carrusel">
       <div class="slider">
         <div class="slide"><img src="assets/fotos/1.jpg" alt="Foto 1"></div>
@@ -48,6 +48,7 @@
   </div>
 
   <script>
+    // Mostrar mensaje con efecto máquina de escribir
     document.getElementById('mensajeBtn').onclick = () => {
       const mensaje = document.getElementById('mensaje');
       mensaje.style.display = 'block';
@@ -67,6 +68,15 @@
       }
       escribir();
     }
+
+    // Flor secreta con clic
+    const florSecreta = document.getElementById('florSecreta');
+    florSecreta.addEventListener('click', function () {
+      this.classList.add('activa');
+      setTimeout(() => {
+        this.classList.remove('activa');
+      }, 5000); // Oculta el mensaje después de 5 segundos
+    });
   </script>
 
 </body>
