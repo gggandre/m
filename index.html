@@ -3,46 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🎓 ¡Felicidades, mi bonita! 🎉</title>
+  <title>💌 Invitación Especial 💌</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <div class="container">
-    <h1>🎓 ¡Felicidades, mi bonita! 🎉</h1>
+    <h1>🌷 ¡Hola, es una invitación para la personia más preciosa del universo! 🌷</h1>
 
-    <button id="festejar" class="btn">🎉 ¡Vamos a celebrar! 🎉</button>
     <button id="mensajeBtn" class="btn">💬 Ver mensaje 💬</button>
-
     <div id="mensaje" class="typewriter"></div>
 
-    <div id="contador">
-      ⏳ Nos vemos en: <span id="tiempo"></span>
+    <!-- Flor secreta -->
+    <div id="florSecreta" class="flor-secreta">
+      🌼
+      <span class="mensaje-oculto">¡Tú haces florecer todo a tu alrededor! 💕</span>
     </div>
 
-    <div id="plan">
-      🎶 Agregué la playlist que te hice que se llama: <strong>"Así suena estar contigo"</strong> porque contigo todo suena más bonito:
+    <!-- Postal -->
+    <div id="invitacionPostal" class="postal postal-con-fondo">
+      <div class="contenido-postal">
+        <h2>🎁 Invitación Especial</h2>
+        <p>🧱 Armar tus florecitas LEGO</p>
+        <p>🎬 Ver <em>Memorias de un caracol</em></p>
+        <p>🍔🎁 Comer algo rico: Carl’s Jr., Costco o lo que quieras</p>
+        <p>💗 Elegimos el mimingo o el día que mejor te quede</p>
+        <p>Con todo mi cariño, André</p>
+      </div>
     </div>
 
-    <div id="formulario">
-      <a href="https://open.spotify.com/playlist/0Fd3JSAEFQ41ae7Kaogh4O?si=b99d73685bf7455c" target="_blank" class="btn">🎵 Escuchar Playlist 🎵</a>
-    </div>
-
-    <div id="pdf">
-      ✨ Agregué también la presentación que cuenta por qué me enamoré de ti jiji.
-      <br><br>
-      <a href="assets/QueridaMontse.pdf" download class="btn">📄 Descargar presentación 📄</a>
-    </div>
-
-    <div id="sorpresa">
-      🎁 Ese día también recibirás un regalo especial lleno de cariño, abrazos y sonrisas infinitas.
-    </div>
-
-    <div id="corazon">
-      ❤️ Te celebro, te admiro y te adoro, Montse. Gracias por existir y ser tú. ❤️
-    </div>
-
+    <!-- Carrusel debajo -->
     <div id="carrusel" class="carrusel">
       <div class="slider">
         <div class="slide"><img src="assets/fotos/1.jpg" alt="Foto 1"></div>
@@ -50,26 +41,17 @@
         <div class="slide"><img src="assets/fotos/3.jpg" alt="Foto 3"></div>
         <div class="slide"><img src="assets/fotos/4.jpg" alt="Foto 4"></div>
         <div class="slide"><img src="assets/fotos/5.JPG" alt="Foto 5"></div>
+        <div class="slide"><img src="assets/fotos/6.jpg" alt="Foto 6"></div>
+        <div class="slide"><img src="assets/fotos/7.jpg" alt="Foto 7"></div>
       </div>
     </div>
   </div>
 
   <script>
-    document.getElementById('festejar').onclick = () => {
-      document.getElementById('plan').style.display = 'block';
-      document.getElementById('formulario').style.display = 'block';
-      document.getElementById('sorpresa').style.display = 'block';
-      document.getElementById('corazon').style.display = 'block';
-      document.getElementById('pdf').style.display = 'block';
-      document.getElementById('carrusel').style.display = 'block';
-      document.getElementById('contador').style.display = 'block';
-      lanzarConfetti();
-    };
-
     document.getElementById('mensajeBtn').onclick = () => {
       const mensaje = document.getElementById('mensaje');
       mensaje.style.display = 'block';
-      escribirMensaje("Eres la graduada más hermosa e increíble. Estoy tan orgulloso de ti. Este domingo, primero Dios, vamos a celebrar como tú mereces. Te adoro con todo mi corazón. ❤️");
+      escribirMensaje("Gracias por estar conmigo, por ser tú. No dejo de admirar lo mucho que me haces sentir, lo increíble que eres. Me encantas, me fascinas, y me enamoras cada día más, gracias por tus abrazos, tus besos, tu ternura… todo de ti. Estar a tu lado es lo más bonito que me ha pasado. Te quiero muchísimo mi bonita. 💖");
     };
 
     function escribirMensaje(texto) {
@@ -85,43 +67,6 @@
       }
       escribir();
     }
-
-    function lanzarConfetti(){
-      for(let i=0; i<50; i++){
-        let confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.background = `hsl(${Math.random()*360}, 100%, 75%)`;
-        confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
-        document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 5000);
-      }
-    }
-
-    // Contador a domingo 3:30 PM
-    function actualizarContador() {
-      const objetivo = new Date();
-      objetivo.setDate(objetivo.getDate() + ((7 - objetivo.getDay()) % 7)); // próximo domingo
-      objetivo.setHours(15, 30, 0, 0);
-
-      const ahora = new Date();
-      const dif = objetivo - ahora;
-
-      if (dif <= 0) {
-        document.getElementById("tiempo").innerHTML = "¡Ya llegó el momento! 🎉";
-        return;
-      }
-
-      const dias = Math.floor(dif / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((dif / (1000 * 60 * 60)) % 24);
-      const minutos = Math.floor((dif / 1000 / 60) % 60);
-      const segundos = Math.floor((dif / 1000) % 60);
-
-      document.getElementById("tiempo").innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
-    }
-
-    setInterval(actualizarContador, 1000);
-    actualizarContador();
   </script>
 
 </body>
