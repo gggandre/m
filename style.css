@@ -58,7 +58,6 @@ h1 {
   line-height: 1.5;
 }
 
-/* Flor secreta */
 .flor-secreta {
   position: relative;
   font-size: 2em;
@@ -84,7 +83,8 @@ h1 {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.flor-secreta:hover .mensaje-oculto {
+/* Quita el hover y usa clase activa */
+.flor-secreta.activa .mensaje-oculto {
   opacity: 1;
 }
 
