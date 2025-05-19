@@ -3,53 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>💖 Para Ti, Mon 💖</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>💖 Invitación Especial 💖</title>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Estilos comunes -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="container">
-    <h1>🌸 Para la persona que más quiero 🌸</h1>
-
-    <button id="mensajeBtn" class="btn">💬 Leer algo bonito 💬</button>
-    <div id="mensaje" class="typewriter"></div>
+    <h1> Para la contadora más preciosa del universo y mi futura novia Mon mía de mi 💖</h1>
+    <button id="mensajeBtn" class="btn">🌟 Ver Invitación Especial 🌟</button>
 
     <!-- Carrusel -->
-    <div id="carrusel" class="carrusel">
+    <div class="carrusel">
       <div class="slider">
-        <div class="slide"><img src="assets/fotos/1.jpg" alt="Foto 1"></div>
-        <div class="slide"><img src="assets/fotos/2.jpg" alt="Foto 2"></div>
-        <div class="slide"><img src="assets/fotos/3.jpg" alt="Foto 3"></div>
-        <div class="slide"><img src="assets/fotos/4.jpg" alt="Foto 4"></div>
+        <div class="slide"><img src="assets/fotos/1.jpg"  alt="Foto 1"></div>
+        <div class="slide"><img src="assets/fotos/2.jpg"  alt="Foto 2"></div>
+        <div class="slide"><img src="assets/fotos/3.jpg"  alt="Foto 3"></div>
+        <div class="slide"><img src="assets/fotos/4.jpg"  alt="Foto 4"></div>
         <div class="slide"><img src="assets/fotos/5.JPG" alt="Foto 5"></div>
-        <div class="slide"><img src="assets/fotos/6.jpg" alt="Foto 6"></div>
-        <div class="slide"><img src="assets/fotos/7.jpg" alt="Foto 7"></div>
+        <div class="slide"><img src="assets/fotos/6.jpg"  alt="Foto 6"></div>
+        <div class="slide"><img src="assets/fotos/7.jpg"  alt="Foto 7"></div>
       </div>
     </div>
   </div>
 
-  <script>
-    document.getElementById('mensajeBtn').onclick = () => {
-      const mensaje = document.getElementById('mensaje');
-      mensaje.style.display = 'block';
-      escribirMensaje(`Primero:\n\n"Si un día me preguntas por qué quiero que seas tú"\n\nRespuesta:\n\n"Seguramente solo me ría y te diga que es porque contigo puedo ser yo mismo y que estoy loquito, dirías tú"\n\nPero en verdad es que eres la única que ha logrado hacerme sentir bien, protegido, y en paz. La única por quien me he preocupado de verdad, tanto que no me perdonaría si algo te sucediera.\n\nNo sé cómo explicarte que daría todo por ti. Eres esa persona especial que me enseñó lo que es amar de forma sana, lo que se siente al dar amor y recibirlo de vuelta.\n\nMe haces sentir orgullo incluso con los más pequeños logros que compartes conmigo, porque tus victorias son también mi alegría. Si tú eres feliz, yo lo soy el doble.\n\nMe has demostrado que puedo ser una mejor persona, que soy capaz de crecer porque tú jamás dejaste de creer en mí.\n\nEres la única que ha provocado mis lágrimas solo con tu presencia, porque sé que eres lo mejor que me ha pasado. Siento tanto por ti, algo que nunca había sentido antes.\n\nSimplemente eres tú: tus ojos, tu sonrisa, tu rostro, tu esencia, tu forma de querer.\n\nSolo quería que supieras que deseo que seas tú, y solo tú. Ese 'te amo' de ayer es porque en verdad lo siento...\n\nMi bonita Mon ❤️`);
-    };
-
-    function escribirMensaje(texto) {
-      const mensaje = document.getElementById('mensaje');
-      mensaje.innerHTML = '';
-      let i = 0;
-      function escribir() {
-        if (i < texto.length) {
-          mensaje.innerHTML += texto.charAt(i);
-          i++;
-          setTimeout(escribir, 30);
-        }
-      }
-      escribir();
-    }
-  </script>
-
+  <!-- Lógica JS en archivo externo -->
+  <script src="script.js"></script>
 </body>
 </html>
