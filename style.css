@@ -1,227 +1,143 @@
+/* === Reset y tipografía global === */
+* { box-sizing: border-box; }
 body {
-  font-family: 'Roboto', sans-serif;
-  background: #ffe6eb;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
   margin: 0;
-  color: #5c0a27;
-  flex-direction: column;
-  text-align: center;
-}
-
-.container {
-  background: white;
   padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  max-width: 700px;
-  animation: aparecer 1s ease;
-  width: 90%;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to right, #ffe6f0, #fff);
+  color: #5c0a27;
+  text-align: center;
+  overflow-x: hidden;               /* sólo ocultar scroll horizontal */
+  overflow-y: auto;                 /* permitir scroll vertical */
+  -webkit-overflow-scrolling: touch; /* scroll suave en iOS */
 }
 
-@keyframes aparecer {
-  from { opacity: 0; transform: scale(0.8);}
-  to { opacity: 1; transform: scale(1);}
-}
-
-h1 {
-  font-size: 2.2em;
-  margin-bottom: 20px;
-  color: #d6336c;
-}
+/* === Página principal === */
+.container { max-width: 600px; margin: 0 auto; }
+h1 { font-size: 2em; margin-bottom: 20px; }
 
 .btn {
-  padding: 12px 25px;
+  padding: 10px 20px;
+  font-size: 1em;
   border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 1.1em;
-  margin: 10px;
-  transition: all 0.3s ease;
-  font-weight: bold;
+  border-radius: 8px;
   background: #ff6f91;
-  color: white;
-}
-
-.btn:hover {
-  transform: scale(1.1);
-  background: #ff4081;
-}
-
-#mensaje {
-  display: none;
-  margin-top: 20px;
-  white-space: pre-wrap;
-  font-size: 1.1em;
-  line-height: 1.5;
-}
-
-.flor-secreta {
-  position: relative;
-  font-size: 2em;
-  cursor: pointer;
-  display: inline-block;
-  margin-top: 30px;
-}
-
-.mensaje-oculto {
-  position: absolute;
-  bottom: 130%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #fff0f5;
-  color: #d6336c;
-  padding: 8px 12px;
-  border-radius: 10px;
-  white-space: nowrap;
-  font-size: 0.9em;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Quita el hover y usa clase activa */
-.flor-secreta.activa .mensaje-oculto {
-  opacity: 1;
-}
-
-/* Postal */
-.postal {
-  background-image: url('assets/fotos/4.jpg');
-  background-size: cover;
-  background-position: center;
-  padding: 40px;
-  margin-top: 30px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-.contenido-postal {
-  background: rgba(0, 0, 0, 0.55);
-  padding: 30px;
-  border-radius: 15px;
   color: #fff;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  cursor: pointer;
+  transition: background .3s, transform .3s;
+}
+.btn:hover {
+  background: #ff3b75;
+  transform: scale(1.05);
 }
 
-.postal h2 {
-  color: #ffebf0;
-  margin-bottom: 15px;
-  font-size: 1.8em;
-}
-
-.postal p {
-  margin: 10px 0;
-  font-size: 1.1em;
-}
-
-/* Botón de imprimir fuera */
-.imprimir-btn {
-  margin-top: 20px;
-}
-
-/* Carrusel con 7 imágenes */
+/* === Carrusel === */
 .carrusel {
+  max-width: 600px;
+  margin: 30px auto;
   overflow: hidden;
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  border-radius: 15px;
-  margin-top: 30px;
-  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
-
 .slider {
   display: flex;
-  width: 700%; /* 7 imágenes */
-  animation: slide 21s infinite ease-in-out;
+  transition: transform .5s ease-in-out;
 }
-
-.slide {
-  width: 14.2857%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  background: #fff;
-}
-
+.slide { min-width: 100%; }
 .slide img {
-  max-height: 500px;
-  max-width: 100%;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* === Popup: tarjeta === */
+.tarjeta {
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  max-width: 500px;
+  margin: 40px auto;
+  position: relative;
+  animation: aparecer 1s ease, brillo 4s infinite;
+}
+@keyframes aparecer {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes brillo {
+  0%,100% { box-shadow: 0 0 15px rgba(255,105,180,0.3); }
+  50%     { box-shadow: 0 0 25px rgba(255,105,180,0.6); }
+}
+
+h2 { color: #d6336c; font-size: 2em; margin-bottom: 15px; }
+p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin: 8px 0;
+}
+.emoji { font-size: 1.3em; }
+
+/* Botones del popup */
+.agendar-btn,
+.cerrar-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
   border-radius: 10px;
-  object-fit: contain;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: background .3s, transform .3s;
+}
+.agendar-btn {
+  background: #a14bc6;
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+}
+.agendar-btn:hover {
+  background: #8c35b1;
+  transform: scale(1.05);
+}
+.cerrar-btn {
+  background: #ff6f91;
+  color: #fff;
+}
+.cerrar-btn:hover {
+  background: #ff3b75;
+  transform: scale(1.05);
 }
 
-@keyframes slide {
-  0%   { transform: translateX(0%); }
-  14.2% { transform: translateX(0%); }
-
-  28.4% { transform: translateX(-14.2857%); }
-  42.6% { transform: translateX(-28.5714%); }
-  56.8% { transform: translateX(-42.8571%); }
-  71.0% { transform: translateX(-57.1428%); }
-  85.2% { transform: translateX(-71.4285%); }
-  100%  { transform: translateX(-85.7142%); }
+/* === Corazones flotantes === */
+.corazon {
+  position: absolute;
+  background: pink;
+  transform: rotate(45deg);
+  opacity: .7;
+  animation: flotar 10s infinite ease-in;
 }
-
-/* Responsive */
-@media screen and (max-width: 600px) {
-  .slide img {
-    max-height: 300px;
-  }
-
-  h1 {
-    font-size: 1.8em;
-  }
-
-  .btn {
-    font-size: 1em;
-    padding: 10px 20px;
-  }
+.corazon::before,
+.corazon::after {
+  content: "";
+  position: absolute;
+  background: pink;
+  border-radius: 50%;
 }
-
-/* Impresión */
-@media print {
-  body * {
-    visibility: hidden;
-  }
-
-  .postal, .postal * {
-    visibility: visible;
-  }
-
-  .postal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    padding: 0;
-    margin: 0;
-    border: none;
-    box-shadow: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .contenido-postal {
-    background: rgba(0, 0, 0, 0.6);
-    padding: 60px;
-    border-radius: 15px;
-    color: #fff;
-    font-size: 1.2em;
-  }
-
-  .btn, .imprimir-btn, h1, #mensajeBtn, #mensaje, .flor-secreta, .carrusel {
-    display: none !important;
-  }
+.corazon::before {
+  top: -10px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+}
+.corazon::after {
+  left: -10px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+}
+@keyframes flotar {
+  0%   { transform: translateY(100vh) rotate(45deg); opacity: 0; }
+  50%  { opacity: .8; }
+  100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
 }
