@@ -1,62 +1,43 @@
-// JavaScript en archivo externo para evitar inyección de Live-Server
-document.addEventListener('DOMContentLoaded', function() {
-  // —— Carrusel automático cada 3 segundos —— 
-  var slider = document.querySelector('.slider');
-  var slides = document.querySelectorAll('.slide');
-  var index = 0;
-  setInterval(function() {
+document.addEventListener('DOMContentLoaded', function () {
+  // —— Carrusel automático —— 
+  const slider = document.querySelector('.slider');
+  const slides = document.querySelectorAll('.slide');
+  let index = 0;
+  setInterval(() => {
     index = (index + 1) % slides.length;
-    slider.style.transform = 'translateX(-' + (index * 100) + '%)';
+    slider.style.transform = 'translateX(-' + index * 100 + '%)';
   }, 3000);
 
-  // —— Popup de invitación —— 
-  var btn = document.getElementById('mensajeBtn');
-  btn.addEventListener('click', function() {
-    var popup = window.open('', '_blank', 'width=600,height=700');
+  // —— Popup tipo boleto de cine —— 
+  const btn = document.getElementById('mensajeBtn');
+  btn.addEventListener('click', function () {
+    const popup = window.open('', '_blank', 'width=600,height=700');
 
-    // 1) Generar corazones animados
-    var hearts = '';
-    for (var i = 0; i < 30; i++) {
-      var left  = (Math.random() * 100).toFixed(2);
-      var delay = (Math.random() * 10).toFixed(2);
-      var size  = (15 + Math.random() * 15).toFixed(2);
-      hearts +=
-        '<div class="corazon" ' +
-          'style="left:' + left + '%; ' +
-                 'width:' + size + 'px; ' +
-                'height:' + size + 'px; ' +
-        'animation-delay:' + delay + 's;"></div>';
-    }
+    const html = `
+      <!DOCTYPE html>
+      <html lang="es">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>🎟️ Boleto de Cine 🎟️</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+      </head>
+      <body class="popup-cine">
+        <div class="boleto">
+          <h2>🎬 Entrada al Cine</h2>
+          <p><strong>Película:</strong> Lilo & Stitch 💙</p>
+          <p><strong>Cuándo:</strong> Jueves</p>
+          <p><strong>Con quién:</strong> Con tu fan número uno <3</p>
+          <p><strong>Plan:</strong> Ir juntitos al cine, reírnos y abrazarnos mucho.</p>
+          <img src="assets/fotos/stitch.jpg" class="stitch-img" alt="Lilo y Stitch">
+          <p class="detalle">*Este boleto es válido solo para la persona más linda del universo*</p>
+          <button class="cerrar-btn" onclick="window.close()">Cerrar 💌</button>
+        </div>
+      </body>
+      </html>
+    `;
 
-    // 2) Construir HTML completo del popup
-    var html = ''
-      + '<!DOCTYPE html>'
-      + '<html lang="es">'
-      + '<head>'
-      +   '<meta charset="UTF-8">'
-      +   '<meta name="viewport" content="width=device-width, initial-scale=1.0">'
-      +   '<title>Invitación para mi futura novia Mon mía de mi 💖</title>'
-      +   '<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">'
-      +   '<link rel="stylesheet" href="style.css">'
-      + '</head>'
-      + '<body style="overflow-y:auto; overflow-x:hidden;">'  // habilita scroll vertical sólo en popup
-      +   hearts
-      +   '<div class="tarjeta">'
-      +     '<h2> ¡Invitación para el 25 de mayo! <3</h2>'
-      +     '<p><span class="emoji">🌷</span> Este 25 de mayo quiero invitarte a celebrar tu día, el día de la contadora más preciosa del universo.</p>'
-      +     '<p><span class="emoji"></span> Podemos armar tus flores de Lego<3,</p>'
-      +     '<p><span class="emoji">🍝</span> ir a comer lo que quieras (es tu día),</p>'
-      +     '<p><span class="emoji">💫</span> y pasar un día lleno de amor, risas y paz juntos, te adoro.</p>'
-      +     '<p><strong>Te quiero mucho, muchísimo.</strong> Me haces feliz y nada me haría más ilusión que compartir este día especial contigo.</p>'
-      +     '<p><span class="emoji">🐌</span> Si quieres, me encantaría verte para ver <em>Memorias de un caracol</em> entre semana o inventarnos algún plan.</p>'
-      +     '<p><strong>Gracias por ser tú, mi niña bonita. 💖</strong></p>'
-      +     '<a class="agendar-btn" href="https://ui.nimblr.co/self/6683/Andre" target="_blank">📅 Agendar con Holly para el mimingo</a><br>'
-      +     '<button class="cerrar-btn" onclick="window.close()">Cerrar 💌</button>'
-      +   '</div>'
-      + '</body>'
-      + '</html>';
-
-    // 3) Escribir y cerrar
     popup.document.open();
     popup.document.write(html);
     popup.document.close();
