@@ -202,3 +202,10 @@ p {
   background: #ff3b75;
   transform: scale(1.05);
 }
+
+.countdown {
+  font-size: 1.2em;
+  margin: 15px 0 30px;
+  color: #a14bc6;
+  font-weight: bold;
+}
