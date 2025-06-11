@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // —— Carrusel automático —— 
+  // Carrusel automático
   const slider = document.querySelector('.slider');
   const slides = document.querySelectorAll('.slide');
   let index = 0;
@@ -8,7 +8,29 @@ document.addEventListener('DOMContentLoaded', function () {
     slider.style.transform = 'translateX(-' + index * 100 + '%)';
   }, 3000);
 
-  // —— Popup tipo boleto de cine —— 
+  // Contador regresivo
+  const countdownEl = document.getElementById("countdown");
+  const eventDate = new Date("June 12, 2025 18:00:00").getTime();
+
+  const countdownTimer = setInterval(function () {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    if (distance < 0) {
+      clearInterval(countdownTimer);
+      countdownEl.innerHTML = "¡Es hoy! 💘";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdownEl.innerHTML = `⏳ Faltan ${days}d ${hours}h ${minutes}m ${seconds}s para nuestra cita 💖`;
+  }, 1000);
+
+  // Popup con la invitación
   const btn = document.getElementById('mensajeBtn');
   btn.addEventListener('click', function () {
     const popup = window.open('', '_blank', 'width=600,height=700');
@@ -19,19 +41,19 @@ document.addEventListener('DOMContentLoaded', function () {
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>🎟️ Boleto de Cine 🎟️</title>
+        <title>🌟 Invitación Especial 🌟</title>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
       </head>
       <body class="popup-cine">
         <div class="boleto">
-          <h2>🎬 Entrada al Cine</h2>
-          <p><strong>Película:</strong> Lilo & Stitch 💙</p>
-          <p><strong>Cuándo:</strong> Jueves</p>
-          <p><strong>Con quién:</strong> Con tu fan número uno <3</p>
-          <p><strong>Plan:</strong> Ir juntitos al cine, reírnos y abrazarnos mucho.</p>
-          <img src="assets/fotos/stitch.jpg" class="stitch-img" alt="Lilo y Stitch">
-          <p class="detalle">*Este boleto es válido solo para la persona más linda del universo*</p>
+          <h2>🌹 Invitación a una noche especial 🌹</h2>
+          <p><strong>Cuándo:</strong> Jueves 12 de Junio - 6:00 PM</p>
+          <p><strong>Dónde:</strong> Italimo, Galerías Atizapán 🍝</p>
+          <p><strong>Plan:</strong> Paso por ti a tu trabajo, y cenamos con música en vivo 🎶</p>
+          <p><strong>Dress code:</strong> Formal casual, ponte bonita como siempre 😍</p>
+          <img src="assets/fotos/15.jpg" class="stitch-img" alt="Nosotros">
+          <p class="detalle">Es una noche especial, como tú...</p>
           <button class="cerrar-btn" onclick="window.close()">Cerrar 💌</button>
         </div>
       </body>
