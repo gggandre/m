@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="boleto">
           <h2>🌹 Invitación a una noche especial 🌹</h2>
           <p><strong>Cuándo:</strong> Jueves 12 de Junio - 6:00 PM</p>
-          <p><strong>Dónde:</strong> Italimo, Galerías Atizapán 🍝</p>
+          <p><strong>Dónde:</strong> Es Sorpresa jiji  🍝</p>
           <p><strong>Plan:</strong> Paso por ti a tu trabajo, y cenamos con música en vivo 🎶</p>
           <p><strong>Dress code:</strong> Formal casual, ponte bonita como siempre 😍</p>
           <img src="assets/fotos/15.jpg" class="stitch-img" alt="Nosotros">
