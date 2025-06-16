@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="boleto">
           <h2>💌 Una invitación para ti 💌</h2>
           <p>Hola novia preciosa :)</p>
-          <p>Me encantaría que nos viéramos cuando tú puedas y estes mas tranqui 🌷</p>
+          <p>Me encantaría que nos viéramos cuando tú puedas y estes más tranqui de la chamba🌷</p>
           <p>Sin presión ni fecha exacta, solo cuando tu puedas 💕</p>
           <p>Tengo ganas de compartir un momento contigo, tranquilo y bonito como tú ✨</p>
           <img src="assets/fotos/15.jpg" class="stitch-img" alt="Nosotros">
