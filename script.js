@@ -19,19 +19,21 @@ document.addEventListener('DOMContentLoaded', function () {
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>🌟 Invitación 🌟</title>
+        <title>Carta para ti 💖</title>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
       </head>
       <body class="popup-cine">
         <div class="boleto">
-          <h2>💌 Una invitación para ti 💌</h2>
-          <p>Hola novia preciosa :)</p>
-          <p>Me encantaría que nos viéramos cuando tú puedas y estes más tranqui de la chamba🌷</p>
-          <p>Sin presión ni fecha exacta, solo cuando tu puedas 💕</p>
-          <p>Tengo ganas de compartir un momento contigo, tranquilo y bonito como tú ✨</p>
+          <h2>💌 Para mi novia hermosa 💌</h2>
+          <p>Hola amor,</p>
+          <p>Solo quería decirte, con el corazón en la mano, que te amo profundamente.</p>
+          <p>Te extraño muchísimo, a veces más de lo que puedo explicar. Siento un huequito en el pecho que solo tú puedes llenar, te amo.</p>
+          <p>No dejo de pensar en ti, en tu voz, tu risa, tu forma de mirar. Me haces mucha falta, Montse.</p>
+          <p>Ya quiero verte. Verte y abrazarte fuerte, quedarme ahí contigo sin preocuparme por nada más que por ese momento.</p>
+          <p>Ojalá podamos vernos pronto, cuando tú quieras y puedas. Yo estaré esperándote con todo mi amor y te daré muchos besos y abrazos.</p>
           <img src="assets/fotos/15.jpg" class="stitch-img" alt="Nosotros">
-          <p class="detalle">Tú dime cuándo, y ahí estaré. 💖</p>
+          <p class="detalle">Con todo mi amor, siempre tuyo 💖</p>
           <button class="cerrar-btn" onclick="window.close()">Cerrar 🌸</button>
         </div>
       </body>
