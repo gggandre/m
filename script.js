@@ -152,7 +152,7 @@ function abrirVideo() {
 
 function confirmarAsistencia() {
   const message = encodeURIComponent("¡Hola amor! ❤️ Te confirmo que sí estaré contigo este sábado 12 de julio a las 2:00 p.m. 🥹✨");
-  window.open(`https://wa.me/525580370856?text=${message}`, '_blank');
+  window.open(`https://wa.me/525539501267?text=${message}`, '_blank');
 
   const title = encodeURIComponent("Primer mes con Montse 💖");
   const details = encodeURIComponent("Celebrar nuestro primer mes de novios ✨\nLugar: donde tú y yo seamos felices ❤️");
