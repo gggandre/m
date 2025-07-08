@@ -1,211 +1,101 @@
-/* === Reset y tipografía global === */
-* { box-sizing: border-box; }
 body {
   margin: 0;
-  padding: 30px;
+  padding: 0 20px;
   font-family: 'Roboto', sans-serif;
   background: linear-gradient(to right, #ffe6f0, #fff);
   color: #5c0a27;
+  overflow-x: hidden;
   text-align: center;
-  overflow-x: hidden;               /* sólo ocultar scroll horizontal */
-  overflow-y: auto;                 /* permitir scroll vertical */
-  -webkit-overflow-scrolling: touch; /* scroll suave en iOS */
 }
 
-/* === Página principal === */
-.container { max-width: 600px; margin: 0 auto; }
-h1 { font-size: 2em; margin-bottom: 20px; }
+.container {
+  max-width: 650px;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+.titulo-animado {
+  font-size: 2.5em;
+  animation: aparecer 2s ease, latido 3s infinite;
+}
+
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
 
 .btn {
-  padding: 10px 20px;
-  font-size: 1em;
+  padding: 12px 24px;
+  font-size: 1.1em;
   border: none;
   border-radius: 8px;
   background: #ff6f91;
   color: #fff;
   cursor: pointer;
-  transition: background .3s, transform .3s;
+  transition: background 0.3s, transform 0.3s;
+  display: inline-block;
+  margin: 15px 10px;
+  text-decoration: none;
 }
+
 .btn:hover {
   background: #ff3b75;
   transform: scale(1.05);
 }
 
-/* === Carrusel === */
 .carrusel {
   max-width: 600px;
   margin: 30px auto;
   overflow: hidden;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
 .slider {
   display: flex;
-  transition: transform .5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 }
-.slide { min-width: 100%; }
+
+.slide {
+  min-width: 100%;
+}
+
 .slide img {
   width: 100%;
   height: auto;
   display: block;
 }
 
-/* === Popup: tarjeta === */
-.tarjeta {
-  background: #fff;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  max-width: 500px;
-  margin: 40px auto;
-  position: relative;
-  animation: aparecer 1s ease, brillo 4s infinite;
-}
-@keyframes aparecer {
-  from { opacity: 0; transform: scale(0.9); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes brillo {
-  0%,100% { box-shadow: 0 0 15px rgba(255,105,180,0.3); }
-  50%     { box-shadow: 0 0 25px rgba(255,105,180,0.6); }
-}
-
-h2 { color: #d6336c; font-size: 2em; margin-bottom: 15px; }
-p {
-  font-size: 1.1em;
-  line-height: 1.6;
-  margin: 8px 0;
-}
-.emoji { font-size: 1.3em; }
-
-/* Botones del popup */
-.agendar-btn,
-.cerrar-btn {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 1em;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background .3s, transform .3s;
-}
-.agendar-btn {
-  background: #a14bc6;
-  color: #fff;
-  text-decoration: none;
-  display: inline-block;
-  font-weight: bold;
-}
-.agendar-btn:hover {
-  background: #8c35b1;
-  transform: scale(1.05);
-}
-.cerrar-btn {
-  background: #ff6f91;
-  color: #fff;
-}
-.cerrar-btn:hover {
-  background: #ff3b75;
-  transform: scale(1.05);
-}
-
-/* === Corazones flotantes === */
-.corazon {
-  position: absolute;
-  background: pink;
-  transform: rotate(45deg);
-  opacity: .7;
-  animation: flotar 10s infinite ease-in;
-}
-.corazon::before,
-.corazon::after {
-  content: "";
-  position: absolute;
-  background: pink;
-  border-radius: 50%;
-}
-.corazon::before {
-  top: -10px;
-  left: 0;
-  width: 20px;
-  height: 20px;
-}
-.corazon::after {
-  left: -10px;
+/* Estrellas animadas */
+.estrellas {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
   top: 0;
-  width: 20px;
-  height: 20px;
-}
-@keyframes flotar {
-  0%   { transform: translateY(100vh) rotate(45deg); opacity: 0; }
-  50%  { opacity: .8; }
-  100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
-}
-/* === Fondo popup cine === */
-.popup-cine {
-  background-color: #0a1d3c; /* azul marino */
-  color: #fff;
-  font-family: 'Roboto', sans-serif;
-  text-align: center;
-  padding: 20px;
+  left: 0;
+  overflow: hidden;
 }
 
-/* === Boleto de cine === */
-.boleto {
-  background: #111d40;
-  border: 2px dashed #ff6f91;
-  border-radius: 15px;
-  padding: 30px 20px;
-  max-width: 500px;
-  margin: 50px auto;
-  position: relative;
-  color: #fff;
+.estrella {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: caer linear infinite;
+  top: -10px;
 }
 
-.boleto h2 {
-  font-size: 2em;
-  margin-bottom: 10px;
-  color: #ff6f91;
-}
-
-.boleto p {
-  font-size: 1.2em;
-  margin: 10px 0;
-}
-
-.boleto .detalle {
-  font-size: 1em;
-  color: #ccc;
-  margin-top: 15px;
-}
-
-.stitch-img {
-  margin: 20px 0;
-  width: 80%;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(255, 111, 145, 0.4);
-}
-
-/* === Botón cerrar en popup === */
-.cerrar-btn {
-  margin-top: 20px;
-  background: #ff6f91;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1em;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background .3s, transform .3s;
-}
-.cerrar-btn:hover {
-  background: #ff3b75;
-  transform: scale(1.05);
+@keyframes caer {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
 }
 
 .countdown {
-  font-size: 1.2em;
-  margin: 15px 0 30px;
-  color: #a14bc6;
+  font-size: 1.3em;
   font-weight: bold;
+  margin: 20px 0;
+  color: #a14bc6;
 }
