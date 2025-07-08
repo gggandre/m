@@ -2,23 +2,28 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Invitación para mi novia preciosa 🌹</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>✨ Nuestra historia ✨</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <div class="estrellas"></div>
 
   <div class="container">
-    <h1>✨ Para Montse, mi persona favorita ✨</h1>
-    <p class="intro">Quiero que abras esta carta chicuita que te hice 💌</p>
+    <h1 class="titulo-animado">Feliz primer mes, Montse 💖</h1>
+    <p class="intro">Una pequeña sorpresa para ti, mi amor ❤️</p>
 
-    <!-- Botón para mostrar la invitación -->
-    <button id="mensajeBtn" class="btn">💌 Ver Carta 💌</button>
+    <div class="countdown"></div>
+
+    <!-- Botón para abrir la carta -->
+    <button id="mensajeBtn" class="btn">💌 Ver Invitación 💌</button>
 
     <!-- Carrusel de fotos -->
     <div class="carrusel">
       <div class="slider">
+        <div class="slide"><img src="assets/fotos/18.jpg" alt="Foto 16"></div>
+        <div class="slide"><img src="assets/fotos/19.jpg" alt="Foto 17"></div>
         <div class="slide"><img src="assets/fotos/16.jpg" alt="Foto 14"></div>
         <div class="slide"><img src="assets/fotos/17.jpg" alt="Foto 15"></div>
         <div class="slide"><img src="assets/fotos/2.jpg" alt="Foto 1"></div>
@@ -34,6 +39,9 @@
         <div class="slide"><img src="assets/fotos/15.jpg" alt="Foto 13"></div>
       </div>
     </div>
+
+    <!-- Botón para ver el video en pantalla completa -->
+    <button class="btn" onclick="abrirVideo()">🎥 Ver Recuerdo 🎥</button>
   </div>
 
   <script src="script.js"></script>
