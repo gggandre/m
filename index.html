@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>✨ Nuestra historia ✨</title>
+  <title>✨ Nuestro primer mes de bobios ✨</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="estrellas"></div>
+  <canvas id="confetti-canvas"></canvas>
 
   <div class="container">
     <h1 class="titulo-animado">Feliz primer mes, Montse 💖</h1>
@@ -17,7 +18,16 @@
     <div class="countdown"></div>
 
     <!-- Botón para abrir la carta -->
-    <button id="mensajeBtn" class="btn">💌 Ver Invitación 💌</button>
+  <button id="mensajeBtn" class="btn">💌 Ver Invitación 💌</button>
+
+  <!-- Botón para confirmar asistencia -->
+  <button class="btn" onclick="confirmarAsistencia()">✅ Confirmar Asistencia ✅</button>
+
+  <!-- Botón para agregar evento al Google Calendar -->
+  <a class="btn" href="#" onclick="agregarAlCalendario()">🗓️ Agregar al Calendario 🗓️</a>
+
+    <!-- Botón para ver el video en pantalla completa -->
+    <button class="btn" onclick="abrirVideo()">🎥 Ver Recuerdo 🎥</button>
 
     <!-- Carrusel de fotos -->
     <div class="carrusel">
@@ -40,8 +50,6 @@
       </div>
     </div>
 
-    <!-- Botón para ver el video en pantalla completa -->
-    <button class="btn" onclick="abrirVideo()">🎥 Ver Recuerdo 🎥</button>
   </div>
 
   <script src="script.js"></script>
