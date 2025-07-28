@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>✨ Nuestro primer mes de bobios ✨</title>
+  <title>✨ Día de la Novia – Montse 💖</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
@@ -12,24 +12,20 @@
   <canvas id="confetti-canvas"></canvas>
 
   <div class="container">
-    <h1 class="titulo-animado">Feliz primer mes, Montse 💖</h1>
-    <p class="intro">Una pequeña sorpresa para ti, mi amor ❤️</p>
+    <h1 class="titulo-animado">Feliz Día de la Novia, Montse 💖</h1>
+    <p class="intro">El 1 de agosto, me parece el momento perfecto para celebrar lo maravillosa que eres como novia y es el día de la novia jiji.</p>
 
     <div class="countdown"></div>
 
-    <!-- Botón para abrir la carta -->
-  <button id="mensajeBtn" class="btn">💌 Ver Invitación 💌</button>
+    <button id="mensajeBtn" class="btn">💌 Ver Invitación 💌</button>
+    <button class="btn" onclick="confirmarAsistencia()">✅ Confirmar Cena ✅</button>
+    <a class="btn" href="#" onclick="agregarAlCalendario()">🗓️ Agregar a Calendario 🗓️</a>
 
-  <!-- Botón para confirmar asistencia -->
-  <button class="btn" onclick="confirmarAsistencia()">✅ Confirmar Asistencia ✅</button>
+    <div class="cancion">
+      <p>🎶 P.D. Te dejo la canción <em>“August”</em> de tu tía Taylor, el himno del mes de agosto:</p>
+      <a href="https://open.spotify.com/intl-es/track/3hUxzQpSfdDqwM3ZTFQY0K?si=1c789b250a9c4bb1" target="_blank">Escuchar August – Taylor Swift</a>
+    </div>
 
-  <!-- Botón para agregar evento al Google Calendar -->
-  <a class="btn" href="#" onclick="agregarAlCalendario()">🗓️ Agregar al Calendario 🗓️</a>
-
-    <!-- Botón para ver el video en pantalla completa -->
-    <button class="btn" onclick="abrirVideo()">🎥 Ver Recuerdo 🎥</button>
-
-    <!-- Carrusel de fotos -->
     <div class="carrusel">
       <div class="slider">
         <div class="slide"><img src="assets/fotos/18.jpg" alt="Foto 16"></div>
@@ -49,7 +45,6 @@
         <div class="slide"><img src="assets/fotos/15.jpg" alt="Foto 13"></div>
       </div>
     </div>
-
   </div>
 
   <script src="script.js"></script>
