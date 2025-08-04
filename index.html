@@ -3,47 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>✨ Día de la Novia – Montse 💖</title>
+  <title>🎬⚽ Sábado Azulcrema con Montse 💛💙</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="estrellas"></div>
   <canvas id="confetti-canvas"></canvas>
+  <audio id="gol-audio" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
+
+  <div class="cancha">
+    <div class="balon"></div>
+    <div class="portería"></div>
+  </div>
 
   <div class="container">
-    <h1 class="titulo-animado">Feliz Día de la Novia, Montse 💖</h1>
-    <p class="intro">El 1 de agosto, me parece el momento perfecto para celebrar lo maravillosa que eres como novia y es el día de la novia jiji.</p>
+    <h1 class="titulo-animado">Montse, ¿lista para una cita legendaria? 🎬⚽</h1>
+    <p class="intro">Este sábado tenemos plan doble: primero cine con Demon Slayer y después... ¡nos vamos al Estadio Azulcrema! 💛💙</p>
 
     <div class="countdown"></div>
 
     <button id="mensajeBtn" class="btn">💌 Ver Invitación 💌</button>
-    <button class="btn" onclick="confirmarAsistencia()">✅ Confirmar Cena ✅</button>
+    <button class="btn" onclick="confirmarAsistencia()">✅ Confirmar Plan ✅</button>
     <a class="btn" href="#" onclick="agregarAlCalendario()">🗓️ Agregar a Calendario 🗓️</a>
+    <button class="btn" onclick="mostrarChecklist()">🎒 Qué Llevar 🎒</button>
 
-    <div class="cancion">
-      <p>🎶 P.D. Te dejo la canción <em>“August”</em> de tu tía Taylor, el himno del mes de agosto:</p>
-      <a href="https://open.spotify.com/intl-es/track/3hUxzQpSfdDqwM3ZTFQY0K?si=1c789b250a9c4bb1" target="_blank">Escuchar August – Taylor Swift</a>
-    </div>
-
-    <div class="carrusel">
-      <div class="slider">
-        <div class="slide"><img src="assets/fotos/18.jpg" alt="Foto 16"></div>
-        <div class="slide"><img src="assets/fotos/19.jpg" alt="Foto 17"></div>
-        <div class="slide"><img src="assets/fotos/16.jpg" alt="Foto 14"></div>
-        <div class="slide"><img src="assets/fotos/17.jpg" alt="Foto 15"></div>
-        <div class="slide"><img src="assets/fotos/2.jpg" alt="Foto 1"></div>
-        <div class="slide"><img src="assets/fotos/3.jpg" alt="Foto 2"></div>
-        <div class="slide"><img src="assets/fotos/4.jpg" alt="Foto 3"></div>
-        <div class="slide"><img src="assets/fotos/7.jpg" alt="Foto 6"></div>
-        <div class="slide"><img src="assets/fotos/9.jpg" alt="Foto 7"></div>
-        <div class="slide"><img src="assets/fotos/10.jpg" alt="Foto 8"></div>
-        <div class="slide"><img src="assets/fotos/11.jpg" alt="Foto 9"></div>
-        <div class="slide"><img src="assets/fotos/12.jpg" alt="Foto 10"></div>
-        <div class="slide"><img src="assets/fotos/13.jpg" alt="Foto 11"></div>
-        <div class="slide"><img src="assets/fotos/14.jpg" alt="Foto 12"></div>
-        <div class="slide"><img src="assets/fotos/15.jpg" alt="Foto 13"></div>
-      </div>
+    <div class="fotos-fijas">
+      <img src="assets/fotos/nosotros_america.jpg" alt="Foto de nosotros con playera del América" />
+      <img src="assets/fotos/montse_america.jpg" alt="Montse con su playera del América" class="especial" />
     </div>
   </div>
 
