@@ -82,34 +82,31 @@
       <button id="btnCalendario" class="btn btn-outline">🗓️ Agregar a Google Calendar</button>
     </div>
 
- <div class="mini-gallery">
-  <!-- Superman El Último Escape (Six Flags México) -->
-  <img
-    src="https://commons.wikimedia.org/wiki/Special:FilePath/Superman%20El%20ultimo%20escape%20-%20SIx%20Flags%20Mexico.jpg?width=1000"
-    alt="Montaña rusa Superman — Six Flags México"
-    loading="lazy"
-    referrerpolicy="no-referrer"
-  />
-
-  <!-- Medusa Steel Coaster (Six Flags México) -->
-  <img
-    src="https://commons.wikimedia.org/wiki/Special:FilePath/Medusa%20Steel%20Coaster%201.jpg?width=1000"
-    alt="Medusa Steel Coaster — Six Flags México"
-    class="tall"
-    loading="lazy"
-    referrerpolicy="no-referrer"
-  />
-
-  <!-- Festival del Terror (foto nocturna en Six Flags México) -->
-  <img
-    src="https://commons.wikimedia.org/wiki/Special:FilePath/Six_flags_horror_festival.jpg?width=1000"
-    alt="Festival del Terror — Six Flags México"
-    loading="lazy"
-    referrerpolicy="no-referrer"
-  />
-</div>
-
-
+    <div class="mini-gallery">
+      <!-- Superman El Último Escape (Six Flags México) -->
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Superman%20El%20ultimo%20escape%20-%20SIx%20Flags%20Mexico.jpg?width=1000"
+        alt="Montaña rusa Superman — Six Flags México"
+        loading="lazy"
+        referrerpolicy="no-referrer"
+      />
+      <!-- Medusa Steel Coaster (Six Flags México) -->
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Medusa%20Steel%20Coaster%201.jpg?width=1000"
+        alt="Medusa Steel Coaster — Six Flags México"
+        class="tall"
+        loading="lazy"
+        referrerpolicy="no-referrer"
+      />
+      <!-- Festival del Terror (foto nocturna en Six Flags México) -->
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Six_flags_horror_festival.jpg?width=1000"
+        alt="Festival del Terror — Six Flags México"
+        loading="lazy"
+        referrerpolicy="no-referrer"
+      />
+    </div>
+  </div>
 </section>
 
 <footer class="footer">
@@ -167,20 +164,20 @@
 
   // Confirmar por WhatsApp
   $("#btnConfirmar").addEventListener("click", ()=>{
-    // Mensaje
     const msg = "Si voy mi amor, te amo";
-    // Teléfono internacional sin espacios ni símbolos
-    const phone = "525539501267";
+    const phone = "525539501267"; // formato internacional
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-    // Confetti
     burst(innerWidth/2, innerHeight/2, "#ff4d6d");
     burst(innerWidth/2+100, innerHeight/2-40, "#06d6a0");
     burst(innerWidth/2-120, innerHeight/2+30, "#1982c4");
     window.open(url, "_blank", "noopener");
   });
 
-  // Agregar a Google Calendar (pantalla de creación con datos prellenados)
+  // Agregar a Google Calendar (con invitado + zona horaria)
   $("#btnCalendario").addEventListener("click", ()=>{
+    const GUEST_EMAIL = "gggandre08@gmail.com";
+    const TIMEZONE = "America/Mexico_City";
+
     function toGCAL(dt){
       // Formato UTC requerido por Google Calendar: YYYYMMDDTHHMMSSZ
       const y = dt.getUTCFullYear();
@@ -191,12 +188,22 @@
       const s = String(dt.getUTCSeconds()).padStart(2,"0");
       return `${y}${M}${D}T${h}${m}${s}Z`;
     }
+
     const dates = `${toGCAL(EVENT_START)}/${toGCAL(EVENT_END)}`;
     const text = EVENT_TITLE;
     const details = "Domingo en Six Flags para el Festival del Terror. Llevar suéter ligero, agua y muchas ganas de abrazos. 💗";
     const location = EVENT_LOCATION;
 
-    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(text)}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}&dates=${dates}`;
+    const url =
+      `https://calendar.google.com/calendar/render` +
+      `?action=TEMPLATE` +
+      `&text=${encodeURIComponent(text)}` +
+      `&details=${encodeURIComponent(details)}` +
+      `&location=${encodeURIComponent(location)}` +
+      `&dates=${dates}` +
+      `&add=${encodeURIComponent(GUEST_EMAIL)}` +
+      `&ctz=${encodeURIComponent(TIMEZONE)}`;
+
     window.open(url, "_blank", "noopener");
   });
 
@@ -207,7 +214,6 @@
     let t = 0;
     function step(){
       t = (t + 1) % 600;
-      // simple wiggle para simular vaivén
       car.style.transform = `translate(${t}px, ${-60*Math.sin((t/600)*Math.PI*2)}px)`;
       requestAnimationFrame(step);
     }
