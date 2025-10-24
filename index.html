@@ -1,41 +1,218 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🎬⚽ Sábado Azulcrema con mi novia preciosa 💛💙</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>🎢 Festival del Terror — Six Flags | Domingo 26 de octubre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#ff4d6d">
+<style>
+  *{box-sizing:border-box}html,body{height:100%}
+  body{margin:0;font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;color:#1e1b2e;background:
+    radial-gradient(1200px 600px at 20% -10%, #ffd6e0 0%, transparent 60%),
+    radial-gradient(1200px 600px at 120% 10%, #d0f4de 0%, transparent 60%),
+    linear-gradient(135deg,#fff 0%,#f6f8ff 100%);overflow-x:hidden}
+  .ribbon{position:relative;padding:18px clamp(16px,4vw,32px);background:linear-gradient(90deg,#ff4d6d,#ff9966,#ffd166);color:#fff;text-align:center;box-shadow:0 6px 24px rgba(255,77,109,.35)}
+  .ribbon__badge{position:absolute;left:clamp(8px,3vw,24px);top:-12px;background:#1e1b2e;color:#ffd166;padding:8px 12px;border-radius:12px;font-weight:700;border:2px solid #ffd166}
+  .ribbon__title{margin:0;font-weight:800;letter-spacing:.4px;text-shadow:0 2px 10px rgba(0,0,0,.18)}
+  .ribbon__sub{opacity:.95;font-weight:600;margin-top:2px}
+  .hero{position:relative;padding:clamp(24px,4vw,48px);display:grid;place-items:center}
+  .coaster{position:absolute;inset:0 0 auto 0;width:100%;height:180px;pointer-events:none;opacity:.16}
+  .coaster path{fill:none;stroke:#1e1b2e;stroke-width:4;stroke-linecap:round;stroke-dasharray:8 10}
+  .coaster #car{fill:#ff4d6d;filter:drop-shadow(0 2px 2px rgba(0,0,0,.2));animation:carMove 6s ease-in-out infinite}
+  @keyframes carMove{0%{transform:translate(0,0)}50%{transform:translate(400px,-60px)}100%{transform:translate(800px,0)}}
+  .glass{background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:24px;box-shadow:0 20px 60px rgba(30,27,46,.12)}
+  .card{max-width:920px;width:min(92vw,980px);padding:clamp(18px,3vw,28px);margin-top:80px}
+  .title-anim{margin:0 0 6px;font-size:clamp(22px,3.2vw,34px);font-weight:800;background:linear-gradient(90deg,#6a4c93,#1982c4,#ff4d6d);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .lead{font-size:clamp(15px,1.6vw,18px);line-height:1.6;color:#3b3553}
+  .data-row{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 10px}
+  .pill{padding:8px 12px;border-radius:999px;background:#1e1b2e;color:#fff;font-weight:600;box-shadow:0 6px 18px rgba(30,27,46,.2)}
+  .countdown{margin:10px 0 18px;font-weight:800;letter-spacing:.5px;display:inline-block;padding:10px 14px;border-radius:14px;background:linear-gradient(90deg,#e0f7fa,#f1f0ff);border:1px solid rgba(26,26,44,.08)}
+  .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 14px}
+  .btn{cursor:pointer;border:0;border-radius:14px;padding:12px 16px;font-weight:700;transition:transform .08s ease,box-shadow .2s ease,opacity .2s ease}
+  .btn:active{transform:translateY(1px) scale(.99)}
+  .btn-primary{background:linear-gradient(90deg,#6a4c93,#1982c4);color:#fff;box-shadow:0 10px 24px rgba(25,130,196,.35)}
+  .btn-okay{background:#06d6a0;color:#0b2b28;box-shadow:0 10px 24px rgba(6,214,160,.35)}
+  .btn-outline{background:#fff;color:#1e1b2e;border:2px solid #1e1b2e}
+  .mini-gallery{margin-top:10px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .mini-gallery img{width:100%;height:120px;object-fit:cover;border-radius:14px;box-shadow:0 8px 18px rgba(30,27,46,.12);transition:transform .25s ease}
+  .mini-gallery img:hover{transform:translateY(-2px) scale(1.02)}
+  .mini-gallery .tall{height:160px}
+  .footer{text-align:center;padding:22px 10px 34px;color:#5b5572}
+  .sig{font-weight:700}
+  #fx-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+  header,.hero,.footer{position:relative;z-index:2}
+  @media(max-width:640px){.mini-gallery{grid-template-columns:1fr 1fr}}
+</style>
 </head>
 <body>
-  <div class="estrellas"></div>
-  <canvas id="confetti-canvas"></canvas>
-  <audio id="gol-audio" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
+<canvas id="fx-canvas" aria-hidden="true"></canvas>
 
-  <div class="cancha">
-    <div class="balon"></div>
-    <div class="portería"></div>
-  </div>
+<header class="ribbon">
+  <div class="ribbon__badge">26 · OCT</div>
+  <h1 class="ribbon__title">Festival del Terror — Six Flags 🎃</h1>
+  <div class="ribbon__sub">Domingo con mi novia preciosa — gritos, risas y abrazos. 🎢🕯️</div>
+</header>
 
-  <div class="container">
-    <h1 class="titulo-animado">Mi amor, ¿lista para una cita legendaria? te amo 🎬⚽</h1>
-    <p class="intro">Este sábado tenemos plan doble: primero ir al cine a ver al Tanjiro, comer y después... ¡nos vamos al Estadio Azulcrema! 💛💙</p>
+<section class="hero">
+  <svg class="coaster" viewBox="0 0 800 200" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,150 C100,20 200,20 300,150 S500,280 600,150 700,20 800,150" />
+    <circle id="car" cx="0" cy="150" r="8"/>
+  </svg>
 
-    <div class="countdown"></div>
+  <div class="card glass">
+    <h2 class="title-anim">Plan del día 👻</h2>
+    <p class="lead">
+      Este <strong>domingo 26 de octubre</strong> nos vamos a <strong>Six Flags México</strong>
+      para el <strong>Festival del Terror</strong>. Quiero ir contigo de la mano,
+      reírnos con los sustos y coleccionar fotos monitas. Te amo. 💗
+    </p>
 
-    <button id="mensajeBtn" class="btn">💌 Ver Invitación 💌</button>
-    <button class="btn" onclick="confirmarAsistencia()">✅ Confirmar Plan ✅</button>
-    <a class="btn" href="#" onclick="agregarAlCalendario()">🗓️ Agregar a Calendario 🗓️</a>
-    <button class="btn" onclick="mostrarChecklist()">🎒 Qué Llevar 🎒</button>
-
-    <div class="fotos-fijas">
-      <img src="assets/fotos/nosotros_america.jpg" alt="Foto de nosotros con playera del América" />
-      <img src="assets/fotos/montse_america.jpg" alt="Montse con su playera del América" class="especial" />
+    <div class="data-row">
+      <div class="pill">📍 Six Flags México</div>
+      <div class="pill">🕙 Nos vemos 8:30 a. m. en tu casa</div>
+      <div class="pill">👟 Outfit cómodo</div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <div class="countdown" id="countdown" aria-live="polite"></div>
+
+    <div class="cta-row">
+      <button id="btnConfirmar" class="btn btn-okay">✅ Confirmar por WhatsApp</button>
+      <button id="btnCalendario" class="btn btn-outline">🗓️ Agregar a Google Calendar</button>
+    </div>
+
+ <div class="mini-gallery">
+  <!-- Superman El Último Escape (Six Flags México) -->
+  <img
+    src="https://commons.wikimedia.org/wiki/Special:FilePath/Superman%20El%20ultimo%20escape%20-%20SIx%20Flags%20Mexico.jpg?width=1000"
+    alt="Montaña rusa Superman — Six Flags México"
+    loading="lazy"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- Medusa Steel Coaster (Six Flags México) -->
+  <img
+    src="https://commons.wikimedia.org/wiki/Special:FilePath/Medusa%20Steel%20Coaster%201.jpg?width=1000"
+    alt="Medusa Steel Coaster — Six Flags México"
+    class="tall"
+    loading="lazy"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- Festival del Terror (foto nocturna en Six Flags México) -->
+  <img
+    src="https://commons.wikimedia.org/wiki/Special:FilePath/Six_flags_horror_festival.jpg?width=1000"
+    alt="Festival del Terror — Six Flags México"
+    loading="lazy"
+    referrerpolicy="no-referrer"
+  />
+</div>
+
+
+</section>
+
+<footer class="footer">
+  Hecho con 💗 para Montse — <span class="sig">by André</span>
+</footer>
+
+<audio id="sfx-woo" src="https://cdn.freesound.org/previews/667/667594_1648170-lq.mp3" preload="auto"></audio>
+<script>
+  // ====== Config ======
+  const EVENT_TITLE = "Festival del Terror — Six Flags";
+  const EVENT_LOCATION = "Six Flags México, Mexico City";
+  // Domingo 26 de octubre de 2025 — 10:00 a.m. a 6:00 p.m. (CDMX, UTC-06:00)
+  const EVENT_START = new Date("2025-10-26T10:00:00-06:00");
+  const EVENT_END   = new Date("2025-10-26T18:00:00-06:00");
+
+  // ====== Utils ======
+  const $ = (s)=>document.querySelector(s);
+
+  // FX canvas (confetti sencillo)
+  const fxCanvas = document.getElementById("fx-canvas");
+  const ctx = fxCanvas.getContext("2d");
+  let parts = [];
+  function resize(){ fxCanvas.width = innerWidth; fxCanvas.height = innerHeight; }
+  addEventListener("resize", resize); resize();
+  function burst(x,y,color){
+    for(let i=0;i<60;i++){
+      const a=Math.random()*Math.PI*2, v=2+Math.random()*3;
+      parts.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-2,g:0.05+Math.random()*0.06,life:60+Math.random()*30,color});
+    }
+  }
+  function loop(){
+    ctx.clearRect(0,0,fxCanvas.width,fxCanvas.height);
+    parts.forEach(p=>{ p.vy+=p.g; p.x+=p.vx; p.y+=p.vy; p.life--;
+      ctx.globalAlpha=Math.max(p.life/80,0); ctx.fillStyle=p.color;
+      ctx.fillRect(p.x,p.y,3,3);
+    });
+    parts=parts.filter(p=>p.life>0);
+    requestAnimationFrame(loop);
+  } loop();
+
+  // Countdown
+  const countdownEl = $("#countdown");
+  const pad = (n)=>String(n).padStart(2,"0");
+  function tick(){
+    const now = new Date();
+    const diff = EVENT_START - now;
+    if (diff <= 0){ countdownEl.textContent = "¡Es hoy! 🎉"; return; }
+    const d = Math.floor(diff/86400000);
+    const h = Math.floor((diff/3600000)%24);
+    const m = Math.floor((diff/60000)%60);
+    const s = Math.floor((diff/1000)%60);
+    countdownEl.textContent = `Faltan ${d}d ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
+  }
+  setInterval(tick,1000); tick();
+
+  // Confirmar por WhatsApp
+  $("#btnConfirmar").addEventListener("click", ()=>{
+    // Mensaje
+    const msg = "Si voy mi amor, te amo";
+    // Teléfono internacional sin espacios ni símbolos
+    const phone = "525539501267";
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+    // Confetti
+    burst(innerWidth/2, innerHeight/2, "#ff4d6d");
+    burst(innerWidth/2+100, innerHeight/2-40, "#06d6a0");
+    burst(innerWidth/2-120, innerHeight/2+30, "#1982c4");
+    window.open(url, "_blank", "noopener");
+  });
+
+  // Agregar a Google Calendar (pantalla de creación con datos prellenados)
+  $("#btnCalendario").addEventListener("click", ()=>{
+    function toGCAL(dt){
+      // Formato UTC requerido por Google Calendar: YYYYMMDDTHHMMSSZ
+      const y = dt.getUTCFullYear();
+      const M = String(dt.getUTCMonth()+1).padStart(2,"0");
+      const D = String(dt.getUTCDate()).padStart(2,"0");
+      const h = String(dt.getUTCHours()).padStart(2,"0");
+      const m = String(dt.getUTCMinutes()).padStart(2,"0");
+      const s = String(dt.getUTCSeconds()).padStart(2,"0");
+      return `${y}${M}${D}T${h}${m}${s}Z`;
+    }
+    const dates = `${toGCAL(EVENT_START)}/${toGCAL(EVENT_END)}`;
+    const text = EVENT_TITLE;
+    const details = "Domingo en Six Flags para el Festival del Terror. Llevar suéter ligero, agua y muchas ganas de abrazos. 💗";
+    const location = EVENT_LOCATION;
+
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(text)}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}&dates=${dates}`;
+    window.open(url, "_blank", "noopener");
+  });
+
+  // Montaña rusa SVG animada (decorativo)
+  (function animateCar(){
+    const car = document.getElementById("car");
+    if (!car) return;
+    let t = 0;
+    function step(){
+      t = (t + 1) % 600;
+      // simple wiggle para simular vaivén
+      car.style.transform = `translate(${t}px, ${-60*Math.sin((t/600)*Math.PI*2)}px)`;
+      requestAnimationFrame(step);
+    }
+    step();
+  })();
+</script>
 </body>
 </html>
-
-
