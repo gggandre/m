@@ -1,4 +1,3 @@
-```html
 <!doctype html>
 <html lang="es">
 <head>
@@ -7,7 +6,7 @@
   <title>Para mi vida 💛</title>
   <meta name="theme-color" content="#0b0f1a" />
 
-  <!-- Tipografía -->
+  <!-- Tipografías -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -57,6 +56,12 @@
     }
     @keyframes twinkle{ from{opacity:.4} to{opacity:.75} }
 
+    canvas#confetti{
+      position:fixed; inset:0;
+      pointer-events:none;
+      z-index: 120;
+    }
+
     .wrap{
       max-width: 1050px;
       margin: 0 auto;
@@ -98,10 +103,7 @@
       line-height: 1.25;
     }
 
-    .top-actions{
-      display:flex; gap:10px; align-items:center;
-      flex: 0 0 auto;
-    }
+    .top-actions{ display:flex; gap:10px; align-items:center; flex:0 0 auto; }
     .pill{
       border:1px solid rgba(255,255,255,.12);
       background: rgba(15,22,41,.55);
@@ -113,14 +115,27 @@
       backdrop-filter: blur(10px);
       box-shadow: 0 10px 30px rgba(0,0,0,.3);
       white-space: nowrap;
+      width: 100%;
+      max-width: 520px;
     }
     .pill strong{font-weight:800}
 
-    /* Responsivo header para iPhone */
+    /* Header responsivo para iPhone */
     @media (max-width: 720px){
       header{flex-direction: column; align-items: flex-start; gap: 10px;}
       .top-actions{width:100%}
       .pill{width:100%; justify-content: space-between}
+    }
+
+    /* Cards */
+    .card{
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(15,22,41,.72), rgba(15,22,41,.35));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      overflow:hidden;
+      position:relative;
     }
 
     /* Hero */
@@ -131,19 +146,7 @@
       gap: 16px;
       align-items:stretch;
     }
-    @media (max-width: 920px){
-      .hero{ grid-template-columns:1fr; }
-    }
-
-    .card{
-      border: 1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(15,22,41,.72), rgba(15,22,41,.35));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-      overflow:hidden;
-      position:relative;
-    }
+    @media (max-width: 920px){ .hero{ grid-template-columns:1fr; } }
 
     .hero-left{
       padding: 22px 20px;
@@ -200,7 +203,7 @@
     }
     .badge span{ color: var(--gold); font-weight:900; }
 
-    /* Sobre interactivo */
+    /* SOBRE (mejorado para móvil) */
     .envelope{
       min-height: 290px;
       display:flex;
@@ -209,7 +212,7 @@
       padding: 14px;
     }
     .env-wrap{
-      width:min(360px, 100%);
+      width:min(420px, 100%);
       aspect-ratio: 4/3;
       position:relative;
       transform-style: preserve-3d;
@@ -217,7 +220,7 @@
     .env{
       position:absolute; inset:0;
       border-radius: 22px;
-      background: linear-gradient(140deg, rgba(255,221,122,.16), rgba(255,122,200,.10), rgba(89,241,200,.10));
+      background: linear-gradient(140deg, rgba(255,221,122,.18), rgba(255,122,200,.12), rgba(89,241,200,.12));
       border:1px solid rgba(255,255,255,.14);
       box-shadow: 0 20px 70px rgba(0,0,0,.55);
       overflow:hidden;
@@ -231,7 +234,7 @@
         radial-gradient(circle at 55% 75%, rgba(89,241,200,.20), transparent 58%);
       transform: rotate(18deg);
       filter: blur(6px);
-      opacity:.85;
+      opacity:.9;
     }
     .flap{
       position:absolute; left:0; right:0; top:0;
@@ -248,20 +251,20 @@
       position:absolute;
       left: 10%;
       right: 10%;
-      bottom: 9%;
+      bottom: 12%;
       height: 70%;
       border-radius: 16px;
       background: rgba(7,10,18,.55);
       border:1px solid rgba(255,255,255,.12);
       box-shadow: 0 10px 40px rgba(0,0,0,.35);
-      transform: translateY(28%);
+      transform: translateY(26%);
       transition: transform .7s cubic-bezier(.2,.85,.2,1);
       z-index: 2;
-      padding: 14px 14px 12px;
+      padding: 16px 14px 58px; /* espacio extra abajo para botones */
       display:flex;
       flex-direction:column;
-      justify-content:space-between;
-      gap:10px;
+      justify-content:flex-start;
+      gap:12px;
     }
     .paper h3{
       margin:0;
@@ -273,28 +276,34 @@
       margin:0;
       color: var(--muted);
       font-size: 13.5px;
-      line-height:1.5;
+      line-height:1.55;
     }
     .paper .mini{
-      display:flex; gap:10px; flex-wrap:wrap;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
       color: rgba(245,247,255,.9);
       font-size: 12.5px;
+      margin-top: 6px;
     }
     .chip{
       border:1px solid rgba(255,255,255,.12);
       background: rgba(15,22,41,.45);
-      padding: 7px 10px;
+      padding: 8px 10px;
       border-radius: 999px;
+      line-height:1;
     }
     .env-cta{
       position:absolute;
       left: 50%;
-      bottom: 12px;
+      bottom: 10px;
       transform: translateX(-50%);
       z-index: 4;
       display:flex;
       gap:10px;
       align-items:center;
+      width: calc(100% - 22px);
+      justify-content:center;
     }
 
     .btn{
@@ -306,7 +315,7 @@
       border-radius: 999px;
       font-size: 13px;
       font-weight:700;
-      transition: transform .15s ease, border-color .15s ease;
+      transition: transform .15s ease, border-color .15s ease, opacity .2s ease;
       backdrop-filter: blur(10px);
       -webkit-tap-highlight-color: transparent;
     }
@@ -322,16 +331,18 @@
     .open .flap{ transform: rotateX(165deg); }
     .open .paper{ transform: translateY(-6%); }
 
-    /* Secciones */
+    /* Cerrar solo cuando está abierto (se ve más limpio) */
+    #closeBtn{ opacity:0; pointer-events:none; }
+    .open #closeBtn{ opacity:1; pointer-events:auto; }
+
+    /* Layout secciones */
     .grid{
       margin-top: 16px;
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
-    @media (max-width: 920px){
-      .grid{ grid-template-columns:1fr; }
-    }
+    @media (max-width: 920px){ .grid{ grid-template-columns:1fr; } }
 
     .section{ padding: 18px; }
     .section h2{
@@ -413,7 +424,7 @@
       line-height: 1.55;
     }
 
-    /* Foto/Background */
+    /* Foto */
     .photo{
       position:relative;
       min-height: 330px;
@@ -440,9 +451,7 @@
     }
     .photo h2{ margin:0; font-family: Fraunces, serif; font-size: 24px; }
     .photo p{ margin:0; color: rgba(245,247,255,.85); line-height:1.65; max-width: 60ch; }
-    .photo .minirow{
-      display:flex; gap:10px; flex-wrap:wrap; margin-top: 8px;
-    }
+    .photo .minirow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 8px; }
 
     /* Aceptar */
     .accept{
@@ -451,10 +460,7 @@
       flex-wrap:wrap;
       align-items:center;
     }
-    .big{
-      padding: 12px 16px;
-      font-size: 14px;
-    }
+    .big{ padding: 12px 16px; font-size: 14px; }
 
     /* Modal */
     .modal{
@@ -501,13 +507,6 @@
       gap:10px;
     }
 
-    /* Confeti */
-    canvas#confetti{
-      position:fixed; inset:0;
-      pointer-events:none;
-      z-index: 120;
-    }
-
     footer{
       margin-top: 16px;
       color: rgba(183,192,222,.8);
@@ -516,16 +515,24 @@
       padding: 16px 0 0;
     }
 
-    /* Ajustes extra para iPhone (touch + texto) */
+    /* Ajustes extra para iPhone */
     @media (max-width: 430px){
       .hero-left{padding: 18px 16px;}
       .section{padding: 16px;}
       .title{font-size: 34px;}
       .subtitle{font-size: 14.5px;}
       .badge{font-size: 12.5px}
-      .env-cta{bottom: 10px}
-      .btn{padding: 10px 12px}
+      .btn{padding: 11px 12px}
       .photo{min-height: 300px}
+      .env-wrap{max-width: 360px;}
+      .paper{ left: 8%; right: 8%; height: 72%; transform: translateY(22%); }
+      .open .paper{ transform: translateY(-4%); }
+      .env-cta .btn{ flex: 1 1 auto; }
+    }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      *{ animation: none !important; transition: none !important; }
     }
   </style>
 </head>
@@ -626,7 +633,7 @@
         <div class="content">
           <h2>San Miguel para nosotros</h2>
           <p>
-            Calles bonitas, una comida con vista, termitas para relajarnos,
+            Calles bonitas, una comida con vista, aguas termales para relajarnos,
             y el centro para caminar sin prisa. Lo único obligatorio:
             <strong>tu mano en la mía</strong>.
           </p>
@@ -645,8 +652,8 @@
           Mi vida, ¿me acompañas del <strong>jueves 8</strong> (mi cumpleaños) al <strong>domingo 11 de enero</strong>
           a San Miguel de Allende?
           <br><br>
-          Quiero que la mejor contadora del universo se tome un descanso…
-          y que estemos juntos, nosotros pa’ toda la vida 💛
+          Quiero que la <strong>mejor contadora del universo</strong> se tome un descanso…
+          y que estemos juntos, <strong>nosotros pa’ toda la vida</strong> 💛
         </p>
 
         <div class="accept">
@@ -692,13 +699,13 @@
     </footer>
   </div>
 
-  <!-- Modal (solo para el "Sí, acepto") -->
+  <!-- Modal -->
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="box">
       <header>
         <h3 id="modalTitle">Mi vida… 🥺💛</h3>
       </header>
-      <div class="body">
+      <div class="body" id="modalBody">
         <p>
           Te hice esta invitación porque quiero que te tomes un descanso y porque me encanta estar contigo.
           Si dices que sí, yo me encargo de que este viaje se sienta bien bonito.
@@ -755,10 +762,11 @@
 
     const modal = document.getElementById("modal");
     const closeModalBtn = document.getElementById("closeModalBtn");
+    const modalBody = document.getElementById("modalBody");
 
     year.textContent = new Date().getFullYear();
 
-    // Envelope
+    // Envelope open/close
     function openEnvelope(){ envWrap.classList.add("open"); }
     function closeEnvelope(){ envWrap.classList.remove("open"); }
     openBtn.addEventListener("click", openEnvelope);
@@ -877,7 +885,7 @@
 
       modal.classList.add("show");
       document.getElementById("modalTitle").textContent = "Mi vida… ¿sí? 🥺💛";
-      modal.querySelector(".body").innerHTML = `
+      modalBody.innerHTML = `
         <p>
           Mi vida, te hice esto con todo mi cariño.
           <br><br>
@@ -899,4 +907,3 @@
   </script>
 </body>
 </html>
-```
