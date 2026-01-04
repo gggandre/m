@@ -15,7 +15,6 @@
     :root{
       --bg0:#070a12;
       --bg1:#0b0f1a;
-      --card:#0f1629cc;
       --txt:#f5f7ff;
       --muted:#b7c0de;
       --gold:#ffdd7a;
@@ -103,7 +102,7 @@
       line-height: 1.25;
     }
 
-    .top-actions{ display:flex; gap:10px; align-items:center; flex:0 0 auto; }
+    .top-actions{ display:flex; gap:10px; align-items:center; flex:0 0 auto; width:100%; }
     .pill{
       border:1px solid rgba(255,255,255,.12);
       background: rgba(15,22,41,.55);
@@ -120,11 +119,10 @@
     }
     .pill strong{font-weight:800}
 
-    /* Header responsivo para iPhone */
     @media (max-width: 720px){
       header{flex-direction: column; align-items: flex-start; gap: 10px;}
       .top-actions{width:100%}
-      .pill{width:100%; justify-content: space-between}
+      .pill{width:100%; justify-content: space-between; max-width: none;}
     }
 
     /* Cards */
@@ -203,107 +201,46 @@
     }
     .badge span{ color: var(--gold); font-weight:900; }
 
-    /* SOBRE (mejorado para móvil) */
-    .envelope{
-      min-height: 290px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 14px;
-    }
-    .env-wrap{
-      width:min(420px, 100%);
-      aspect-ratio: 4/3;
-      position:relative;
-      transform-style: preserve-3d;
-    }
-    .env{
-      position:absolute; inset:0;
-      border-radius: 22px;
-      background: linear-gradient(140deg, rgba(255,221,122,.18), rgba(255,122,200,.12), rgba(89,241,200,.12));
-      border:1px solid rgba(255,255,255,.14);
-      box-shadow: 0 20px 70px rgba(0,0,0,.55);
-      overflow:hidden;
-    }
-    .env:before{
-      content:"";
-      position:absolute; inset:-40%;
-      background:
-        radial-gradient(circle at 30% 40%, rgba(255,221,122,.35), transparent 55%),
-        radial-gradient(circle at 80% 30%, rgba(255,122,200,.22), transparent 55%),
-        radial-gradient(circle at 55% 75%, rgba(89,241,200,.20), transparent 58%);
-      transform: rotate(18deg);
-      filter: blur(6px);
-      opacity:.9;
-    }
-    .flap{
-      position:absolute; left:0; right:0; top:0;
-      height: 52%;
-      background: linear-gradient(180deg, rgba(255,221,122,.25), rgba(255,255,255,.04));
-      transform-origin: top;
-      transform: rotateX(0deg);
-      transition: transform .65s cubic-bezier(.2,.85,.2,1);
-      clip-path: polygon(0 0, 100% 0, 50% 100%);
-      border-bottom: 1px solid rgba(255,255,255,.18);
-      z-index: 3;
-    }
-    .paper{
-      position:absolute;
-      left: 10%;
-      right: 10%;
-      bottom: 12%;
-      height: 70%;
-      border-radius: 16px;
-      background: rgba(7,10,18,.55);
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow: 0 10px 40px rgba(0,0,0,.35);
-      transform: translateY(26%);
-      transition: transform .7s cubic-bezier(.2,.85,.2,1);
-      z-index: 2;
-      padding: 16px 14px 58px; /* espacio extra abajo para botones */
+    /* ===== Sobre eliminado (reemplazo por tarjeta simple) ===== */
+    .note{
+      padding: 22px 20px;
       display:flex;
       flex-direction:column;
-      justify-content:flex-start;
-      gap:12px;
+      justify-content:space-between;
+      gap: 14px;
+      min-height: 290px;
     }
-    .paper h3{
+    .note h3{
       margin:0;
       font-family: Fraunces, serif;
-      font-size: 18px;
+      font-size: 22px;
       letter-spacing:.2px;
     }
-    .paper p{
+    .note p{
       margin:0;
       color: var(--muted);
-      font-size: 13.5px;
-      line-height:1.55;
+      font-size: 14.5px;
+      line-height: 1.7;
     }
-    .paper .mini{
+    .note .chips{
       display:flex;
-      gap:8px;
       flex-wrap:wrap;
-      color: rgba(245,247,255,.9);
-      font-size: 12.5px;
+      gap:10px;
       margin-top: 6px;
     }
     .chip{
       border:1px solid rgba(255,255,255,.12);
-      background: rgba(15,22,41,.45);
-      padding: 8px 10px;
+      background: rgba(7,10,18,.30);
+      padding: 9px 12px;
       border-radius: 999px;
-      line-height:1;
+      font-size: 13px;
+      line-height: 1;
     }
-    .env-cta{
-      position:absolute;
-      left: 50%;
-      bottom: 10px;
-      transform: translateX(-50%);
-      z-index: 4;
+    .note .actions{
       display:flex;
       gap:10px;
+      flex-wrap:wrap;
       align-items:center;
-      width: calc(100% - 22px);
-      justify-content:center;
     }
 
     .btn{
@@ -311,29 +248,21 @@
       border:1px solid rgba(255,255,255,.14);
       background: rgba(15,22,41,.55);
       color: var(--txt);
-      padding: 10px 14px;
+      padding: 11px 14px;
       border-radius: 999px;
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight:700;
-      transition: transform .15s ease, border-color .15s ease, opacity .2s ease;
+      transition: transform .15s ease, border-color .15s ease;
       backdrop-filter: blur(10px);
       -webkit-tap-highlight-color: transparent;
     }
     .btn:hover{ transform: translateY(-1px); border-color: rgba(255,221,122,.35) }
     .btn:active{ transform: translateY(0px) scale(.99) }
-
     .primary{
       border: 1px solid rgba(255,221,122,.35);
       background: linear-gradient(135deg, rgba(255,221,122,.22), rgba(255,122,200,.14));
       box-shadow: 0 18px 50px rgba(0,0,0,.45);
     }
-
-    .open .flap{ transform: rotateX(165deg); }
-    .open .paper{ transform: translateY(-6%); }
-
-    /* Cerrar solo cuando está abierto (se ve más limpio) */
-    #closeBtn{ opacity:0; pointer-events:none; }
-    .open #closeBtn{ opacity:1; pointer-events:auto; }
 
     /* Layout secciones */
     .grid{
@@ -515,22 +444,17 @@
       padding: 16px 0 0;
     }
 
-    /* Ajustes extra para iPhone */
+    /* iPhone */
     @media (max-width: 430px){
       .hero-left{padding: 18px 16px;}
       .section{padding: 16px;}
       .title{font-size: 34px;}
       .subtitle{font-size: 14.5px;}
       .badge{font-size: 12.5px}
-      .btn{padding: 11px 12px}
       .photo{min-height: 300px}
-      .env-wrap{max-width: 360px;}
-      .paper{ left: 8%; right: 8%; height: 72%; transform: translateY(22%); }
-      .open .paper{ transform: translateY(-4%); }
-      .env-cta .btn{ flex: 1 1 auto; }
+      .note{padding: 18px 16px;}
     }
 
-    /* Reduce motion */
     @media (prefers-reduced-motion: reduce){
       *{ animation: none !important; transition: none !important; }
     }
@@ -581,31 +505,30 @@
         </div>
       </div>
 
-      <div class="card envelope">
-        <div class="env-wrap" id="envWrap">
-          <div class="env" aria-hidden="true"></div>
-          <div class="flap" aria-hidden="true"></div>
+      <!-- Reemplazo del sobre por una tarjeta bonita (sin bugs en iPhone) -->
+      <div class="card note">
+        <div>
+          <h3>Mi vida… 💛</h3>
+          <p>
+            Te quiero invitar a un viaje bien bonito.
+            Salimos el jueves temprano, desayunamos en el camino y ya en San Miguel
+            comemos algo ligero porque en la tarde tenemos reservado <strong>Quince Rooftop</strong> a las <strong>6:30 pm</strong>.
+            <br><br>
+            Y el viernes vamos a <strong>Escondido Place</strong> para relajarnos en las aguas termales.
+            El sábado caminamos por el centro y vemos más lugares juntos.
+          </p>
 
-          <div class="paper" role="group" aria-label="Carta">
-            <div>
-              <h3>Ábreme tantito 👉👈</h3>
-              <p>
-                Mi vida, tengo una pregunta importante…  
-                ¿Te vienes conmigo a San Miguel?  
-                Quiero estar contigo y consentirte como te mereces.
-              </p>
-            </div>
-            <div class="mini">
-              <span class="chip">🚗 Salimos 7–8 am</span>
-              <span class="chip">🥐 Desayuno en el camino</span>
-              <span class="chip">🌇 Rooftop 6:30 pm</span>
-            </div>
+          <div class="chips" aria-label="Resumen rápido">
+            <span class="chip">🚗 Salimos 7–8 am</span>
+            <span class="chip">🥐 Desayuno en el camino</span>
+            <span class="chip">🍷 Rooftop 6:30 pm</span>
+            <span class="chip">♨️ Termales (Vie)</span>
           </div>
+        </div>
 
-          <div class="env-cta">
-            <button class="btn primary" id="openBtn">💌 Abrir</button>
-            <button class="btn" id="closeBtn">Cerrar</button>
-          </div>
+        <div class="actions">
+          <button class="btn primary" id="seePlanBtn">📌 Ver plan</button>
+          <button class="btn" id="scrollBtn">👇 Bajar</button>
         </div>
       </div>
     </section>
@@ -695,7 +618,7 @@
     </section>
 
     <footer>
-      Hecho con 💛 para mi vida — <span id="year"></span>
+      Hecho con amor para mi vida chula— <span id="year"></span>
     </footer>
   </div>
 
@@ -705,12 +628,7 @@
       <header>
         <h3 id="modalTitle">Mi vida… 🥺💛</h3>
       </header>
-      <div class="body" id="modalBody">
-        <p>
-          Te hice esta invitación porque quiero que te tomes un descanso y porque me encanta estar contigo.
-          Si dices que sí, yo me encargo de que este viaje se sienta bien bonito.
-        </p>
-      </div>
+      <div class="body" id="modalBody"></div>
       <div class="footer">
         <button class="btn" id="closeModalBtn">Cerrar</button>
       </div>
@@ -718,7 +636,6 @@
   </div>
 
   <script>
-    // ======= Ajustes =======
     const DESTINO = "San Miguel de Allende";
     const FECHAS = "Jue 8 → Dom 11 de enero";
     const TRIP_START = new Date("2026-01-08T07:00:00-06:00");
@@ -729,12 +646,12 @@
         { icon:"🥐", title:"Desayuno en el camino", desc:"Parada rica para empezar el viaje con calma."},
         { icon:"🌞", title:"Llegamos y comemos ligero", desc:"Para guardar espacio para la tarde."},
         { icon:"🌇", title:"Quince Rooftop — 6:30 pm", desc:"Atardecer, vista y celebración contigo (reservado)."},
-        { icon:"🌙", title:"Paseo en la noche", desc:"Caminar por el centro, ver luces y tomar una foto bonita."},
+        { icon:"🌙", title:"Paseo en la noche", desc:"Caminar por el centro y disfrutar el ambiente."},
       ],
       fri: [
         { icon:"♨️", title:"Escondido Place (aguas termales)", desc:"Relajarnos y tomarnos el día con calma."},
         { icon:"🍽️", title:"Comida tranquila", desc:"Elegimos un lugar rico y comemos sin prisa."},
-        { icon:"🌟", title:"Noche tranquila", desc:"Un paseo, un postre o quedarnos platicando, como se sienta mejor."},
+        { icon:"🍨", title:"Postrecito", desc:"Algo dulce para cerrar el día."},
       ],
       sat: [
         { icon:"🏛️", title:"Centro de San Miguel", desc:"Caminar, conocer, comprar algo bonito y tomar fotos."},
@@ -749,36 +666,23 @@
       ]
     };
 
-    // ======= DOM =======
-    const envWrap = document.getElementById("envWrap");
-    const openBtn = document.getElementById("openBtn");
-    const closeBtn = document.getElementById("closeBtn");
+    // DOM
     const timeline = document.getElementById("timeline");
     const tabs = Array.from(document.querySelectorAll(".tab"));
     const yesBtn = document.getElementById("yesBtn");
     const maybeBtn = document.getElementById("maybeBtn");
     const countdownText = document.getElementById("countdownText");
     const year = document.getElementById("year");
-
     const modal = document.getElementById("modal");
     const closeModalBtn = document.getElementById("closeModalBtn");
     const modalBody = document.getElementById("modalBody");
+    const seePlanBtn = document.getElementById("seePlanBtn");
+    const scrollBtn = document.getElementById("scrollBtn");
+    const itineraryCard = document.getElementById("itineraryCard");
 
     year.textContent = new Date().getFullYear();
 
-    // Envelope open/close
-    function openEnvelope(){ envWrap.classList.add("open"); }
-    function closeEnvelope(){ envWrap.classList.remove("open"); }
-    openBtn.addEventListener("click", openEnvelope);
-    closeBtn.addEventListener("click", closeEnvelope);
-    envWrap.addEventListener("dblclick", () => envWrap.classList.toggle("open"));
-
-    // Modal close
-    closeModalBtn.addEventListener("click", () => modal.classList.remove("show"));
-    modal.addEventListener("click", (e) => { if(e.target === modal) modal.classList.remove("show"); });
-    window.addEventListener("keydown", (e) => { if(e.key === "Escape") modal.classList.remove("show"); });
-
-    // Tabs rendering
+    // Render plan
     function renderDay(dayKey){
       timeline.innerHTML = "";
       (PLAN[dayKey] || []).forEach(step => {
@@ -823,6 +727,11 @@
     }
     updateCountdown();
     setInterval(updateCountdown, 30_000);
+
+    // Modal controls
+    closeModalBtn.addEventListener("click", () => modal.classList.remove("show"));
+    modal.addEventListener("click", (e) => { if(e.target === modal) modal.classList.remove("show"); });
+    window.addEventListener("keydown", (e) => { if(e.key === "Escape") modal.classList.remove("show"); });
 
     // Confetti
     const canvas = document.getElementById("confetti");
@@ -877,9 +786,16 @@
       if(confetti.length > 0) requestAnimationFrame(draw);
     }
 
-    // Buttons
+    // Actions
+    seePlanBtn.addEventListener("click", () => {
+      itineraryCard.scrollIntoView({behavior:"smooth", block:"start"});
+    });
+
+    scrollBtn.addEventListener("click", () => {
+      document.querySelector(".grid").scrollIntoView({behavior:"smooth", block:"start"});
+    });
+
     yesBtn.addEventListener("click", () => {
-      openEnvelope();
       spawnConfetti();
       requestAnimationFrame(draw);
 
@@ -890,7 +806,7 @@
           Mi vida, te hice esto con todo mi cariño.
           <br><br>
           Te invito a <strong>${DESTINO}</strong> del <strong>${FECHAS}</strong>.
-          Vamos a salir tempranito, desayunar en el camino y el jueves tengo reservado
+          Salimos tempranito, desayunamos en el camino y el jueves tengo reservado
           <strong>Quince Rooftop</strong> a las <strong>6:30 pm</strong> para celebrar mi cumple contigo.
           <br><br>
           Quiero que la <strong>mejor contadora del universo</strong> se tome un descanso…
@@ -900,7 +816,6 @@
     });
 
     maybeBtn.addEventListener("click", () => {
-      openEnvelope();
       maybeBtn.textContent = "😳 ok… pero di que sí";
       setTimeout(() => maybeBtn.textContent = "😳 Déjame pensarlo", 1600);
     });
