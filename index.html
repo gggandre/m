@@ -1,224 +1,953 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>🎢 Festival del Terror — Six Flags | Domingo 26 de octubre</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-<meta name="theme-color" content="#ff4d6d">
-<style>
-  *{box-sizing:border-box}html,body{height:100%}
-  body{margin:0;font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;color:#1e1b2e;background:
-    radial-gradient(1200px 600px at 20% -10%, #ffd6e0 0%, transparent 60%),
-    radial-gradient(1200px 600px at 120% 10%, #d0f4de 0%, transparent 60%),
-    linear-gradient(135deg,#fff 0%,#f6f8ff 100%);overflow-x:hidden}
-  .ribbon{position:relative;padding:18px clamp(16px,4vw,32px);background:linear-gradient(90deg,#ff4d6d,#ff9966,#ffd166);color:#fff;text-align:center;box-shadow:0 6px 24px rgba(255,77,109,.35)}
-  .ribbon__badge{position:absolute;left:clamp(8px,3vw,24px);top:-12px;background:#1e1b2e;color:#ffd166;padding:8px 12px;border-radius:12px;font-weight:700;border:2px solid #ffd166}
-  .ribbon__title{margin:0;font-weight:800;letter-spacing:.4px;text-shadow:0 2px 10px rgba(0,0,0,.18)}
-  .ribbon__sub{opacity:.95;font-weight:600;margin-top:2px}
-  .hero{position:relative;padding:clamp(24px,4vw,48px);display:grid;place-items:center}
-  .coaster{position:absolute;inset:0 0 auto 0;width:100%;height:180px;pointer-events:none;opacity:.16}
-  .coaster path{fill:none;stroke:#1e1b2e;stroke-width:4;stroke-linecap:round;stroke-dasharray:8 10}
-  .coaster #car{fill:#ff4d6d;filter:drop-shadow(0 2px 2px rgba(0,0,0,.2));animation:carMove 6s ease-in-out infinite}
-  @keyframes carMove{0%{transform:translate(0,0)}50%{transform:translate(400px,-60px)}100%{transform:translate(800px,0)}}
-  .glass{background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:24px;box-shadow:0 20px 60px rgba(30,27,46,.12)}
-  .card{max-width:920px;width:min(92vw,980px);padding:clamp(18px,3vw,28px);margin-top:80px}
-  .title-anim{margin:0 0 6px;font-size:clamp(22px,3.2vw,34px);font-weight:800;background:linear-gradient(90deg,#6a4c93,#1982c4,#ff4d6d);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-  .lead{font-size:clamp(15px,1.6vw,18px);line-height:1.6;color:#3b3553}
-  .data-row{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 10px}
-  .pill{padding:8px 12px;border-radius:999px;background:#1e1b2e;color:#fff;font-weight:600;box-shadow:0 6px 18px rgba(30,27,46,.2)}
-  .countdown{margin:10px 0 18px;font-weight:800;letter-spacing:.5px;display:inline-block;padding:10px 14px;border-radius:14px;background:linear-gradient(90deg,#e0f7fa,#f1f0ff);border:1px solid rgba(26,26,44,.08)}
-  .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 14px}
-  .btn{cursor:pointer;border:0;border-radius:14px;padding:12px 16px;font-weight:700;transition:transform .08s ease,box-shadow .2s ease,opacity .2s ease}
-  .btn:active{transform:translateY(1px) scale(.99)}
-  .btn-primary{background:linear-gradient(90deg,#6a4c93,#1982c4);color:#fff;box-shadow:0 10px 24px rgba(25,130,196,.35)}
-  .btn-okay{background:#06d6a0;color:#0b2b28;box-shadow:0 10px 24px rgba(6,214,160,.35)}
-  .btn-outline{background:#fff;color:#1e1b2e;border:2px solid #1e1b2e}
-  .mini-gallery{margin-top:10px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-  .mini-gallery img{width:100%;height:120px;object-fit:cover;border-radius:14px;box-shadow:0 8px 18px rgba(30,27,46,.12);transition:transform .25s ease}
-  .mini-gallery img:hover{transform:translateY(-2px) scale(1.02)}
-  .mini-gallery .tall{height:160px}
-  .footer{text-align:center;padding:22px 10px 34px;color:#5b5572}
-  .sig{font-weight:700}
-  #fx-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
-  header,.hero,.footer{position:relative;z-index:2}
-  @media(max-width:640px){.mini-gallery{grid-template-columns:1fr 1fr}}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Una invitación para ti 💛</title>
+  <meta name="theme-color" content="#0b0f1a" />
+
+  <!-- Tipografía bonita -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg0:#070a12;
+      --bg1:#0b0f1a;
+      --card:#0f1629cc;
+      --card2:#0f1629;
+      --txt:#f5f7ff;
+      --muted:#b7c0de;
+      --gold:#ffdd7a;
+      --pink:#ff7ac8;
+      --aqua:#59f1c8;
+      --line:#223052;
+      --shadow: 0 20px 70px rgba(0,0,0,.55);
+      --radius: 22px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:var(--txt);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 700px at 15% 10%, rgba(255, 122, 200, .18), transparent 60%),
+                  radial-gradient(900px 600px at 80% 0%, rgba(89, 241, 200, .14), transparent 55%),
+                  radial-gradient(1100px 900px at 60% 80%, rgba(255, 221, 122, .10), transparent 60%),
+                  linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
+
+    /* Estrellitas */
+    .stars{
+      position:fixed; inset:0;
+      pointer-events:none;
+      background-image:
+        radial-gradient(1px 1px at 15% 25%, rgba(255,255,255,.7) 50%, transparent 55%),
+        radial-gradient(1px 1px at 72% 15%, rgba(255,255,255,.6) 50%, transparent 55%),
+        radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,.55) 50%, transparent 55%),
+        radial-gradient(1px 1px at 85% 68%, rgba(255,255255,255,.5) 50%, transparent 55%),
+        radial-gradient(1px 1px at 55% 40%, rgba(255,255,255,.6) 50%, transparent 55%);
+      opacity:.6;
+      filter: drop-shadow(0 0 6px rgba(255,255,255,.12));
+      animation: twinkle 6s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle{ from{opacity:.4} to{opacity:.75} }
+
+    .wrap{
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 24px 18px 90px;
+      position:relative;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding: 14px 6px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      user-select:none;
+    }
+    .logo{
+      width:40px; height:40px;
+      border-radius:14px;
+      background: conic-gradient(from 210deg, var(--gold), var(--pink), var(--aqua), var(--gold));
+      box-shadow: 0 12px 30px rgba(0,0,0,.45);
+    }
+    .brand h1{
+      margin:0;
+      font-family: Fraunces, serif;
+      font-weight:700;
+      font-size: 18px;
+      letter-spacing:.2px;
+    }
+    .brand p{
+      margin:2px 0 0;
+      color:var(--muted);
+      font-size:12.5px;
+    }
+
+    .top-actions{
+      display:flex; gap:10px; align-items:center;
+    }
+    .pill{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(15,22,41,.55);
+      padding: 10px 12px;
+      border-radius: 999px;
+      color: var(--txt);
+      font-size: 13px;
+      display:flex; gap:8px; align-items:center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.3);
+    }
+    .pill strong{font-weight:700}
+    .btn{
+      cursor:pointer;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(15,22,41,.55);
+      color: var(--txt);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight:600;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      backdrop-filter: blur(10px);
+    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(255,221,122,.35) }
+    .btn:active{ transform: translateY(0px) scale(.99) }
+
+    /* Hero */
+    .hero{
+      margin-top: 12px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){
+      .hero{ grid-template-columns:1fr; }
+    }
+
+    .card{
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(15,22,41,.72), rgba(15,22,41,.35));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero-left{
+      padding: 24px 22px;
+      min-height: 290px;
+    }
+    .kicker{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,221,122,.26);
+      background: rgba(255,221,122,.08);
+      color: var(--gold);
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing:.3px;
+    }
+    .kicker .dot{
+      width:8px;height:8px;border-radius:999px;
+      background: var(--gold);
+      box-shadow: 0 0 18px rgba(255,221,122,.55);
+    }
+
+    .title{
+      margin: 14px 0 8px;
+      font-family: Fraunces, serif;
+      font-size: clamp(30px, 4.2vw, 46px);
+      line-height: 1.02;
+      letter-spacing: .2px;
+    }
+    .subtitle{
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height:1.55;
+      max-width: 58ch;
+    }
+
+    .badges{
+      margin-top: 16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .badge{
+      padding: 9px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(7,10,18,.35);
+      color: rgba(245,247,255,.92);
+      font-size: 13px;
+      display:flex; gap:8px; align-items:center;
+    }
+    .badge span{
+      color: var(--gold);
+      font-weight:800;
+    }
+
+    /* Sobre interactivo */
+    .envelope{
+      min-height: 290px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 14px;
+    }
+    .env-wrap{
+      width:min(360px, 100%);
+      aspect-ratio: 4/3;
+      position:relative;
+      transform-style: preserve-3d;
+    }
+
+    .env{
+      position:absolute; inset:0;
+      border-radius: 22px;
+      background: linear-gradient(140deg, rgba(255,221,122,.16), rgba(255,122,200,.10), rgba(89,241,200,.10));
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: 0 20px 70px rgba(0,0,0,.55);
+      overflow:hidden;
+    }
+    .env:before{
+      content:"";
+      position:absolute; inset:-40%;
+      background: radial-gradient(circle at 30% 40%, rgba(255,221,122,.35), transparent 55%),
+                  radial-gradient(circle at 80% 30%, rgba(255,122,200,.22), transparent 55%),
+                  radial-gradient(circle at 55% 75%, rgba(89,241,200,.20), transparent 58%);
+      transform: rotate(18deg);
+      filter: blur(6px);
+      opacity:.85;
+    }
+
+    .flap{
+      position:absolute; left:0; right:0; top:0;
+      height: 52%;
+      background: linear-gradient(180deg, rgba(255,221,122,.25), rgba(255,255,255,.04));
+      transform-origin: top;
+      transform: rotateX(0deg);
+      transition: transform .65s cubic-bezier(.2,.85,.2,1);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      border-bottom: 1px solid rgba(255,255,255,.18);
+      z-index: 3;
+    }
+    .paper{
+      position:absolute;
+      left: 10%;
+      right: 10%;
+      bottom: 9%;
+      height: 70%;
+      border-radius: 16px;
+      background: rgba(7,10,18,.55);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow: 0 10px 40px rgba(0,0,0,.35);
+      transform: translateY(28%);
+      transition: transform .7s cubic-bezier(.2,.85,.2,1);
+      z-index: 2;
+      padding: 14px 14px 12px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .paper h3{
+      margin:0;
+      font-family: Fraunces, serif;
+      font-size: 18px;
+      letter-spacing:.2px;
+    }
+    .paper p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height:1.45;
+    }
+    .paper .mini{
+      display:flex; gap:10px; flex-wrap:wrap;
+      color: rgba(245,247,255,.9);
+      font-size: 12.5px;
+    }
+    .chip{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(15,22,41,.45);
+      padding: 7px 10px;
+      border-radius: 999px;
+    }
+    .env-cta{
+      position:absolute;
+      left: 50%;
+      bottom: 12px;
+      transform: translateX(-50%);
+      z-index: 4;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    .primary{
+      border: 1px solid rgba(255,221,122,.35);
+      background: linear-gradient(135deg, rgba(255,221,122,.22), rgba(255,122,200,.14));
+      box-shadow: 0 18px 50px rgba(0,0,0,.45);
+    }
+
+    .open .flap{ transform: rotateX(165deg); }
+    .open .paper{ transform: translateY(-6%); }
+
+    /* Secciones */
+    .grid{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    @media (max-width: 920px){
+      .grid{ grid-template-columns:1fr; }
+    }
+
+    .section{
+      padding: 18px;
+    }
+    .section h2{
+      margin: 0 0 8px;
+      font-family: Fraunces, serif;
+      letter-spacing: .2px;
+      font-size: 22px;
+    }
+    .section p{
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14.5px;
+    }
+
+    /* Tabs */
+    .tabs{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom: 12px;
+    }
+    .tab{
+      cursor:pointer;
+      user-select:none;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(7,10,18,.30);
+      font-weight:700;
+      font-size: 13px;
+      color: rgba(245,247,255,.88);
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .tab:hover{ transform: translateY(-1px); border-color: rgba(89,241,200,.35) }
+    .tab.active{
+      border-color: rgba(255,221,122,.45);
+      background: rgba(255,221,122,.10);
+      color: var(--txt);
+    }
+
+    .timeline{
+      border-top: 1px solid rgba(255,255,255,.10);
+      padding-top: 12px;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+    .item{
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(15,22,41,.35);
+    }
+    .icon{
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      background: rgba(255,221,122,.14);
+      border: 1px solid rgba(255,221,122,.26);
+      display:flex; align-items:center; justify-content:center;
+      font-size: 16px;
+      flex: 0 0 auto;
+    }
+    .item h4{
+      margin:0;
+      font-size: 14.5px;
+      letter-spacing:.2px;
+    }
+    .item small{
+      display:block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    /* Foto/Background de San Miguel */
+    .photo{
+      position:relative;
+      min-height: 330px;
+      overflow:hidden;
+    }
+    .photo .img{
+      position:absolute; inset:0;
+      background-image:
+        linear-gradient(180deg, rgba(7,10,18,.15), rgba(7,10,18,.85)),
+        url("https://images.unsplash.com/photo-1603912699214-926d385e0b6f?auto=format&fit=crop&w=1800&q=80");
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.02);
+      filter: saturate(1.15);
+    }
+    .photo .content{
+      position:relative;
+      padding: 18px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      height: 100%;
+      gap: 10px;
+    }
+    .photo h2{ margin:0; font-family: Fraunces, serif; font-size: 24px; }
+    .photo p{ margin:0; color: rgba(245,247,255,.85); line-height:1.55; max-width: 60ch; }
+    .photo .minirow{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top: 8px;
+    }
+
+    /* Aceptar */
+    .accept{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .big{
+      padding: 12px 16px;
+      font-size: 14px;
+    }
+
+    /* Modal */
+    .modal{
+      position:fixed; inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(8px);
+      z-index: 99;
+    }
+    .modal.show{ display:flex; }
+    .modal .box{
+      width:min(720px, 100%);
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(15,22,41,.88), rgba(15,22,41,.62));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .modal .box header{
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .modal .box header h3{
+      margin:0;
+      font-family: Fraunces, serif;
+      font-size: 18px;
+    }
+    .modal .box .body{
+      padding: 16px;
+      color: var(--muted);
+      line-height:1.6;
+      font-size: 14.5px;
+    }
+    .modal .box .body strong{ color: var(--txt); }
+    .modal .box .footer{
+      padding: 14px 16px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+    }
+
+    /* Confeti canvas */
+    canvas#confetti{
+      position:fixed; inset:0;
+      pointer-events:none;
+      z-index: 120;
+    }
+
+    /* Footer */
+    footer{
+      margin-top: 18px;
+      color: rgba(183,192,222,.8);
+      font-size: 12.5px;
+      text-align:center;
+      padding: 16px 0 0;
+    }
+    a{ color: var(--gold); text-decoration:none }
+    a:hover{ text-decoration:underline }
+
+    /* Accesibilidad */
+    .sr{
+      position:absolute;
+      width:1px;height:1px;
+      padding:0;margin:-1px;overflow:hidden;
+      clip:rect(0,0,0,0);white-space:nowrap;border:0;
+    }
+  </style>
 </head>
+
 <body>
-<canvas id="fx-canvas" aria-hidden="true"></canvas>
+  <div class="stars"></div>
+  <canvas id="confetti"></canvas>
 
-<header class="ribbon">
-  <div class="ribbon__badge">26 · OCT</div>
-  <h1 class="ribbon__title">Festival del Terror — Six Flags 🎃</h1>
-  <div class="ribbon__sub">Domingo con mi novia preciosa — gritos, risas y abrazos. 🎢🕯️</div>
-</header>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Para mi persona favorita</h1>
+          <p>Una invitación interactiva ✨</p>
+        </div>
+      </div>
 
-<section class="hero">
-  <svg class="coaster" viewBox="0 0 800 200" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0,150 C100,20 200,20 300,150 S500,280 600,150 700,20 800,150" />
-    <circle id="car" cx="0" cy="150" r="8"/>
-  </svg>
+      <div class="top-actions">
+        <div class="pill" id="countdownPill" title="Cuenta regresiva">
+          <span>⏳</span>
+          <strong id="countdownText">Cargando…</strong>
+        </div>
+        <button class="btn" id="musicBtn" aria-pressed="false" title="Música (opcional)">🎶 Música</button>
+        <button class="btn" id="detailsBtn" title="Ver detalles del plan">🗺️ Detalles</button>
+      </div>
+    </header>
 
-  <div class="card glass">
-    <h2 class="title-anim">Plan del día 👻</h2>
-    <p class="lead">
-      Este <strong>domingo 26 de octubre</strong> nos vamos a <strong>Six Flags México</strong>
-      para el <strong>Festival del Terror</strong>. Quiero ir contigo de la mano,
-      reírnos con los sustos y coleccionar fotos monitas. Te amo. 💗
-    </p>
+    <section class="hero">
+      <div class="card hero-left">
+        <div class="kicker"><span class="dot"></span> San Miguel de Allende • 8–11 de enero</div>
 
-    <div class="data-row">
-      <div class="pill">📍 Six Flags México</div>
-      <div class="pill">🕙 Nos vemos 8:30 a. m. en tu casa</div>
-      <div class="pill">👟 Outfit cómodo</div>
-    </div>
+        <div class="title">
+          ¿Te vienes conmigo a celebrar mi cumpleaños… y a perdernos juntitos?
+        </div>
 
-    <div class="countdown" id="countdown" aria-live="polite"></div>
+        <p class="subtitle">
+          Quiero invitarte a un plan bien bonito: carretera temprano, desayunito en el camino,
+          San Miguel con vibes románticas, aguas termales, y un fin de semana de “tú y yo”.
+        </p>
 
-    <div class="cta-row">
-      <button id="btnConfirmar" class="btn btn-okay">✅ Confirmar por WhatsApp</button>
-      <button id="btnCalendario" class="btn btn-outline">🗓️ Agregar a Google Calendar</button>
-    </div>
+        <div class="badges">
+          <div class="badge">📍 <span>Destino:</span>&nbsp; San Miguel de Allende</div>
+          <div class="badge">📅 <span>Fechas:</span>&nbsp; Jue 8 → Dom 11</div>
+          <div class="badge">🍷 <span>Reserva:</span>&nbsp; Quince Rooftop 6:30 pm</div>
+          <div class="badge">💛 <span>Motivo:</span>&nbsp; Mi cumple + nosotros</div>
+        </div>
+      </div>
 
-    <div class="mini-gallery">
-      <!-- Superman El Último Escape (Six Flags México) -->
-      <img
-        src="https://commons.wikimedia.org/wiki/Special:FilePath/Superman%20El%20ultimo%20escape%20-%20SIx%20Flags%20Mexico.jpg?width=1000"
-        alt="Montaña rusa Superman — Six Flags México"
-        loading="lazy"
-        referrerpolicy="no-referrer"
-      />
-      <!-- Medusa Steel Coaster (Six Flags México) -->
-      <img
-        src="https://commons.wikimedia.org/wiki/Special:FilePath/Medusa%20Steel%20Coaster%201.jpg?width=1000"
-        alt="Medusa Steel Coaster — Six Flags México"
-        class="tall"
-        loading="lazy"
-        referrerpolicy="no-referrer"
-      />
-      <!-- Festival del Terror (foto nocturna en Six Flags México) -->
-      <img
-        src="https://commons.wikimedia.org/wiki/Special:FilePath/Six_flags_horror_festival.jpg?width=1000"
-        alt="Festival del Terror — Six Flags México"
-        loading="lazy"
-        referrerpolicy="no-referrer"
-      />
+      <div class="card envelope">
+        <div class="env-wrap" id="envWrap">
+          <div class="env" aria-hidden="true"></div>
+          <div class="flap" aria-hidden="true"></div>
+
+          <div class="paper" role="group" aria-label="Carta">
+            <div>
+              <h3>Ábreme tantito 👉👈</h3>
+              <p>
+                Tengo una pregunta importante… y un mini plan que quiero vivir contigo.
+                Prometo risas, fotos, y muchos “qué bonito se ve todo”.
+              </p>
+            </div>
+            <div class="mini">
+              <span class="chip">🚗 Salimos 7–8 am</span>
+              <span class="chip">🥐 Desayuno en el camino</span>
+              <span class="chip">🌅 Rooftop 6:30 pm</span>
+            </div>
+          </div>
+
+          <div class="env-cta">
+            <button class="btn primary" id="openBtn">💌 Abrir</button>
+            <button class="btn" id="closeBtn">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card section" id="itineraryCard">
+        <h2>Itinerario (tentativo, pero precioso)</h2>
+        <p>
+          Lo importante: <strong>estar juntos</strong>. El plan es flexible, pero ya tengo
+          algunas cosas pensadas para que todo se sienta especial.
+        </p>
+
+        <div class="tabs" role="tablist" aria-label="Itinerario por día">
+          <div class="tab active" role="tab" tabindex="0" data-day="thu">Jue 8</div>
+          <div class="tab" role="tab" tabindex="0" data-day="fri">Vie 9</div>
+          <div class="tab" role="tab" tabindex="0" data-day="sat">Sáb 10</div>
+          <div class="tab" role="tab" tabindex="0" data-day="sun">Dom 11</div>
+        </div>
+
+        <div class="timeline" id="timeline"></div>
+      </div>
+
+      <div class="card photo">
+        <div class="img" aria-hidden="true"></div>
+        <div class="content">
+          <h2>San Miguel en modo “nosotros”</h2>
+          <p>
+            Calles bonitas, atardecer, un rooftop con vista increíble, termitas para relajarnos,
+            y el centro para caminar sin prisa. Lo único obligatorio: <strong>tu mano en la mía</strong>.
+          </p>
+          <div class="minirow">
+            <span class="chip">📸 Fotos</span>
+            <span class="chip">🍦 Antojitos</span>
+            <span class="chip">🕯️ Nochecita</span>
+            <span class="chip">🛍️ Paseo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card section">
+        <h2>Pregunta seria (pero bonita)</h2>
+        <p>
+          ¿Me acompañas del <strong>jueves 8</strong> (mi cumpleaños) al <strong>domingo 11 de enero</strong>
+          a San Miguel de Allende?  
+          <br><br>
+          Si dices que sí… prometo que te voy a consentir. Mucho.
+        </p>
+
+        <div class="accept">
+          <button class="btn primary big" id="yesBtn">💛 Sí, acepto</button>
+          <button class="btn big" id="maybeBtn">😳 Déjame pensarlo</button>
+        </div>
+
+        <p style="margin-top:12px;color:var(--muted);font-size:13px;">
+          Tip: si picas “Sí, acepto”, pasa algo bonito ✨
+        </p>
+      </div>
+
+      <div class="card section">
+        <h2>Lo que ya está listo</h2>
+        <div class="timeline" style="border-top:0;padding-top:0;">
+          <div class="item">
+            <div class="icon">🍷</div>
+            <div>
+              <h4>Quince Rooftop — 6:30 pm (Jue 8)</h4>
+              <small>Ya está reservado. Vista + atardecer + nosotros = plan perfecto.</small>
+            </div>
+          </div>
+          <div class="item">
+            <div class="icon">♨️</div>
+            <div>
+              <h4>Escondido Place — Aguas termales (Vie 9)</h4>
+              <small>Relajarnos, respirar, y olvidarnos del mundo un ratito.</small>
+            </div>
+          </div>
+          <div class="item">
+            <div class="icon">🏛️</div>
+            <div>
+              <h4>Centro de San Miguel (Sáb 10)</h4>
+              <small>Paseo, cafecito, tiendas, fotitos, y descubrir rincones.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Hecho con 💛 para ti — <span id="year"></span>
+    </footer>
+  </div>
+
+  <!-- Modal Detalles -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="box">
+      <header>
+        <h3 id="modalTitle">Detalles del plan 🗺️</h3>
+      </header>
+      <div class="body">
+        <p>
+          <strong>Fechas:</strong> Jueves 8 → Domingo 11 de enero.<br>
+          <strong>Salida:</strong> Jueves entre <strong>7:00 y 8:00 am</strong>.<br>
+          <strong>Comida:</strong> desayunamos en el camino y comemos ligero al llegar a San Miguel.<br>
+          <strong>Reserva confirmada:</strong> <strong>Quince Rooftop</strong> a las <strong>6:30 pm</strong> el jueves.<br>
+          <strong>Viernes:</strong> termitas en <strong>Escondido Place</strong>.<br>
+          <strong>Sábado:</strong> centro y más lugares para conocer.<br><br>
+          Si quieres, puedo ajustar todo a lo que más te antoje: más relax, más caminata, más comida rica, más fotos… lo que tú digas 💛
+        </p>
+      </div>
+      <div class="footer">
+        <button class="btn" id="closeModalBtn">Cerrar</button>
+      </div>
     </div>
   </div>
-</section>
 
-<footer class="footer">
-  Hecho con 💗 para Montse — <span class="sig">by André</span>
-</footer>
+  <audio id="bgm" preload="none" loop></audio>
 
-<audio id="sfx-woo" src="https://cdn.freesound.org/previews/667/667594_1648170-lq.mp3" preload="auto"></audio>
-<script>
-  // ====== Config ======
-  const EVENT_TITLE = "Festival del Terror — Six Flags";
-  const EVENT_LOCATION = "Six Flags México, Mexico City";
-  // Domingo 26 de octubre de 2025 — 10:00 a.m. a 6:00 p.m. (CDMX, UTC-06:00)
-  const EVENT_START = new Date("2025-10-26T10:00:00-06:00");
-  const EVENT_END   = new Date("2025-10-26T18:00:00-06:00");
+  <script>
+    // ======= Personaliza aquí si quieres =======
+    const NOMBRE = "Mi amor"; // Puedes poner su nombre real
+    const DESTINO = "San Miguel de Allende";
+    const FECHAS = "Jue 8 → Dom 11 de enero";
+    // Música opcional: pega una URL directa a mp3 (puedes dejarlo vacío)
+    const MUSIC_URL = "";
+    // Fecha/hora de salida aproximada para countdown (zona CDMX)
+    // Ajusta si quieres: 2026-01-08 07:00
+    const TRIP_START = new Date("2026-01-08T07:00:00-06:00");
 
-  // ====== Utils ======
-  const $ = (s)=>document.querySelector(s);
+    // Itinerario (editable)
+    const PLAN = {
+      thu: [
+        { icon:"🚗", title:"Salimos temprano (7–8 am)", desc:"Road trip: música, plática y vibes bonitas."},
+        { icon:"🥐", title:"Desayuno en el camino", desc:"Parada rica para empezar el viaje con calma."},
+        { icon:"🌞", title:"Llegamos y comemos algo ligero", desc:"Porque en la noche se viene lo bueno."},
+        { icon:"🌇", title:"Quince Rooftop — 6:30 pm", desc:"Atardecer + vista + nosotros. (Reservado)"},
+        { icon:"🌙", title:"Caminata de noche", desc:"Centro bonito y una foto juntos sí o sí."},
+      ],
+      fri: [
+        { icon:"♨️", title:"Escondido Place (aguas termales)", desc:"Día de relax total: termitas y desconexión."},
+        { icon:"🍓", title:"Comidita rica", desc:"Algo que se antoje, sin prisas."},
+        { icon:"✨", title:"Noche tranquila", desc:"Plan cozy: postrecito / paseo / lo que se nos antoje."},
+      ],
+      sat: [
+        { icon:"🏛️", title:"Centro de San Miguel", desc:"Caminar, descubrir rincones, artesanías, fotos."},
+        { icon:"☕", title:"Cafecito", desc:"Pararnos donde se vea bonito y platicar."},
+        { icon:"🛍️", title:"Más lugares para conocer", desc:"Podemos improvisar: miradores, spots, etc."},
+        { icon:"🍦", title:"Antojitos", desc:"Porque sí. Porque San Miguel."},
+      ],
+      sun: [
+        { icon:"🥞", title:"Desayuno bonito", desc:"Para cerrar el viaje con sonrisa."},
+        { icon:"🚗", title:"Regreso", desc:"Con playlist y recuerdos nuevos."},
+        { icon:"💛", title:"Foto final", desc:"Una foto que diga “esto lo hicimos juntos”."},
+      ]
+    };
 
-  // FX canvas (confetti sencillo)
-  const fxCanvas = document.getElementById("fx-canvas");
-  const ctx = fxCanvas.getContext("2d");
-  let parts = [];
-  function resize(){ fxCanvas.width = innerWidth; fxCanvas.height = innerHeight; }
-  addEventListener("resize", resize); resize();
-  function burst(x,y,color){
-    for(let i=0;i<60;i++){
-      const a=Math.random()*Math.PI*2, v=2+Math.random()*3;
-      parts.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-2,g:0.05+Math.random()*0.06,life:60+Math.random()*30,color});
-    }
-  }
-  function loop(){
-    ctx.clearRect(0,0,fxCanvas.width,fxCanvas.height);
-    parts.forEach(p=>{ p.vy+=p.g; p.x+=p.vx; p.y+=p.vy; p.life--;
-      ctx.globalAlpha=Math.max(p.life/80,0); ctx.fillStyle=p.color;
-      ctx.fillRect(p.x,p.y,3,3);
+    // ======= DOM =======
+    const envWrap = document.getElementById("envWrap");
+    const openBtn = document.getElementById("openBtn");
+    const closeBtn = document.getElementById("closeBtn");
+    const detailsBtn = document.getElementById("detailsBtn");
+    const modal = document.getElementById("modal");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+    const timeline = document.getElementById("timeline");
+    const tabs = Array.from(document.querySelectorAll(".tab"));
+    const yesBtn = document.getElementById("yesBtn");
+    const maybeBtn = document.getElementById("maybeBtn");
+    const countdownText = document.getElementById("countdownText");
+    const year = document.getElementById("year");
+    const musicBtn = document.getElementById("musicBtn");
+    const bgm = document.getElementById("bgm");
+    year.textContent = new Date().getFullYear();
+
+    // ======= Envelope open/close =======
+    function openEnvelope(){ envWrap.classList.add("open"); }
+    function closeEnvelope(){ envWrap.classList.remove("open"); }
+    openBtn.addEventListener("click", openEnvelope);
+    closeBtn.addEventListener("click", closeEnvelope);
+    envWrap.addEventListener("dblclick", () => envWrap.classList.toggle("open"));
+
+    // ======= Modal =======
+    detailsBtn.addEventListener("click", () => modal.classList.add("show"));
+    closeModalBtn.addEventListener("click", () => modal.classList.remove("show"));
+    modal.addEventListener("click", (e) => {
+      if(e.target === modal) modal.classList.remove("show");
     });
-    parts=parts.filter(p=>p.life>0);
-    requestAnimationFrame(loop);
-  } loop();
+    window.addEventListener("keydown", (e) => {
+      if(e.key === "Escape") modal.classList.remove("show");
+    });
 
-  // Countdown
-  const countdownEl = $("#countdown");
-  const pad = (n)=>String(n).padStart(2,"0");
-  function tick(){
-    const now = new Date();
-    const diff = EVENT_START - now;
-    if (diff <= 0){ countdownEl.textContent = "¡Es hoy! 🎉"; return; }
-    const d = Math.floor(diff/86400000);
-    const h = Math.floor((diff/3600000)%24);
-    const m = Math.floor((diff/60000)%60);
-    const s = Math.floor((diff/1000)%60);
-    countdownEl.textContent = `Faltan ${d}d ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
-  }
-  setInterval(tick,1000); tick();
+    // ======= Tabs rendering =======
+    function renderDay(dayKey){
+      timeline.innerHTML = "";
+      (PLAN[dayKey] || []).forEach(step => {
+        const div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML = `
+          <div class="icon">${step.icon}</div>
+          <div>
+            <h4>${step.title}</h4>
+            <small>${step.desc}</small>
+          </div>
+        `;
+        timeline.appendChild(div);
+      });
+    }
+    function setActive(dayKey){
+      tabs.forEach(t => t.classList.toggle("active", t.dataset.day === dayKey));
+      renderDay(dayKey);
+    }
+    tabs.forEach(t => {
+      t.addEventListener("click", () => setActive(t.dataset.day));
+      t.addEventListener("keydown", (e) => {
+        if(e.key === "Enter" || e.key === " ") setActive(t.dataset.day);
+      });
+    });
+    setActive("thu");
 
-  // Confirmar por WhatsApp
-  $("#btnConfirmar").addEventListener("click", ()=>{
-    const msg = "Si voy mi amor, te amo";
-    const phone = "525539501267"; // formato internacional
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-    burst(innerWidth/2, innerHeight/2, "#ff4d6d");
-    burst(innerWidth/2+100, innerHeight/2-40, "#06d6a0");
-    burst(innerWidth/2-120, innerHeight/2+30, "#1982c4");
-    window.open(url, "_blank", "noopener");
-  });
+    // ======= Countdown =======
+    function pad(n){ return String(n).padStart(2,"0"); }
+    function updateCountdown(){
+      const now = new Date();
+      const diff = TRIP_START - now;
+      if(diff <= 0){
+        countdownText.textContent = "¡Ya es hoy! ✨";
+        return;
+      }
+      const totalSeconds = Math.floor(diff/1000);
+      const days = Math.floor(totalSeconds/86400);
+      const hours = Math.floor((totalSeconds%86400)/3600);
+      const mins = Math.floor((totalSeconds%3600)/60);
+      countdownText.textContent = `${days}d ${pad(hours)}h ${pad(mins)}m`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 30_000);
 
-  // Agregar a Google Calendar (con invitado + zona horaria)
-  $("#btnCalendario").addEventListener("click", ()=>{
-    const GUEST_EMAIL = "gggandre08@gmail.com";
-    const TIMEZONE = "America/Mexico_City";
+    // ======= Confetti =======
+    const canvas = document.getElementById("confetti");
+    const ctx = canvas.getContext("2d");
+    let W,H,confetti=[];
+    function resize(){
+      W = canvas.width = window.innerWidth * devicePixelRatio;
+      H = canvas.height = window.innerHeight * devicePixelRatio;
+    }
+    window.addEventListener("resize", resize);
+    resize();
 
-    function toGCAL(dt){
-      // Formato UTC requerido por Google Calendar: YYYYMMDDTHHMMSSZ
-      const y = dt.getUTCFullYear();
-      const M = String(dt.getUTCMonth()+1).padStart(2,"0");
-      const D = String(dt.getUTCDate()).padStart(2,"0");
-      const h = String(dt.getUTCHours()).padStart(2,"0");
-      const m = String(dt.getUTCMinutes()).padStart(2,"0");
-      const s = String(dt.getUTCSeconds()).padStart(2,"0");
-      return `${y}${M}${D}T${h}${m}${s}Z`;
+    function spawnConfetti(){
+      const count = 170;
+      confetti = Array.from({length: count}, () => ({
+        x: Math.random()*W,
+        y: -Math.random()*H*0.2,
+        r: (Math.random()*6+4)*devicePixelRatio,
+        vx: (Math.random()*2-1)*devicePixelRatio,
+        vy: (Math.random()*3+2.2)*devicePixelRatio,
+        rot: Math.random()*Math.PI,
+        vr: (Math.random()*0.2-0.1),
+        life: 0,
+        max: 240 + Math.random()*90,
+        // no fijamos colores exactos: usamos variación por HSL
+        hue: 40 + Math.random()*260
+      }));
     }
 
-    const dates = `${toGCAL(EVENT_START)}/${toGCAL(EVENT_END)}`;
-    const text = EVENT_TITLE;
-    const details = "Domingo en Six Flags para el Festival del Terror. Llevar suéter ligero, agua y muchas ganas de abrazos. 💗";
-    const location = EVENT_LOCATION;
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      confetti.forEach(p => {
+        p.life++;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rot += p.vr;
+        p.vy *= 0.997;
+        p.vy += 0.02*devicePixelRatio;
 
-    const url =
-      `https://calendar.google.com/calendar/render` +
-      `?action=TEMPLATE` +
-      `&text=${encodeURIComponent(text)}` +
-      `&details=${encodeURIComponent(details)}` +
-      `&location=${encodeURIComponent(location)}` +
-      `&dates=${dates}` +
-      `&add=${encodeURIComponent(GUEST_EMAIL)}` +
-      `&ctz=${encodeURIComponent(TIMEZONE)}`;
+        const alpha = Math.max(0, 1 - (p.life/p.max));
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = `hsla(${p.hue}, 90%, 70%, ${alpha})`;
+        ctx.fillRect(-p.r, -p.r/2, p.r*2, p.r);
+        ctx.restore();
+      });
 
-    window.open(url, "_blank", "noopener");
-  });
-
-  // Montaña rusa SVG animada (decorativo)
-  (function animateCar(){
-    const car = document.getElementById("car");
-    if (!car) return;
-    let t = 0;
-    function step(){
-      t = (t + 1) % 600;
-      car.style.transform = `translate(${t}px, ${-60*Math.sin((t/600)*Math.PI*2)}px)`;
-      requestAnimationFrame(step);
+      confetti = confetti.filter(p => p.life < p.max && p.y < H + 80*devicePixelRatio);
+      if(confetti.length > 0) requestAnimationFrame(draw);
     }
-    step();
-  })();
-</script>
+
+    // ======= Buttons =======
+    yesBtn.addEventListener("click", () => {
+      openEnvelope();
+      modal.classList.add("show");
+      spawnConfetti();
+      requestAnimationFrame(draw);
+      // Cambia el texto del modal a algo más romántico
+      document.getElementById("modalTitle").textContent = "Entonces… ¿sí? 🥺💛";
+      modal.querySelector(".body").innerHTML = `
+        <p>
+          <strong>${NOMBRE}</strong>, oficialmente estás invitada a <strong>${DESTINO}</strong> conmigo.
+          <br><br>
+          Del <strong>${FECHAS}</strong> vamos a hacer un recuerdo bien bonito:
+          carretera temprano, desayunito en el camino, y el jueves a las <strong>6:30 pm</strong> en
+          <strong>Quince Rooftop</strong> para celebrar mi cumple contigo.
+          <br><br>
+          Si aceptas… yo me encargo de que te sientas la persona más especial del mundo.
+        </p>
+      `;
+    });
+
+    maybeBtn.addEventListener("click", () => {
+      openEnvelope();
+      // mini broma cute
+      maybeBtn.textContent = "😳 ok… pero di que sí";
+      setTimeout(() => maybeBtn.textContent = "😳 Déjame pensarlo", 1600);
+    });
+
+    // ======= Music (optional) =======
+    if(MUSIC_URL){
+      bgm.src = MUSIC_URL;
+      musicBtn.style.display = "inline-flex";
+    }else{
+      // si no hay música, deja el botón igual (por si luego quieres)
+      bgm.src = "";
+    }
+
+    let playing = false;
+    musicBtn.addEventListener("click", async () => {
+      if(!MUSIC_URL){
+        // si no configuraste música, abre una notita
+        modal.classList.add("show");
+        document.getElementById("modalTitle").textContent = "🎶 Música (opcional)";
+        modal.querySelector(".body").innerHTML = `
+          <p>
+            Si quieres música, edita el archivo y pega una URL directa a un <strong>.mp3</strong> en la variable
+            <strong>MUSIC_URL</strong>.
+            <br><br>
+            (Lo dejé apagado por defecto para que no se reproduzca sin permiso.)
+          </p>
+        `;
+        return;
+      }
+
+      try{
+        if(!playing){
+          await bgm.play();
+          playing = true;
+          musicBtn.setAttribute("aria-pressed","true");
+          musicBtn.textContent = "⏸️ Pausar";
+        }else{
+          bgm.pause();
+          playing = false;
+          musicBtn.setAttribute("aria-pressed","false");
+          musicBtn.textContent = "🎶 Música";
+        }
+      }catch(e){
+        modal.classList.add("show");
+        document.getElementById("modalTitle").textContent = "Ups 😅";
+        modal.querySelector(".body").innerHTML = `
+          <p>
+            Tu navegador bloqueó el audio. Intenta otra vez (un click más) o usa otra URL.
+          </p>
+        `;
+      }
+    });
+  </script>
 </body>
 </html>
