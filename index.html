@@ -1,12 +1,13 @@
+```html
 <!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Una invitación para ti 💛</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Para mi vida 💛</title>
   <meta name="theme-color" content="#0b0f1a" />
 
-  <!-- Tipografía bonita -->
+  <!-- Tipografía -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -16,28 +17,28 @@
       --bg0:#070a12;
       --bg1:#0b0f1a;
       --card:#0f1629cc;
-      --card2:#0f1629;
       --txt:#f5f7ff;
       --muted:#b7c0de;
       --gold:#ffdd7a;
       --pink:#ff7ac8;
       --aqua:#59f1c8;
-      --line:#223052;
       --shadow: 0 20px 70px rgba(0,0,0,.55);
       --radius: 22px;
     }
-
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
       color:var(--txt);
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 700px at 15% 10%, rgba(255, 122, 200, .18), transparent 60%),
-                  radial-gradient(900px 600px at 80% 0%, rgba(89, 241, 200, .14), transparent 55%),
-                  radial-gradient(1100px 900px at 60% 80%, rgba(255, 221, 122, .10), transparent 60%),
-                  linear-gradient(180deg, var(--bg0), var(--bg1));
+      background:
+        radial-gradient(1200px 700px at 15% 10%, rgba(255, 122, 200, .18), transparent 60%),
+        radial-gradient(900px 600px at 80% 0%, rgba(89, 241, 200, .14), transparent 55%),
+        radial-gradient(1100px 900px at 60% 80%, rgba(255, 221, 122, .10), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
       overflow-x:hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     /* Estrellitas */
@@ -48,7 +49,7 @@
         radial-gradient(1px 1px at 15% 25%, rgba(255,255,255,.7) 50%, transparent 55%),
         radial-gradient(1px 1px at 72% 15%, rgba(255,255,255,.6) 50%, transparent 55%),
         radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,.55) 50%, transparent 55%),
-        radial-gradient(1px 1px at 85% 68%, rgba(255,255255,255,.5) 50%, transparent 55%),
+        radial-gradient(1px 1px at 85% 68%, rgba(255,255,255,.5) 50%, transparent 55%),
         radial-gradient(1px 1px at 55% 40%, rgba(255,255,255,.6) 50%, transparent 55%);
       opacity:.6;
       filter: drop-shadow(0 0 6px rgba(255,255,255,.12));
@@ -59,7 +60,7 @@
     .wrap{
       max-width: 1050px;
       margin: 0 auto;
-      padding: 24px 18px 90px;
+      padding: 18px 16px 84px;
       position:relative;
     }
 
@@ -67,18 +68,20 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:18px;
-      padding: 14px 6px;
+      gap:14px;
+      padding: 14px 4px 10px;
     }
     .brand{
       display:flex; align-items:center; gap:12px;
       user-select:none;
+      min-width: 0;
     }
     .logo{
       width:40px; height:40px;
       border-radius:14px;
       background: conic-gradient(from 210deg, var(--gold), var(--pink), var(--aqua), var(--gold));
       box-shadow: 0 12px 30px rgba(0,0,0,.45);
+      flex: 0 0 auto;
     }
     .brand h1{
       margin:0;
@@ -86,15 +89,18 @@
       font-weight:700;
       font-size: 18px;
       letter-spacing:.2px;
+      line-height: 1.1;
     }
     .brand p{
       margin:2px 0 0;
       color:var(--muted);
       font-size:12.5px;
+      line-height: 1.25;
     }
 
     .top-actions{
       display:flex; gap:10px; align-items:center;
+      flex: 0 0 auto;
     }
     .pill{
       border:1px solid rgba(255,255,255,.12);
@@ -106,29 +112,23 @@
       display:flex; gap:8px; align-items:center;
       backdrop-filter: blur(10px);
       box-shadow: 0 10px 30px rgba(0,0,0,.3);
+      white-space: nowrap;
     }
-    .pill strong{font-weight:700}
-    .btn{
-      cursor:pointer;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(15,22,41,.55);
-      color: var(--txt);
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight:600;
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-      backdrop-filter: blur(10px);
+    .pill strong{font-weight:800}
+
+    /* Responsivo header para iPhone */
+    @media (max-width: 720px){
+      header{flex-direction: column; align-items: flex-start; gap: 10px;}
+      .top-actions{width:100%}
+      .pill{width:100%; justify-content: space-between}
     }
-    .btn:hover{ transform: translateY(-1px); border-color: rgba(255,221,122,.35) }
-    .btn:active{ transform: translateY(0px) scale(.99) }
 
     /* Hero */
     .hero{
-      margin-top: 12px;
+      margin-top: 10px;
       display:grid;
       grid-template-columns: 1.2fr .8fr;
-      gap: 18px;
+      gap: 16px;
       align-items:stretch;
     }
     @media (max-width: 920px){
@@ -146,7 +146,7 @@
     }
 
     .hero-left{
-      padding: 24px 22px;
+      padding: 22px 20px;
       min-height: 290px;
     }
     .kicker{
@@ -159,7 +159,7 @@
       background: rgba(255,221,122,.08);
       color: var(--gold);
       font-size: 12.5px;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing:.3px;
     }
     .kicker .dot{
@@ -171,7 +171,7 @@
     .title{
       margin: 14px 0 8px;
       font-family: Fraunces, serif;
-      font-size: clamp(30px, 4.2vw, 46px);
+      font-size: clamp(30px, 4.4vw, 46px);
       line-height: 1.02;
       letter-spacing: .2px;
     }
@@ -179,8 +179,8 @@
       margin: 8px 0 0;
       color: var(--muted);
       font-size: 15.5px;
-      line-height:1.55;
-      max-width: 58ch;
+      line-height:1.6;
+      max-width: 62ch;
     }
 
     .badges{
@@ -198,10 +198,7 @@
       font-size: 13px;
       display:flex; gap:8px; align-items:center;
     }
-    .badge span{
-      color: var(--gold);
-      font-weight:800;
-    }
+    .badge span{ color: var(--gold); font-weight:900; }
 
     /* Sobre interactivo */
     .envelope{
@@ -217,7 +214,6 @@
       position:relative;
       transform-style: preserve-3d;
     }
-
     .env{
       position:absolute; inset:0;
       border-radius: 22px;
@@ -229,14 +225,14 @@
     .env:before{
       content:"";
       position:absolute; inset:-40%;
-      background: radial-gradient(circle at 30% 40%, rgba(255,221,122,.35), transparent 55%),
-                  radial-gradient(circle at 80% 30%, rgba(255,122,200,.22), transparent 55%),
-                  radial-gradient(circle at 55% 75%, rgba(89,241,200,.20), transparent 58%);
+      background:
+        radial-gradient(circle at 30% 40%, rgba(255,221,122,.35), transparent 55%),
+        radial-gradient(circle at 80% 30%, rgba(255,122,200,.22), transparent 55%),
+        radial-gradient(circle at 55% 75%, rgba(89,241,200,.20), transparent 58%);
       transform: rotate(18deg);
       filter: blur(6px);
       opacity:.85;
     }
-
     .flap{
       position:absolute; left:0; right:0; top:0;
       height: 52%;
@@ -277,7 +273,7 @@
       margin:0;
       color: var(--muted);
       font-size: 13.5px;
-      line-height:1.45;
+      line-height:1.5;
     }
     .paper .mini{
       display:flex; gap:10px; flex-wrap:wrap;
@@ -301,6 +297,22 @@
       align-items:center;
     }
 
+    .btn{
+      cursor:pointer;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(15,22,41,.55);
+      color: var(--txt);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight:700;
+      transition: transform .15s ease, border-color .15s ease;
+      backdrop-filter: blur(10px);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(255,221,122,.35) }
+    .btn:active{ transform: translateY(0px) scale(.99) }
+
     .primary{
       border: 1px solid rgba(255,221,122,.35);
       background: linear-gradient(135deg, rgba(255,221,122,.22), rgba(255,122,200,.14));
@@ -312,18 +324,16 @@
 
     /* Secciones */
     .grid{
-      margin-top: 18px;
+      margin-top: 16px;
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap: 18px;
+      gap: 16px;
     }
     @media (max-width: 920px){
       .grid{ grid-template-columns:1fr; }
     }
 
-    .section{
-      padding: 18px;
-    }
+    .section{ padding: 18px; }
     .section h2{
       margin: 0 0 8px;
       font-family: Fraunces, serif;
@@ -333,7 +343,7 @@
     .section p{
       margin: 0 0 14px;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.7;
       font-size: 14.5px;
     }
 
@@ -351,10 +361,11 @@
       border-radius: 999px;
       border:1px solid rgba(255,255,255,.12);
       background: rgba(7,10,18,.30);
-      font-weight:700;
+      font-weight:800;
       font-size: 13px;
       color: rgba(245,247,255,.88);
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+      transition: transform .15s ease, border-color .15s ease;
+      -webkit-tap-highlight-color: transparent;
     }
     .tab:hover{ transform: translateY(-1px); border-color: rgba(89,241,200,.35) }
     .tab.active{
@@ -392,16 +403,17 @@
       margin:0;
       font-size: 14.5px;
       letter-spacing:.2px;
+      line-height: 1.2;
     }
     .item small{
       display:block;
       margin-top: 4px;
       color: var(--muted);
       font-size: 13px;
-      line-height: 1.45;
+      line-height: 1.55;
     }
 
-    /* Foto/Background de San Miguel */
+    /* Foto/Background */
     .photo{
       position:relative;
       min-height: 330px;
@@ -427,7 +439,7 @@
       gap: 10px;
     }
     .photo h2{ margin:0; font-family: Fraunces, serif; font-size: 24px; }
-    .photo p{ margin:0; color: rgba(245,247,255,.85); line-height:1.55; max-width: 60ch; }
+    .photo p{ margin:0; color: rgba(245,247,255,.85); line-height:1.65; max-width: 60ch; }
     .photo .minirow{
       display:flex; gap:10px; flex-wrap:wrap; margin-top: 8px;
     }
@@ -450,7 +462,7 @@
       display:none;
       align-items:center;
       justify-content:center;
-      padding: 18px;
+      padding: 16px;
       background: rgba(0,0,0,.55);
       backdrop-filter: blur(8px);
       z-index: 99;
@@ -477,7 +489,7 @@
     .modal .box .body{
       padding: 16px;
       color: var(--muted);
-      line-height:1.6;
+      line-height:1.7;
       font-size: 14.5px;
     }
     .modal .box .body strong{ color: var(--txt); }
@@ -489,30 +501,31 @@
       gap:10px;
     }
 
-    /* Confeti canvas */
+    /* Confeti */
     canvas#confetti{
       position:fixed; inset:0;
       pointer-events:none;
       z-index: 120;
     }
 
-    /* Footer */
     footer{
-      margin-top: 18px;
+      margin-top: 16px;
       color: rgba(183,192,222,.8);
       font-size: 12.5px;
       text-align:center;
       padding: 16px 0 0;
     }
-    a{ color: var(--gold); text-decoration:none }
-    a:hover{ text-decoration:underline }
 
-    /* Accesibilidad */
-    .sr{
-      position:absolute;
-      width:1px;height:1px;
-      padding:0;margin:-1px;overflow:hidden;
-      clip:rect(0,0,0,0);white-space:nowrap;border:0;
+    /* Ajustes extra para iPhone (touch + texto) */
+    @media (max-width: 430px){
+      .hero-left{padding: 18px 16px;}
+      .section{padding: 16px;}
+      .title{font-size: 34px;}
+      .subtitle{font-size: 14.5px;}
+      .badge{font-size: 12.5px}
+      .env-cta{bottom: 10px}
+      .btn{padding: 10px 12px}
+      .photo{min-height: 300px}
     }
   </style>
 </head>
@@ -526,8 +539,8 @@
       <div class="brand">
         <div class="logo" aria-hidden="true"></div>
         <div>
-          <h1>Para mi persona favorita</h1>
-          <p>Una invitación interactiva ✨</p>
+          <h1>Para el amor de mi vida</h1>
+          <p>Para mi vida 💛 (nosotros pa’ toda la vida)</p>
         </div>
       </div>
 
@@ -536,8 +549,6 @@
           <span>⏳</span>
           <strong id="countdownText">Cargando…</strong>
         </div>
-        <button class="btn" id="musicBtn" aria-pressed="false" title="Música (opcional)">🎶 Música</button>
-        <button class="btn" id="detailsBtn" title="Ver detalles del plan">🗺️ Detalles</button>
       </div>
     </header>
 
@@ -546,19 +557,20 @@
         <div class="kicker"><span class="dot"></span> San Miguel de Allende • 8–11 de enero</div>
 
         <div class="title">
-          ¿Te vienes conmigo a celebrar mi cumpleaños… y a perdernos juntitos?
+          Mi vida… ¿te vienes conmigo a celebrar mi cumpleaños y escaparnos juntitos?
         </div>
 
         <p class="subtitle">
-          Quiero invitarte a un plan bien bonito: carretera temprano, desayunito en el camino,
-          San Miguel con vibes románticas, aguas termales, y un fin de semana de “tú y yo”.
+          Te hice esta invitación porque quiero que te tomes un descanso.
+          Para la <strong>mejor contadora del universo</strong>: vamos a desconectarnos tantito,
+          pasear, comer rico, reírnos y hacer un recuerdo bonito juntos.
         </p>
 
         <div class="badges">
           <div class="badge">📍 <span>Destino:</span>&nbsp; San Miguel de Allende</div>
           <div class="badge">📅 <span>Fechas:</span>&nbsp; Jue 8 → Dom 11</div>
           <div class="badge">🍷 <span>Reserva:</span>&nbsp; Quince Rooftop 6:30 pm</div>
-          <div class="badge">💛 <span>Motivo:</span>&nbsp; Mi cumple + nosotros</div>
+          <div class="badge">💛 <span>Nosotros:</span>&nbsp; pa’ toda la vida</div>
         </div>
       </div>
 
@@ -571,14 +583,15 @@
             <div>
               <h3>Ábreme tantito 👉👈</h3>
               <p>
-                Tengo una pregunta importante… y un mini plan que quiero vivir contigo.
-                Prometo risas, fotos, y muchos “qué bonito se ve todo”.
+                Mi vida, tengo una pregunta importante…  
+                ¿Te vienes conmigo a San Miguel?  
+                Quiero estar contigo y consentirte como te mereces.
               </p>
             </div>
             <div class="mini">
               <span class="chip">🚗 Salimos 7–8 am</span>
               <span class="chip">🥐 Desayuno en el camino</span>
-              <span class="chip">🌅 Rooftop 6:30 pm</span>
+              <span class="chip">🌇 Rooftop 6:30 pm</span>
             </div>
           </div>
 
@@ -592,7 +605,7 @@
 
     <section class="grid">
       <div class="card section" id="itineraryCard">
-        <h2>Itinerario (tentativo, pero precioso)</h2>
+        <h2>Itinerario (simple y bonito)</h2>
         <p>
           Lo importante: <strong>estar juntos</strong>. El plan es flexible, pero ya tengo
           algunas cosas pensadas para que todo se sienta especial.
@@ -611,27 +624,29 @@
       <div class="card photo">
         <div class="img" aria-hidden="true"></div>
         <div class="content">
-          <h2>San Miguel en modo “nosotros”</h2>
+          <h2>San Miguel para nosotros</h2>
           <p>
-            Calles bonitas, atardecer, un rooftop con vista increíble, termitas para relajarnos,
-            y el centro para caminar sin prisa. Lo único obligatorio: <strong>tu mano en la mía</strong>.
+            Calles bonitas, una comida con vista, termitas para relajarnos,
+            y el centro para caminar sin prisa. Lo único obligatorio:
+            <strong>tu mano en la mía</strong>.
           </p>
           <div class="minirow">
             <span class="chip">📸 Fotos</span>
             <span class="chip">🍦 Antojitos</span>
-            <span class="chip">🕯️ Nochecita</span>
-            <span class="chip">🛍️ Paseo</span>
+            <span class="chip">🌅 Atardecer</span>
+            <span class="chip">🚶‍♂️ Paseo</span>
           </div>
         </div>
       </div>
 
       <div class="card section">
-        <h2>Pregunta seria (pero bonita)</h2>
+        <h2>Mi pregunta (con cariño)</h2>
         <p>
-          ¿Me acompañas del <strong>jueves 8</strong> (mi cumpleaños) al <strong>domingo 11 de enero</strong>
-          a San Miguel de Allende?  
+          Mi vida, ¿me acompañas del <strong>jueves 8</strong> (mi cumpleaños) al <strong>domingo 11 de enero</strong>
+          a San Miguel de Allende?
           <br><br>
-          Si dices que sí… prometo que te voy a consentir. Mucho.
+          Quiero que la mejor contadora del universo se tome un descanso…
+          y que estemos juntos, nosotros pa’ toda la vida 💛
         </p>
 
         <div class="accept">
@@ -651,21 +666,21 @@
             <div class="icon">🍷</div>
             <div>
               <h4>Quince Rooftop — 6:30 pm (Jue 8)</h4>
-              <small>Ya está reservado. Vista + atardecer + nosotros = plan perfecto.</small>
+              <small>Ya está reservado. Vista bonita + tú y yo = plan perfecto.</small>
             </div>
           </div>
           <div class="item">
             <div class="icon">♨️</div>
             <div>
               <h4>Escondido Place — Aguas termales (Vie 9)</h4>
-              <small>Relajarnos, respirar, y olvidarnos del mundo un ratito.</small>
+              <small>Relajarnos, platicar y tomarnos el día con calma.</small>
             </div>
           </div>
           <div class="item">
             <div class="icon">🏛️</div>
             <div>
               <h4>Centro de San Miguel (Sáb 10)</h4>
-              <small>Paseo, cafecito, tiendas, fotitos, y descubrir rincones.</small>
+              <small>Paseo, cafecito, tiendas, fotos y conocer lugares bonitos.</small>
             </div>
           </div>
         </div>
@@ -673,25 +688,20 @@
     </section>
 
     <footer>
-      Hecho con 💛 para ti — <span id="year"></span>
+      Hecho con 💛 para mi vida — <span id="year"></span>
     </footer>
   </div>
 
-  <!-- Modal Detalles -->
+  <!-- Modal (solo para el "Sí, acepto") -->
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="box">
       <header>
-        <h3 id="modalTitle">Detalles del plan 🗺️</h3>
+        <h3 id="modalTitle">Mi vida… 🥺💛</h3>
       </header>
       <div class="body">
         <p>
-          <strong>Fechas:</strong> Jueves 8 → Domingo 11 de enero.<br>
-          <strong>Salida:</strong> Jueves entre <strong>7:00 y 8:00 am</strong>.<br>
-          <strong>Comida:</strong> desayunamos en el camino y comemos ligero al llegar a San Miguel.<br>
-          <strong>Reserva confirmada:</strong> <strong>Quince Rooftop</strong> a las <strong>6:30 pm</strong> el jueves.<br>
-          <strong>Viernes:</strong> termitas en <strong>Escondido Place</strong>.<br>
-          <strong>Sábado:</strong> centro y más lugares para conocer.<br><br>
-          Si quieres, puedo ajustar todo a lo que más te antoje: más relax, más caminata, más comida rica, más fotos… lo que tú digas 💛
+          Te hice esta invitación porque quiero que te tomes un descanso y porque me encanta estar contigo.
+          Si dices que sí, yo me encargo de que este viaje se sienta bien bonito.
         </p>
       </div>
       <div class="footer">
@@ -700,43 +710,35 @@
     </div>
   </div>
 
-  <audio id="bgm" preload="none" loop></audio>
-
   <script>
-    // ======= Personaliza aquí si quieres =======
-    const NOMBRE = "Mi amor"; // Puedes poner su nombre real
+    // ======= Ajustes =======
     const DESTINO = "San Miguel de Allende";
     const FECHAS = "Jue 8 → Dom 11 de enero";
-    // Música opcional: pega una URL directa a mp3 (puedes dejarlo vacío)
-    const MUSIC_URL = "";
-    // Fecha/hora de salida aproximada para countdown (zona CDMX)
-    // Ajusta si quieres: 2026-01-08 07:00
     const TRIP_START = new Date("2026-01-08T07:00:00-06:00");
 
-    // Itinerario (editable)
     const PLAN = {
       thu: [
-        { icon:"🚗", title:"Salimos temprano (7–8 am)", desc:"Road trip: música, plática y vibes bonitas."},
+        { icon:"🚗", title:"Salimos temprano (7–8 am)", desc:"Carretera juntos, sin prisas y con buena plática."},
         { icon:"🥐", title:"Desayuno en el camino", desc:"Parada rica para empezar el viaje con calma."},
-        { icon:"🌞", title:"Llegamos y comemos algo ligero", desc:"Porque en la noche se viene lo bueno."},
-        { icon:"🌇", title:"Quince Rooftop — 6:30 pm", desc:"Atardecer + vista + nosotros. (Reservado)"},
-        { icon:"🌙", title:"Caminata de noche", desc:"Centro bonito y una foto juntos sí o sí."},
+        { icon:"🌞", title:"Llegamos y comemos ligero", desc:"Para guardar espacio para la tarde."},
+        { icon:"🌇", title:"Quince Rooftop — 6:30 pm", desc:"Atardecer, vista y celebración contigo (reservado)."},
+        { icon:"🌙", title:"Paseo en la noche", desc:"Caminar por el centro, ver luces y tomar una foto bonita."},
       ],
       fri: [
-        { icon:"♨️", title:"Escondido Place (aguas termales)", desc:"Día de relax total: termitas y desconexión."},
-        { icon:"🍓", title:"Comidita rica", desc:"Algo que se antoje, sin prisas."},
-        { icon:"✨", title:"Noche tranquila", desc:"Plan cozy: postrecito / paseo / lo que se nos antoje."},
+        { icon:"♨️", title:"Escondido Place (aguas termales)", desc:"Relajarnos y tomarnos el día con calma."},
+        { icon:"🍽️", title:"Comida tranquila", desc:"Elegimos un lugar rico y comemos sin prisa."},
+        { icon:"🌟", title:"Noche tranquila", desc:"Un paseo, un postre o quedarnos platicando, como se sienta mejor."},
       ],
       sat: [
-        { icon:"🏛️", title:"Centro de San Miguel", desc:"Caminar, descubrir rincones, artesanías, fotos."},
-        { icon:"☕", title:"Cafecito", desc:"Pararnos donde se vea bonito y platicar."},
-        { icon:"🛍️", title:"Más lugares para conocer", desc:"Podemos improvisar: miradores, spots, etc."},
-        { icon:"🍦", title:"Antojitos", desc:"Porque sí. Porque San Miguel."},
+        { icon:"🏛️", title:"Centro de San Miguel", desc:"Caminar, conocer, comprar algo bonito y tomar fotos."},
+        { icon:"☕", title:"Cafecito", desc:"Sentarnos un rato y platicar a gusto."},
+        { icon:"🗺️", title:"Más lugares para conocer", desc:"Miradores, calles bonitas y lo que se nos antoje."},
+        { icon:"🍦", title:"Antojitos", desc:"Porque sí, porque tú, porque San Miguel."},
       ],
       sun: [
-        { icon:"🥞", title:"Desayuno bonito", desc:"Para cerrar el viaje con sonrisa."},
+        { icon:"🥞", title:"Desayuno bonito", desc:"Para cerrar el viaje con una sonrisa."},
         { icon:"🚗", title:"Regreso", desc:"Con playlist y recuerdos nuevos."},
-        { icon:"💛", title:"Foto final", desc:"Una foto que diga “esto lo hicimos juntos”."},
+        { icon:"💛", title:"Nosotros pa’ toda la vida", desc:"Y que esto sea el primero de muchos viajes juntos."},
       ]
     };
 
@@ -744,37 +746,31 @@
     const envWrap = document.getElementById("envWrap");
     const openBtn = document.getElementById("openBtn");
     const closeBtn = document.getElementById("closeBtn");
-    const detailsBtn = document.getElementById("detailsBtn");
-    const modal = document.getElementById("modal");
-    const closeModalBtn = document.getElementById("closeModalBtn");
     const timeline = document.getElementById("timeline");
     const tabs = Array.from(document.querySelectorAll(".tab"));
     const yesBtn = document.getElementById("yesBtn");
     const maybeBtn = document.getElementById("maybeBtn");
     const countdownText = document.getElementById("countdownText");
     const year = document.getElementById("year");
-    const musicBtn = document.getElementById("musicBtn");
-    const bgm = document.getElementById("bgm");
+
+    const modal = document.getElementById("modal");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+
     year.textContent = new Date().getFullYear();
 
-    // ======= Envelope open/close =======
+    // Envelope
     function openEnvelope(){ envWrap.classList.add("open"); }
     function closeEnvelope(){ envWrap.classList.remove("open"); }
     openBtn.addEventListener("click", openEnvelope);
     closeBtn.addEventListener("click", closeEnvelope);
     envWrap.addEventListener("dblclick", () => envWrap.classList.toggle("open"));
 
-    // ======= Modal =======
-    detailsBtn.addEventListener("click", () => modal.classList.add("show"));
+    // Modal close
     closeModalBtn.addEventListener("click", () => modal.classList.remove("show"));
-    modal.addEventListener("click", (e) => {
-      if(e.target === modal) modal.classList.remove("show");
-    });
-    window.addEventListener("keydown", (e) => {
-      if(e.key === "Escape") modal.classList.remove("show");
-    });
+    modal.addEventListener("click", (e) => { if(e.target === modal) modal.classList.remove("show"); });
+    window.addEventListener("keydown", (e) => { if(e.key === "Escape") modal.classList.remove("show"); });
 
-    // ======= Tabs rendering =======
+    // Tabs rendering
     function renderDay(dayKey){
       timeline.innerHTML = "";
       (PLAN[dayKey] || []).forEach(step => {
@@ -802,7 +798,7 @@
     });
     setActive("thu");
 
-    // ======= Countdown =======
+    // Countdown
     function pad(n){ return String(n).padStart(2,"0"); }
     function updateCountdown(){
       const now = new Date();
@@ -820,30 +816,31 @@
     updateCountdown();
     setInterval(updateCountdown, 30_000);
 
-    // ======= Confetti =======
+    // Confetti
     const canvas = document.getElementById("confetti");
     const ctx = canvas.getContext("2d");
     let W,H,confetti=[];
     function resize(){
-      W = canvas.width = window.innerWidth * devicePixelRatio;
-      H = canvas.height = window.innerHeight * devicePixelRatio;
+      const dpr = window.devicePixelRatio || 1;
+      W = canvas.width = window.innerWidth * dpr;
+      H = canvas.height = window.innerHeight * dpr;
     }
     window.addEventListener("resize", resize);
     resize();
 
     function spawnConfetti(){
+      const dpr = window.devicePixelRatio || 1;
       const count = 170;
       confetti = Array.from({length: count}, () => ({
         x: Math.random()*W,
         y: -Math.random()*H*0.2,
-        r: (Math.random()*6+4)*devicePixelRatio,
-        vx: (Math.random()*2-1)*devicePixelRatio,
-        vy: (Math.random()*3+2.2)*devicePixelRatio,
+        r: (Math.random()*6+4)*dpr,
+        vx: (Math.random()*2-1)*dpr,
+        vy: (Math.random()*3+2.2)*dpr,
         rot: Math.random()*Math.PI,
         vr: (Math.random()*0.2-0.1),
         life: 0,
         max: 240 + Math.random()*90,
-        // no fijamos colores exactos: usamos variación por HSL
         hue: 40 + Math.random()*260
       }));
     }
@@ -856,7 +853,7 @@
         p.y += p.vy;
         p.rot += p.vr;
         p.vy *= 0.997;
-        p.vy += 0.02*devicePixelRatio;
+        p.vy += 0.02*(window.devicePixelRatio || 1);
 
         const alpha = Math.max(0, 1 - (p.life/p.max));
         ctx.save();
@@ -868,86 +865,38 @@
         ctx.restore();
       });
 
-      confetti = confetti.filter(p => p.life < p.max && p.y < H + 80*devicePixelRatio);
+      confetti = confetti.filter(p => p.life < p.max && p.y < H + 80*(window.devicePixelRatio || 1));
       if(confetti.length > 0) requestAnimationFrame(draw);
     }
 
-    // ======= Buttons =======
+    // Buttons
     yesBtn.addEventListener("click", () => {
       openEnvelope();
-      modal.classList.add("show");
       spawnConfetti();
       requestAnimationFrame(draw);
-      // Cambia el texto del modal a algo más romántico
-      document.getElementById("modalTitle").textContent = "Entonces… ¿sí? 🥺💛";
+
+      modal.classList.add("show");
+      document.getElementById("modalTitle").textContent = "Mi vida… ¿sí? 🥺💛";
       modal.querySelector(".body").innerHTML = `
         <p>
-          <strong>${NOMBRE}</strong>, oficialmente estás invitada a <strong>${DESTINO}</strong> conmigo.
+          Mi vida, te hice esto con todo mi cariño.
           <br><br>
-          Del <strong>${FECHAS}</strong> vamos a hacer un recuerdo bien bonito:
-          carretera temprano, desayunito en el camino, y el jueves a las <strong>6:30 pm</strong> en
-          <strong>Quince Rooftop</strong> para celebrar mi cumple contigo.
+          Te invito a <strong>${DESTINO}</strong> del <strong>${FECHAS}</strong>.
+          Vamos a salir tempranito, desayunar en el camino y el jueves tengo reservado
+          <strong>Quince Rooftop</strong> a las <strong>6:30 pm</strong> para celebrar mi cumple contigo.
           <br><br>
-          Si aceptas… yo me encargo de que te sientas la persona más especial del mundo.
+          Quiero que la <strong>mejor contadora del universo</strong> se tome un descanso…
+          y que estemos juntos, <strong>nosotros pa’ toda la vida</strong> 💛
         </p>
       `;
     });
 
     maybeBtn.addEventListener("click", () => {
       openEnvelope();
-      // mini broma cute
       maybeBtn.textContent = "😳 ok… pero di que sí";
       setTimeout(() => maybeBtn.textContent = "😳 Déjame pensarlo", 1600);
-    });
-
-    // ======= Music (optional) =======
-    if(MUSIC_URL){
-      bgm.src = MUSIC_URL;
-      musicBtn.style.display = "inline-flex";
-    }else{
-      // si no hay música, deja el botón igual (por si luego quieres)
-      bgm.src = "";
-    }
-
-    let playing = false;
-    musicBtn.addEventListener("click", async () => {
-      if(!MUSIC_URL){
-        // si no configuraste música, abre una notita
-        modal.classList.add("show");
-        document.getElementById("modalTitle").textContent = "🎶 Música (opcional)";
-        modal.querySelector(".body").innerHTML = `
-          <p>
-            Si quieres música, edita el archivo y pega una URL directa a un <strong>.mp3</strong> en la variable
-            <strong>MUSIC_URL</strong>.
-            <br><br>
-            (Lo dejé apagado por defecto para que no se reproduzca sin permiso.)
-          </p>
-        `;
-        return;
-      }
-
-      try{
-        if(!playing){
-          await bgm.play();
-          playing = true;
-          musicBtn.setAttribute("aria-pressed","true");
-          musicBtn.textContent = "⏸️ Pausar";
-        }else{
-          bgm.pause();
-          playing = false;
-          musicBtn.setAttribute("aria-pressed","false");
-          musicBtn.textContent = "🎶 Música";
-        }
-      }catch(e){
-        modal.classList.add("show");
-        document.getElementById("modalTitle").textContent = "Ups 😅";
-        modal.querySelector(".body").innerHTML = `
-          <p>
-            Tu navegador bloqueó el audio. Intenta otra vez (un click más) o usa otra URL.
-          </p>
-        `;
-      }
     });
   </script>
 </body>
 </html>
+```
