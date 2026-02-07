@@ -1,824 +1,171 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Para mi vida 💛</title>
-  <meta name="theme-color" content="#0b0f1a" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres salir conmigo, Montse (Ahora mi vida)?</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
 
-  <!-- Tipografías -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+        }
 
-  <style>
-    :root{
-      --bg0:#070a12;
-      --bg1:#0b0f1a;
-      --txt:#f5f7ff;
-      --muted:#b7c0de;
-      --gold:#ffdd7a;
-      --pink:#ff7ac8;
-      --aqua:#59f1c8;
-      --shadow: 0 20px 70px rgba(0,0,0,.55);
-      --radius: 22px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      color:var(--txt);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(1200px 700px at 15% 10%, rgba(255, 122, 200, .18), transparent 60%),
-        radial-gradient(900px 600px at 80% 0%, rgba(89, 241, 200, .14), transparent 55%),
-        radial-gradient(1100px 900px at 60% 80%, rgba(255, 221, 122, .10), transparent 60%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      overflow-x:hidden;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
+        h1 {
+            color: #e91e63;
+            margin-bottom: 20px;
+        }
 
-    /* Estrellitas */
-    .stars{
-      position:fixed; inset:0;
-      pointer-events:none;
-      background-image:
-        radial-gradient(1px 1px at 15% 25%, rgba(255,255,255,.7) 50%, transparent 55%),
-        radial-gradient(1px 1px at 72% 15%, rgba(255,255,255,.6) 50%, transparent 55%),
-        radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,.55) 50%, transparent 55%),
-        radial-gradient(1px 1px at 85% 68%, rgba(255,255,255,.5) 50%, transparent 55%),
-        radial-gradient(1px 1px at 55% 40%, rgba(255,255,255,.6) 50%, transparent 55%);
-      opacity:.6;
-      filter: drop-shadow(0 0 6px rgba(255,255,255,.12));
-      animation: twinkle 6s ease-in-out infinite alternate;
-    }
-    @keyframes twinkle{ from{opacity:.4} to{opacity:.75} }
+        .options {
+            margin-bottom: 20px;
+        }
 
-    canvas#confetti{
-      position:fixed; inset:0;
-      pointer-events:none;
-      z-index: 120;
-    }
+        button {
+            padding: 12px 25px;
+            margin: 0 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
 
-    .wrap{
-      max-width: 1050px;
-      margin: 0 auto;
-      padding: 18px 16px 84px;
-      position:relative;
-    }
+        #si {
+            background-color: #4CAF50;
+            color: white;
+        }
 
-    header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      padding: 14px 4px 10px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      user-select:none;
-      min-width: 0;
-    }
-    .logo{
-      width:40px; height:40px;
-      border-radius:14px;
-      background: conic-gradient(from 210deg, var(--gold), var(--pink), var(--aqua), var(--gold));
-      box-shadow: 0 12px 30px rgba(0,0,0,.45);
-      flex: 0 0 auto;
-    }
-    .brand h1{
-      margin:0;
-      font-family: Fraunces, serif;
-      font-weight:700;
-      font-size: 18px;
-      letter-spacing:.2px;
-      line-height: 1.1;
-    }
-    .brand p{
-      margin:2px 0 0;
-      color:var(--muted);
-      font-size:12.5px;
-      line-height: 1.25;
-    }
+        #no {
+            background-color: #f44336;
+            color: white;
+        }
 
-    .top-actions{ display:flex; gap:10px; align-items:center; flex:0 0 auto; width:100%; }
-    .pill{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(15,22,41,.55);
-      padding: 10px 12px;
-      border-radius: 999px;
-      color: var(--txt);
-      font-size: 13px;
-      display:flex; gap:8px; align-items:center;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 30px rgba(0,0,0,.3);
-      white-space: nowrap;
-      width: 100%;
-      max-width: 520px;
-    }
-    .pill strong{font-weight:800}
+        #si:hover {
+            background-color: #45a049;
+        }
 
-    @media (max-width: 720px){
-      header{flex-direction: column; align-items: flex-start; gap: 10px;}
-      .top-actions{width:100%}
-      .pill{width:100%; justify-content: space-between; max-width: none;}
-    }
+        #no:hover {
+            background-color: #d32f2f;
+        }
 
-    /* Cards */
-    .card{
-      border: 1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(15,22,41,.72), rgba(15,22,41,.35));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-      overflow:hidden;
-      position:relative;
-    }
+        .date-options {
+            margin-top: 20px;
+            display: none;
+        }
 
-    /* Hero */
-    .hero{
-      margin-top: 10px;
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 16px;
-      align-items:stretch;
-    }
-    @media (max-width: 920px){ .hero{ grid-template-columns:1fr; } }
+        .date-options label {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
 
-    .hero-left{
-      padding: 22px 20px;
-      min-height: 290px;
-    }
-    .kicker{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,221,122,.26);
-      background: rgba(255,221,122,.08);
-      color: var(--gold);
-      font-size: 12.5px;
-      font-weight: 800;
-      letter-spacing:.3px;
-    }
-    .kicker .dot{
-      width:8px;height:8px;border-radius:999px;
-      background: var(--gold);
-      box-shadow: 0 0 18px rgba(255,221,122,.55);
-    }
+        .date-options input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
 
-    .title{
-      margin: 14px 0 8px;
-      font-family: Fraunces, serif;
-      font-size: clamp(30px, 4.4vw, 46px);
-      line-height: 1.02;
-      letter-spacing: .2px;
-    }
-    .subtitle{
-      margin: 8px 0 0;
-      color: var(--muted);
-      font-size: 15.5px;
-      line-height:1.6;
-      max-width: 62ch;
-    }
+        #confirmar {
+            background-color: #e91e63;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
 
-    .badges{
-      margin-top: 16px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-    }
-    .badge{
-      padding: 9px 12px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(7,10,18,.35);
-      color: rgba(245,247,255,.92);
-      font-size: 13px;
-      display:flex; gap:8px; align-items:center;
-    }
-    .badge span{ color: var(--gold); font-weight:900; }
+        #confirmar:hover {
+            background-color: #d81b60;
+        }
 
-    /* ===== Sobre eliminado (reemplazo por tarjeta simple) ===== */
-    .note{
-      padding: 22px 20px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      gap: 14px;
-      min-height: 290px;
-    }
-    .note h3{
-      margin:0;
-      font-family: Fraunces, serif;
-      font-size: 22px;
-      letter-spacing:.2px;
-    }
-    .note p{
-      margin:0;
-      color: var(--muted);
-      font-size: 14.5px;
-      line-height: 1.7;
-    }
-    .note .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top: 6px;
-    }
-    .chip{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(7,10,18,.30);
-      padding: 9px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      line-height: 1;
-    }
-    .note .actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
+        .hidden-message {
+            margin-top: 20px;
+            display: none;
+        }
 
-    .btn{
-      cursor:pointer;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(15,22,41,.55);
-      color: var(--txt);
-      padding: 11px 14px;
-      border-radius: 999px;
-      font-size: 13.5px;
-      font-weight:700;
-      transition: transform .15s ease, border-color .15s ease;
-      backdrop-filter: blur(10px);
-      -webkit-tap-highlight-color: transparent;
-    }
-    .btn:hover{ transform: translateY(-1px); border-color: rgba(255,221,122,.35) }
-    .btn:active{ transform: translateY(0px) scale(.99) }
-    .primary{
-      border: 1px solid rgba(255,221,122,.35);
-      background: linear-gradient(135deg, rgba(255,221,122,.22), rgba(255,122,200,.14));
-      box-shadow: 0 18px 50px rgba(0,0,0,.45);
-    }
-
-    /* Layout secciones */
-    .grid{
-      margin-top: 16px;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    @media (max-width: 920px){ .grid{ grid-template-columns:1fr; } }
-
-    .section{ padding: 18px; }
-    .section h2{
-      margin: 0 0 8px;
-      font-family: Fraunces, serif;
-      letter-spacing: .2px;
-      font-size: 22px;
-    }
-    .section p{
-      margin: 0 0 14px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 14.5px;
-    }
-
-    /* Tabs */
-    .tabs{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-bottom: 12px;
-    }
-    .tab{
-      cursor:pointer;
-      user-select:none;
-      padding: 9px 12px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(7,10,18,.30);
-      font-weight:800;
-      font-size: 13px;
-      color: rgba(245,247,255,.88);
-      transition: transform .15s ease, border-color .15s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .tab:hover{ transform: translateY(-1px); border-color: rgba(89,241,200,.35) }
-    .tab.active{
-      border-color: rgba(255,221,122,.45);
-      background: rgba(255,221,122,.10);
-      color: var(--txt);
-    }
-
-    .timeline{
-      border-top: 1px solid rgba(255,255,255,.10);
-      padding-top: 12px;
-      display:flex;
-      flex-direction:column;
-      gap: 10px;
-    }
-    .item{
-      display:flex;
-      gap: 12px;
-      align-items:flex-start;
-      padding: 12px 12px;
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(15,22,41,.35);
-    }
-    .icon{
-      width: 34px; height: 34px;
-      border-radius: 12px;
-      background: rgba(255,221,122,.14);
-      border: 1px solid rgba(255,221,122,.26);
-      display:flex; align-items:center; justify-content:center;
-      font-size: 16px;
-      flex: 0 0 auto;
-    }
-    .item h4{
-      margin:0;
-      font-size: 14.5px;
-      letter-spacing:.2px;
-      line-height: 1.2;
-    }
-    .item small{
-      display:block;
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
-    /* Foto */
-    .photo{
-      position:relative;
-      min-height: 330px;
-      overflow:hidden;
-    }
-    .photo .img{
-      position:absolute; inset:0;
-      background-image:
-        linear-gradient(180deg, rgba(7,10,18,.15), rgba(7,10,18,.85)),
-        url("https://images.unsplash.com/photo-1603912699214-926d385e0b6f?auto=format&fit=crop&w=1800&q=80");
-      background-size: cover;
-      background-position: center;
-      transform: scale(1.02);
-      filter: saturate(1.15);
-    }
-    .photo .content{
-      position:relative;
-      padding: 18px;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      height: 100%;
-      gap: 10px;
-    }
-    .photo h2{ margin:0; font-family: Fraunces, serif; font-size: 24px; }
-    .photo p{ margin:0; color: rgba(245,247,255,.85); line-height:1.65; max-width: 60ch; }
-    .photo .minirow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 8px; }
-
-    /* Aceptar */
-    .accept{
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-    .big{ padding: 12px 16px; font-size: 14px; }
-
-    /* Modal */
-    .modal{
-      position:fixed; inset:0;
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding: 16px;
-      background: rgba(0,0,0,.55);
-      backdrop-filter: blur(8px);
-      z-index: 99;
-    }
-    .modal.show{ display:flex; }
-    .modal .box{
-      width:min(720px, 100%);
-      border-radius: 22px;
-      background: linear-gradient(180deg, rgba(15,22,41,.88), rgba(15,22,41,.62));
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .modal .box header{
-      padding: 14px 16px;
-      border-bottom: 1px solid rgba(255,255,255,.10);
-    }
-    .modal .box header h3{
-      margin:0;
-      font-family: Fraunces, serif;
-      font-size: 18px;
-    }
-    .modal .box .body{
-      padding: 16px;
-      color: var(--muted);
-      line-height:1.7;
-      font-size: 14.5px;
-    }
-    .modal .box .body strong{ color: var(--txt); }
-    .modal .box .footer{
-      padding: 14px 16px;
-      border-top: 1px solid rgba(255,255,255,.10);
-      display:flex;
-      justify-content:flex-end;
-      gap:10px;
-    }
-
-    footer{
-      margin-top: 16px;
-      color: rgba(183,192,222,.8);
-      font-size: 12.5px;
-      text-align:center;
-      padding: 16px 0 0;
-    }
-
-    /* iPhone */
-    @media (max-width: 430px){
-      .hero-left{padding: 18px 16px;}
-      .section{padding: 16px;}
-      .title{font-size: 34px;}
-      .subtitle{font-size: 14.5px;}
-      .badge{font-size: 12.5px}
-      .photo{min-height: 300px}
-      .note{padding: 18px 16px;}
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      *{ animation: none !important; transition: none !important; }
-    }
-  </style>
+        .hidden-message img {
+            max-width: 300px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
-
 <body>
-  <div class="stars"></div>
-  <canvas id="confetti"></canvas>
-
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <h1>Para el amor de mi vida</h1>
-          <p>Para mi vida 💛 (nosotros pa’ toda la vida)</p>
+    <div class="container">
+        <h1>¿Quieres salir conmigo el sábado 15 de febrero a las 2 o 3 de la tarde, Montse?</h1>
+        <div class="options">
+            <button id="si">Sí</button>
+            <button id="no">No</button>
         </div>
-      </div>
-
-      <div class="top-actions">
-        <div class="pill" id="countdownPill" title="Cuenta regresiva">
-          <span>⏳</span>
-          <strong id="countdownText">Cargando…</strong>
+        <div class="date-options">
+            <h2>¡Genial! ¿Qué te parece alguna de estas opciones?</h2>
+            <label><input type="radio" name="date" value="kidzania">Kidzania de noche</label>
+            <label><input type="radio" name="date" value="coppola">Coppola vinyl pizza</label>
+            <label><input type="radio" name="date" value="inflalandia">Inflalandia Quack</label>
+            <label><input type="radio" name="date" value="escaperoom">Escape Room</label>
+            <label><input type="radio" name="date" value="gokarts">Go karts</label>
+            <label><input type="radio" name="date" value="pistadehielo">Pista de hielo</label>
+            <label><input type="radio" name="date" value="acuario">Acuario Inbursa (y museo Jumex y Soumaya)</label>
+            <label><input type="radio" name="date" value="boliche">Boliche Zona Esmeralda Bolibar</label>
+            <label><input type="radio" name="date" value="aztlan">Aztlán Parque y Rueda de la fortuna</label>
+            <label><input type="radio" name="date" value="cineteca">Cineteca Chapultepec</label>
+            <label><input type="radio" name="date" value="ladamadenegro">Obra de teatro La Dama de Negro</label>
+            <label><input type="radio" name="date" value="inspark">Inspark</label>
+            <label><input type="radio" name="date" value="adamanta">Escalar en Adamanta</label>
+            <label><input type="radio" name="date" value="kinezis">Kinezis</label>
+            <label><input type="radio" name="date" value="99records">99 records</label>
+            <label><input type="radio" name="date" value="immu">IMMMU</label>
+            <label><input type="radio" name="date" value="boboburguers">Bobo Burguers</label>
+            <label><input type="radio" name="date" value="hachas">Hachas</label>
+            <button id="confirmar">Confirmar</button>
         </div>
-      </div>
-    </header>
-
-    <section class="hero">
-      <div class="card hero-left">
-        <div class="kicker"><span class="dot"></span> San Miguel de Allende • 8–11 de enero</div>
-
-        <div class="title">
-          Mi vida… ¿te vienes conmigo a celebrar mi cumpleaños y escaparnos juntitos?
+        <div class="hidden-message">
+            <h2>¡Por favor, di que sí! </h2>
+            <img src="gato.jpg" alt="Gato suplicando">
         </div>
-
-        <p class="subtitle">
-          Te hice esta invitación porque quiero que te tomes un descanso.
-          Para la <strong>mejor contadora del universo</strong>: vamos a desconectarnos tantito,
-          pasear, comer rico, reírnos y hacer un recuerdo bonito juntos.
-        </p>
-
-        <div class="badges">
-          <div class="badge">📍 <span>Destino:</span>&nbsp; San Miguel de Allende</div>
-          <div class="badge">📅 <span>Fechas:</span>&nbsp; Jue 8 → Dom 11</div>
-          <div class="badge">🍷 <span>Reserva:</span>&nbsp; Quince Rooftop 6:30 pm</div>
-          <div class="badge">💛 <span>Nosotros:</span>&nbsp; pa’ toda la vida</div>
-        </div>
-      </div>
-
-      <!-- Reemplazo del sobre por una tarjeta bonita (sin bugs en iPhone) -->
-      <div class="card note">
-        <div>
-          <h3>Mi vida… 💛</h3>
-          <p>
-            Te quiero invitar a un viaje bien bonito.
-            Salimos el jueves temprano, desayunamos en el camino y ya en San Miguel
-            comemos algo ligero porque en la tarde tenemos reservado <strong>Quince Rooftop</strong> a las <strong>6:30 pm</strong>.
-            <br><br>
-            Y el viernes vamos a <strong>Escondido Place</strong> para relajarnos en las aguas termales.
-            El sábado caminamos por el centro y vemos más lugares juntos.
-          </p>
-
-          <div class="chips" aria-label="Resumen rápido">
-            <span class="chip">🚗 Salimos 7–8 am</span>
-            <span class="chip">🥐 Desayuno en el camino</span>
-            <span class="chip">🍷 Rooftop 6:30 pm</span>
-            <span class="chip">♨️ Termales (Vie)</span>
-          </div>
-        </div>
-
-        <div class="actions">
-          <button class="btn primary" id="seePlanBtn">📌 Ver plan</button>
-          <button class="btn" id="scrollBtn">👇 Bajar</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="grid">
-      <div class="card section" id="itineraryCard">
-        <h2>Itinerario (simple y bonito)</h2>
-        <p>
-          Lo importante: <strong>estar juntos</strong>. El plan es flexible, pero ya tengo
-          algunas cosas pensadas para que todo se sienta especial.
-        </p>
-
-        <div class="tabs" role="tablist" aria-label="Itinerario por día">
-          <div class="tab active" role="tab" tabindex="0" data-day="thu">Jue 8</div>
-          <div class="tab" role="tab" tabindex="0" data-day="fri">Vie 9</div>
-          <div class="tab" role="tab" tabindex="0" data-day="sat">Sáb 10</div>
-          <div class="tab" role="tab" tabindex="0" data-day="sun">Dom 11</div>
-        </div>
-
-        <div class="timeline" id="timeline"></div>
-      </div>
-
-      <div class="card photo">
-        <div class="img" aria-hidden="true"></div>
-        <div class="content">
-          <h2>San Miguel para nosotros</h2>
-          <p>
-            Calles bonitas, una comida con vista, aguas termales para relajarnos,
-            y el centro para caminar sin prisa. Lo único obligatorio:
-            <strong>tu mano en la mía</strong>.
-          </p>
-          <div class="minirow">
-            <span class="chip">📸 Fotos</span>
-            <span class="chip">🍦 Antojitos</span>
-            <span class="chip">🌅 Atardecer</span>
-            <span class="chip">🚶‍♂️ Paseo</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="card section">
-        <h2>Mi pregunta (con cariño)</h2>
-        <p>
-          Mi vida, ¿me acompañas del <strong>jueves 8</strong> (mi cumpleaños) al <strong>domingo 11 de enero</strong>
-          a San Miguel de Allende?
-          <br><br>
-          Quiero que la <strong>mejor contadora del universo</strong> se tome un descanso…
-          y que estemos juntos, <strong>nosotros pa’ toda la vida</strong> 💛
-        </p>
-
-        <div class="accept">
-          <button class="btn primary big" id="yesBtn">💛 Sí, acepto</button>
-          <button class="btn big" id="maybeBtn">😳 Déjame pensarlo</button>
-        </div>
-
-        <p style="margin-top:12px;color:var(--muted);font-size:13px;">
-          Tip: si picas “Sí, acepto”, pasa algo bonito ✨
-        </p>
-      </div>
-
-      <div class="card section">
-        <h2>Lo que ya está listo</h2>
-        <div class="timeline" style="border-top:0;padding-top:0;">
-          <div class="item">
-            <div class="icon">🍷</div>
-            <div>
-              <h4>Quince Rooftop — 6:30 pm (Jue 8)</h4>
-              <small>Ya está reservado. Vista bonita + tú y yo = plan perfecto.</small>
-            </div>
-          </div>
-          <div class="item">
-            <div class="icon">♨️</div>
-            <div>
-              <h4>Escondido Place — Aguas termales (Vie 9)</h4>
-              <small>Relajarnos, platicar y tomarnos el día con calma.</small>
-            </div>
-          </div>
-          <div class="item">
-            <div class="icon">🏛️</div>
-            <div>
-              <h4>Centro de San Miguel (Sáb 10)</h4>
-              <small>Paseo, cafecito, tiendas, fotos y conocer lugares bonitos.</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      Hecho con amor para mi vida chula— <span id="year"></span>
-    </footer>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="box">
-      <header>
-        <h3 id="modalTitle">Mi vida… 🥺💛</h3>
-      </header>
-      <div class="body" id="modalBody"></div>
-      <div class="footer">
-        <button class="btn" id="closeModalBtn">Cerrar</button>
-      </div>
     </div>
-  </div>
 
-  <script>
-    const DESTINO = "San Miguel de Allende";
-    const FECHAS = "Jue 8 → Dom 11 de enero";
-    const TRIP_START = new Date("2026-01-08T07:00:00-06:00");
+    <script>
+        const siButton = document.getElementById('si');
+        const noButton = document.getElementById('no');
+        const dateOptions = document.querySelector('.date-options');
+        const hiddenMessage = document.querySelector('.hidden-message');
+        const confirmarButton = document.getElementById('confirmar');
 
-    const PLAN = {
-      thu: [
-        { icon:"🚗", title:"Salimos temprano (7–8 am)", desc:"Carretera juntos, sin prisas y con buena plática."},
-        { icon:"🥐", title:"Desayuno en el camino", desc:"Parada rica para empezar el viaje con calma."},
-        { icon:"🌞", title:"Llegamos y comemos ligero", desc:"Para guardar espacio para la tarde."},
-        { icon:"🌇", title:"Quince Rooftop — 6:30 pm", desc:"Atardecer, vista y celebración contigo (reservado)."},
-        { icon:"🌙", title:"Paseo en la noche", desc:"Caminar por el centro y disfrutar el ambiente."},
-      ],
-      fri: [
-        { icon:"♨️", title:"Escondido Place (aguas termales)", desc:"Relajarnos y tomarnos el día con calma."},
-        { icon:"🍽️", title:"Comida tranquila", desc:"Elegimos un lugar rico y comemos sin prisa."},
-        { icon:"🍨", title:"Postrecito", desc:"Algo dulce para cerrar el día."},
-      ],
-      sat: [
-        { icon:"🏛️", title:"Centro de San Miguel", desc:"Caminar, conocer, comprar algo bonito y tomar fotos."},
-        { icon:"☕", title:"Cafecito", desc:"Sentarnos un rato y platicar a gusto."},
-        { icon:"🗺️", title:"Más lugares para conocer", desc:"Miradores, calles bonitas y lo que se nos antoje."},
-        { icon:"🍦", title:"Antojitos", desc:"Porque sí, porque tú, porque San Miguel."},
-      ],
-      sun: [
-        { icon:"🥞", title:"Desayuno bonito", desc:"Para cerrar el viaje con una sonrisa."},
-        { icon:"🚗", title:"Regreso", desc:"Con playlist y recuerdos nuevos."},
-        { icon:"💛", title:"Nosotros pa’ toda la vida", desc:"Y que esto sea el primero de muchos viajes juntos."},
-      ]
-    };
+        siButton.addEventListener('click', () => {
+            dateOptions.style.display = 'block';
+            hiddenMessage.style.display = 'none';
+        });
 
-    // DOM
-    const timeline = document.getElementById("timeline");
-    const tabs = Array.from(document.querySelectorAll(".tab"));
-    const yesBtn = document.getElementById("yesBtn");
-    const maybeBtn = document.getElementById("maybeBtn");
-    const countdownText = document.getElementById("countdownText");
-    const year = document.getElementById("year");
-    const modal = document.getElementById("modal");
-    const closeModalBtn = document.getElementById("closeModalBtn");
-    const modalBody = document.getElementById("modalBody");
-    const seePlanBtn = document.getElementById("seePlanBtn");
-    const scrollBtn = document.getElementById("scrollBtn");
-    const itineraryCard = document.getElementById("itineraryCard");
+        noButton.addEventListener('click', () => {
+            dateOptions.style.display = 'none';
+            hiddenMessage.style.display = 'block';
+        });
 
-    year.textContent = new Date().getFullYear();
-
-    // Render plan
-    function renderDay(dayKey){
-      timeline.innerHTML = "";
-      (PLAN[dayKey] || []).forEach(step => {
-        const div = document.createElement("div");
-        div.className = "item";
-        div.innerHTML = `
-          <div class="icon">${step.icon}</div>
-          <div>
-            <h4>${step.title}</h4>
-            <small>${step.desc}</small>
-          </div>
-        `;
-        timeline.appendChild(div);
-      });
-    }
-    function setActive(dayKey){
-      tabs.forEach(t => t.classList.toggle("active", t.dataset.day === dayKey));
-      renderDay(dayKey);
-    }
-    tabs.forEach(t => {
-      t.addEventListener("click", () => setActive(t.dataset.day));
-      t.addEventListener("keydown", (e) => {
-        if(e.key === "Enter" || e.key === " ") setActive(t.dataset.day);
-      });
-    });
-    setActive("thu");
-
-    // Countdown
-    function pad(n){ return String(n).padStart(2,"0"); }
-    function updateCountdown(){
-      const now = new Date();
-      const diff = TRIP_START - now;
-      if(diff <= 0){
-        countdownText.textContent = "¡Ya es hoy! ✨";
-        return;
-      }
-      const totalSeconds = Math.floor(diff/1000);
-      const days = Math.floor(totalSeconds/86400);
-      const hours = Math.floor((totalSeconds%86400)/3600);
-      const mins = Math.floor((totalSeconds%3600)/60);
-      countdownText.textContent = `${days}d ${pad(hours)}h ${pad(mins)}m`;
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 30_000);
-
-    // Modal controls
-    closeModalBtn.addEventListener("click", () => modal.classList.remove("show"));
-    modal.addEventListener("click", (e) => { if(e.target === modal) modal.classList.remove("show"); });
-    window.addEventListener("keydown", (e) => { if(e.key === "Escape") modal.classList.remove("show"); });
-
-    // Confetti
-    const canvas = document.getElementById("confetti");
-    const ctx = canvas.getContext("2d");
-    let W,H,confetti=[];
-    function resize(){
-      const dpr = window.devicePixelRatio || 1;
-      W = canvas.width = window.innerWidth * dpr;
-      H = canvas.height = window.innerHeight * dpr;
-    }
-    window.addEventListener("resize", resize);
-    resize();
-
-    function spawnConfetti(){
-      const dpr = window.devicePixelRatio || 1;
-      const count = 170;
-      confetti = Array.from({length: count}, () => ({
-        x: Math.random()*W,
-        y: -Math.random()*H*0.2,
-        r: (Math.random()*6+4)*dpr,
-        vx: (Math.random()*2-1)*dpr,
-        vy: (Math.random()*3+2.2)*dpr,
-        rot: Math.random()*Math.PI,
-        vr: (Math.random()*0.2-0.1),
-        life: 0,
-        max: 240 + Math.random()*90,
-        hue: 40 + Math.random()*260
-      }));
-    }
-
-    function draw(){
-      ctx.clearRect(0,0,W,H);
-      confetti.forEach(p => {
-        p.life++;
-        p.x += p.vx;
-        p.y += p.vy;
-        p.rot += p.vr;
-        p.vy *= 0.997;
-        p.vy += 0.02*(window.devicePixelRatio || 1);
-
-        const alpha = Math.max(0, 1 - (p.life/p.max));
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.rot);
-        ctx.globalAlpha = alpha;
-        ctx.fillStyle = `hsla(${p.hue}, 90%, 70%, ${alpha})`;
-        ctx.fillRect(-p.r, -p.r/2, p.r*2, p.r);
-        ctx.restore();
-      });
-
-      confetti = confetti.filter(p => p.life < p.max && p.y < H + 80*(window.devicePixelRatio || 1));
-      if(confetti.length > 0) requestAnimationFrame(draw);
-    }
-
-    // Actions
-    seePlanBtn.addEventListener("click", () => {
-      itineraryCard.scrollIntoView({behavior:"smooth", block:"start"});
-    });
-
-    scrollBtn.addEventListener("click", () => {
-      document.querySelector(".grid").scrollIntoView({behavior:"smooth", block:"start"});
-    });
-
-    yesBtn.addEventListener("click", () => {
-      spawnConfetti();
-      requestAnimationFrame(draw);
-
-      modal.classList.add("show");
-      document.getElementById("modalTitle").textContent = "Mi vida… ¿sí? 🥺💛";
-      modalBody.innerHTML = `
-        <p>
-          Mi vida, te hice esto con todo mi cariño.
-          <br><br>
-          Te invito a <strong>${DESTINO}</strong> del <strong>${FECHAS}</strong>.
-          Salimos tempranito, desayunamos en el camino y el jueves tengo reservado
-          <strong>Quince Rooftop</strong> a las <strong>6:30 pm</strong> para celebrar mi cumple contigo.
-          <br><br>
-          Quiero que la <strong>mejor contadora del universo</strong> se tome un descanso…
-          y que estemos juntos, <strong>nosotros pa’ toda la vida</strong> 💛
-        </p>
-      `;
-    });
-
-    maybeBtn.addEventListener("click", () => {
-      maybeBtn.textContent = "😳 ok… pero di que sí";
-      setTimeout(() => maybeBtn.textContent = "😳 Déjame pensarlo", 1600);
-    });
-  </script>
+        confirmarButton.addEventListener('click', () => {
+            const selectedDate = document.querySelector('input[name="date"]:checked');
+            if (selectedDate) {
+                const place = selectedDate.value;
+                alert('¡Muchas gracias! Le confirmaré el lugar a André por WhatsApp.');
+            } else {
+                alert('Por favor, selecciona un lugar.');
+            }
+        });
+    </script>
 </body>
 </html>
