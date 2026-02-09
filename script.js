@@ -1,123 +1,343 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const countdown = document.querySelector('.countdown');
-  const intro = document.querySelector('.intro');
-  const targetDate = new Date('2025-08-09T14:00:00');
-
-  const updateCountdown = () => {
-    const now = new Date();
-    const diff = targetDate - now;
-
-    if (diff <= 0) {
-      countdown.innerHTML = "🎉 Hoy es nuestro día, amor. ¡Vamos a vivirlo al máximo! 💛💙";
-      intro.innerText = "¡Hoy vamos juntos al cine y al estadio! 😍";
-      return;
-    }
-
-    const days = Math.floor(diff / (1000*60*60*24));
-    const hours = Math.floor((diff/(1000*60*60))%24);
-    const minutes = Math.floor((diff/(1000*60))%60);
-    const seconds = Math.floor((diff/1000)%60);
-
-    countdown.innerHTML = `Faltan ${days} días, ${hours}h ${minutes}m ${seconds}s para nuestra cita legendaria 💘`;
-  };
-
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
-
-  const estrellas = document.querySelector('.estrellas');
-  for (let i = 0; i < 100; i++) {
-    const star = document.createElement('div');
-    star.className = 'estrella';
-    star.style.left = Math.random() * 100 + 'vw';
-    star.style.animationDuration = (Math.random() * 10 + 5) + 's';
-    estrellas.appendChild(star);
-  }
-
-  const balon = document.querySelector('.balon');
-  const audioGol = document.getElementById('gol-audio');
-  balon.addEventListener('animationiteration', () => {
-    audioGol.currentTime = 0;
-    audioGol.play();
-  });
-
-  const btn = document.getElementById('mensajeBtn');
-  btn.addEventListener('click', function () {
-    const popup = window.open('', '_blank', 'width=600,height=700');
-    const html = `
-      <!DOCTYPE html>
-      <html lang="es">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Para ti 💌</title>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-        <style>
-          body {
-            background: #fffce6;
-            color: #0d47a1;
-            font-family: 'Roboto', sans-serif;
-            padding: 30px;
-            text-align: center;
-          }
-          .carta {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(13, 71, 161, 0.2);
-            max-width: 500px;
-            margin: auto;
-          }
-          h2 { color: #ffc107; font-size: 2em; }
-          p { font-size: 1.1em; line-height: 1.6; margin: 12px 0; }
-          .cerrar-btn {
-            margin-top: 20px; padding: 10px 20px; font-size: 1em;
-            background: #0d47a1; color: #fff; border: none;
-            border-radius: 10px; cursor: pointer;
-          }
-          .cerrar-btn:hover { background: #1565c0; }
-        </style>
-      </head>
-      <body>
-        <div class="carta">
-          <h2>🎬⚽ ¡Sábado de ver al América, al Tanjiro y a mi amor (Mon mía de mí)! 💛💙</h2>
-          <p>Mi niña hermosa, te invito este sábado a una cita increíble:</p>
-          <p>Primero iremos a ver Demon Slayer en el cine 🍿, y después nos lanzamos juntos al Estadio Azulcrema a apoyar a las poderosas águilas del América.</p>
-          <p>Lleva tu playera con orgullo, muchas ganas de gritar goles y, sobre todo, tu sonrisa preciosa.</p>
-          <p>¡Este día será inolvidable porque estaré contigo!</p>
-          <p>Con todo mi amor,<br>Tu bobio 💘</p>
-          <button class="cerrar-btn" onclick="window.close()">Cerrar 💛</button>
-        </div>
-      </body>
-      </html>
-    `;
-    popup.document.open();
-    popup.document.write(html);
-    popup.document.close();
-  });
-
-  const hora = new Date().getHours();
-  if (hora >= 19 || hora <= 6) {
-    document.body.classList.add('noche');
-  }
+// Wait for DOM to be ready
+document.addEventListener('DOMContentLoaded', function() {
+    initializeApp();
 });
 
-function confirmarAsistencia() {
-  const message = encodeURIComponent("¡Confirmo la cita corazón Vamos con todo este sábado, arriba el América 💛💙🦅");
-  window.open(`https://wa.me/525539501267?text=${message}`, '_blank');
-  setTimeout(() => agregarAlCalendario(), 1000);
+function initializeApp() {
+    // Create floating hearts
+    createFloatingHearts();
+    
+    // Create falling petals
+    createFallingPetals();
+    
+    // Create sparkles
+    createSparkles();
+    
+    // Setup envelope click
+    setupEnvelopeInteraction();
+    
+    // Setup button click
+    setupButtonInteraction();
 }
 
-function agregarAlCalendario() {
-  const title = encodeURIComponent("Cita con Montse – Demon Slayer y Club América 💛💙");
-  const details = encodeURIComponent("Vamos al cine a ver Demon Slayer y luego al Estadio Azteca a apoyar al América juntos.");
-  const location = encodeURIComponent("CDMX");
-  const start = "20250809T140000";
-  const end = "20250809T220000";
-  const guests = encodeURIComponent("vmontserrat.gg@gmail.com,gggandre08@gmail.com");
-  const calendarLink = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${start}/${end}&add=${guests}`;
-  window.open(calendarLink, '_blank');
+// Create floating hearts in the background
+function createFloatingHearts() {
+    const heartsContainer = document.getElementById('heartsContainer');
+    const heartSymbols = ['💕', '💖', '💗', '💓', '💝', '❤️'];
+    
+    for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            heartsContainer.appendChild(heart);
+        }, i * 300);
+    }
 }
 
-function mostrarChecklist() {
-  alert("✔️ Playera del América\n✔️ Ganas de gritar goles\n✔️ Amor para tu bobio\n✔️ ¡Tu hermosa sonrisa!");
+// Create falling rose petals
+function createFallingPetals() {
+    const petalsContainer = document.getElementById('petalsContainer');
+    const petalSymbols = ['🌸', '🌺', '🌹', '🥀'];
+    
+    for (let i = 0; i < 25; i++) {
+        setTimeout(() => {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.textContent = petalSymbols[Math.floor(Math.random() * petalSymbols.length)];
+            petal.style.left = Math.random() * 100 + '%';
+            petal.style.animationDelay = Math.random() * 5 + 's';
+            petal.style.animationDuration = (Math.random() * 8 + 8) + 's';
+            petalsContainer.appendChild(petal);
+        }, i * 250);
+    }
 }
+
+// Create sparkles on the card
+function createSparkles() {
+    const sparklesContainer = document.getElementById('sparkles');
+    
+    for (let i = 0; i < 15; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = Math.random() * 3 + 's';
+        sparklesContainer.appendChild(sparkle);
+    }
+}
+
+// Setup envelope interaction
+function setupEnvelopeInteraction() {
+    const envelope = document.getElementById('envelope');
+    const envelopeWrapper = envelope.parentElement;
+    const cardContainer = document.getElementById('cardContainer');
+    
+    envelopeWrapper.addEventListener('click', function() {
+        // Add opening class to envelope
+        envelope.classList.add('opening');
+        
+        // Play sound effect (optional - can be added later)
+        playOpenSound();
+        
+        // After animation, hide envelope and show card
+        setTimeout(() => {
+            envelopeWrapper.style.opacity = '0';
+            envelopeWrapper.style.transform = 'translate(-50%, -50%) scale(0)';
+            
+            setTimeout(() => {
+                envelopeWrapper.classList.add('hidden');
+                cardContainer.classList.add('show');
+                
+                // Add confetti effect
+                createConfetti();
+            }, 600);
+        }, 600);
+    });
+}
+
+// Setup button interaction
+function setupButtonInteraction() {
+    const button = document.getElementById('valentineButton');
+    const modal = document.getElementById('modal');
+    
+    button.addEventListener('click', function() {
+        // Show modal
+        modal.classList.add('show');
+        
+        // Create celebration effect
+        createCelebrationHearts();
+        
+        // Play celebration sound (optional)
+        playCelebrationSound();
+        
+        // Trigger confetti burst
+        createMassiveConfetti();
+    });
+    
+    // Close modal on click outside
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.classList.remove('show');
+        }
+    });
+}
+
+// Create confetti effect when card appears
+function createConfetti() {
+    const colors = ['#FFB6C1', '#DC143C', '#D4AF37', '#800020', '#FFE4E9'];
+    const confettiCount = 50;
+    
+    for (let i = 0; i < confettiCount; i++) {
+        setTimeout(() => {
+            const confetti = document.createElement('div');
+            confetti.style.position = 'fixed';
+            confetti.style.width = '10px';
+            confetti.style.height = '10px';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.top = '-20px';
+            confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+            confetti.style.opacity = '1';
+            confetti.style.zIndex = '999';
+            confetti.style.pointerEvents = 'none';
+            
+            document.body.appendChild(confetti);
+            
+            // Animate confetti falling
+            const animation = confetti.animate([
+                { 
+                    transform: 'translateY(0) rotate(0deg)',
+                    opacity: 1
+                },
+                { 
+                    transform: `translateY(${window.innerHeight + 50}px) rotate(${Math.random() * 720}deg)`,
+                    opacity: 0
+                }
+            ], {
+                duration: Math.random() * 3000 + 2000,
+                easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+            });
+            
+            animation.onfinish = () => confetti.remove();
+        }, i * 30);
+    }
+}
+
+// Create massive confetti for button click
+function createMassiveConfetti() {
+    const colors = ['#FFB6C1', '#DC143C', '#D4AF37', '#800020', '#FFE4E9', '#FF69B4'];
+    const confettiCount = 150;
+    
+    for (let i = 0; i < confettiCount; i++) {
+        setTimeout(() => {
+            const confetti = document.createElement('div');
+            confetti.style.position = 'fixed';
+            confetti.style.width = (Math.random() * 15 + 5) + 'px';
+            confetti.style.height = (Math.random() * 15 + 5) + 'px';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.left = '50%';
+            confetti.style.top = '50%';
+            confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+            confetti.style.opacity = '1';
+            confetti.style.zIndex = '1001';
+            confetti.style.pointerEvents = 'none';
+            
+            document.body.appendChild(confetti);
+            
+            // Random direction
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = Math.random() * 300 + 200;
+            const xDistance = Math.cos(angle) * velocity;
+            const yDistance = Math.sin(angle) * velocity;
+            
+            // Animate confetti explosion
+            const animation = confetti.animate([
+                { 
+                    transform: 'translate(-50%, -50%) rotate(0deg)',
+                    opacity: 1
+                },
+                { 
+                    transform: `translate(calc(-50% + ${xDistance}px), calc(-50% + ${yDistance}px)) rotate(${Math.random() * 1080}deg)`,
+                    opacity: 0
+                }
+            ], {
+                duration: Math.random() * 2000 + 1500,
+                easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+            });
+            
+            animation.onfinish = () => confetti.remove();
+        }, i * 10);
+    }
+}
+
+// Create celebration hearts
+function createCelebrationHearts() {
+    const heartSymbols = ['💕', '💖', '💗', '💓', '💝', '❤️', '💞'];
+    
+    for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+            const heart = document.createElement('div');
+            heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            heart.style.position = 'fixed';
+            heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+            heart.style.left = '50%';
+            heart.style.top = '50%';
+            heart.style.zIndex = '1001';
+            heart.style.pointerEvents = 'none';
+            
+            document.body.appendChild(heart);
+            
+            // Random direction
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = Math.random() * 400 + 200;
+            const xDistance = Math.cos(angle) * velocity;
+            const yDistance = Math.sin(angle) * velocity;
+            
+            // Animate hearts
+            const animation = heart.animate([
+                { 
+                    transform: 'translate(-50%, -50%) scale(0)',
+                    opacity: 1
+                },
+                { 
+                    transform: `translate(calc(-50% + ${xDistance}px), calc(-50% + ${yDistance}px)) scale(1)`,
+                    opacity: 0
+                }
+            ], {
+                duration: Math.random() * 2000 + 1500,
+                easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+            });
+            
+            animation.onfinish = () => heart.remove();
+        }, i * 50);
+    }
+}
+
+// Sound effects (using Web Audio API for simple sounds)
+function playOpenSound() {
+    try {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.frequency.value = 800;
+        oscillator.type = 'sine';
+        
+        gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+        
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 0.5);
+    } catch (e) {
+        // Audio not supported or blocked
+        console.log('Audio not available');
+    }
+}
+
+function playCelebrationSound() {
+    try {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        
+        // Create a cheerful chord
+        const frequencies = [523.25, 659.25, 783.99]; // C, E, G
+        
+        frequencies.forEach((freq, index) => {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = freq;
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
+            
+            oscillator.start(audioContext.currentTime + (index * 0.1));
+            oscillator.stop(audioContext.currentTime + 1 + (index * 0.1));
+        });
+    } catch (e) {
+        console.log('Audio not available');
+    }
+}
+
+// Add mouse trail hearts
+document.addEventListener('mousemove', function(e) {
+    if (Math.random() > 0.9) { // Only create occasionally
+        const heart = document.createElement('div');
+        heart.textContent = '💕';
+        heart.style.position = 'fixed';
+        heart.style.left = e.clientX + 'px';
+        heart.style.top = e.clientY + 'px';
+        heart.style.fontSize = '12px';
+        heart.style.pointerEvents = 'none';
+        heart.style.zIndex = '999';
+        heart.style.opacity = '0.6';
+        
+        document.body.appendChild(heart);
+        
+        const animation = heart.animate([
+            { 
+                transform: 'translate(-50%, -50%) scale(1)',
+                opacity: 0.6
+            },
+            { 
+                transform: 'translate(-50%, -100px) scale(0)',
+                opacity: 0
+            }
+        ], {
+            duration: 1000,
+            easing: 'ease-out'
+        });
+        
+        animation.onfinish = () => heart.remove();
+    }
+});
