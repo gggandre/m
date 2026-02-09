@@ -3,170 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Quieres salir conmigo, Montse (Ahora mi vida)?</title>
-    <style>
-        /* Estilos CSS */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            color: #333;
-        }
-
-        .container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 600px;
-        }
-
-        h1 {
-            color: #e91e63;
-            margin-bottom: 20px;
-        }
-
-        .options {
-            margin-bottom: 20px;
-        }
-
-        button {
-            padding: 12px 25px;
-            margin: 0 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-
-        #si {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        #no {
-            background-color: #f44336;
-            color: white;
-        }
-
-        #si:hover {
-            background-color: #45a049;
-        }
-
-        #no:hover {
-            background-color: #d32f2f;
-        }
-
-        .date-options {
-            margin-top: 20px;
-            display: none;
-        }
-
-        .date-options label {
-            display: block;
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
-
-        .date-options input[type="radio"] {
-            margin-right: 10px;
-            transform: scale(1.2);
-        }
-
-        #confirmar {
-            background-color: #e91e63;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-
-        #confirmar:hover {
-            background-color: #d81b60;
-        }
-
-        .hidden-message {
-            margin-top: 20px;
-            display: none;
-        }
-
-        .hidden-message img {
-            max-width: 300px;
-            margin-top: 10px;
-        }
-    </style>
+    <title>Una Invitación Especial para el amor de mi vida, Montse Lata 💕</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Italiana&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>¿Quieres salir conmigo el sábado 15 de febrero a las 2 o 3 de la tarde, Montse (Ahora mi novia)?</h1>
-        <div class="options">
-            <button id="si">Sí</button>
-            <button id="no">No</button>
-        </div>
-        <div class="date-options">
-            <h2>¡Genial! ¿Qué te parece alguna de estas opciones?</h2>
-            <label><input type="radio" name="date" value="kidzania">Kidzania de noche</label>
-            <label><input type="radio" name="date" value="coppola">Coppola vinyl pizza</label>
-            <label><input type="radio" name="date" value="inflalandia">Inflalandia Quack</label>
-            <label><input type="radio" name="date" value="escaperoom">Escape Room</label>
-            <label><input type="radio" name="date" value="gokarts">Go karts</label>
-            <label><input type="radio" name="date" value="pistadehielo">Pista de hielo</label>
-            <label><input type="radio" name="date" value="acuario">Acuario Inbursa (y museo Jumex y Soumaya)</label>
-            <label><input type="radio" name="date" value="boliche">Boliche Zona Esmeralda Bolibar</label>
-            <label><input type="radio" name="date" value="aztlan">Aztlán Parque y Rueda de la fortuna</label>
-            <label><input type="radio" name="date" value="cineteca">Cineteca Chapultepec</label>
-            <label><input type="radio" name="date" value="ladamadenegro">Obra de teatro La Dama de Negro</label>
-            <label><input type="radio" name="date" value="inspark">Inspark</label>
-            <label><input type="radio" name="date" value="adamanta">Escalar en Adamanta</label>
-            <label><input type="radio" name="date" value="kinezis">Kinezis</label>
-            <label><input type="radio" name="date" value="99records">99 records</label>
-            <label><input type="radio" name="date" value="immu">IMMMU</label>
-            <label><input type="radio" name="date" value="boboburguers">Bobo Burguers</label>
-            <label><input type="radio" name="date" value="hachas">Hachas</label>
-            <button id="confirmar">Confirmar</button>
-        </div>
-        <div class="hidden-message">
-            <h2>¡Por favor, di que sí! </h2>
-            <img src="gato.jpg" alt="Gato suplicando">
+    <!-- Floating hearts background -->
+    <div class="hearts-container" id="heartsContainer"></div>
+    
+    <!-- Rose petals falling -->
+    <div class="petals-container" id="petalsContainer"></div>
+
+    <!-- Main content -->
+    <div class="envelope-wrapper">
+        <div class="envelope" id="envelope">
+            <div class="envelope-flap"></div>
+            <div class="envelope-body"></div>
+            <div class="wax-seal">
+                <div class="seal-inner">
+                    <span class="seal-text">💕</span>
+                </div>
+            </div>
         </div>
     </div>
 
-    <script>
-        const siButton = document.getElementById('si');
-        const noButton = document.getElementById('no');
-        const dateOptions = document.querySelector('.date-options');
-        const hiddenMessage = document.querySelector('.hidden-message');
-        const confirmarButton = document.getElementById('confirmar');
+    <div class="card-container" id="cardContainer">
+        <div class="card">
+            <div class="card-border"></div>
+            
+            <!-- Decorative corners -->
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-tr"></div>
+            <div class="corner corner-bl"></div>
+            <div class="corner corner-br"></div>
 
-        siButton.addEventListener('click', () => {
-            dateOptions.style.display = 'block';
-            hiddenMessage.style.display = 'none';
-        });
+            <!-- Content -->
+            <div class="card-content">
+                <div class="header-decoration">
+                    <div class="flourish flourish-left">❦</div>
+                    <h1 class="title">Una Invitación</h1>
+                    <div class="flourish flourish-right">❦</div>
+                </div>
 
-        noButton.addEventListener('click', () => {
-            dateOptions.style.display = 'none';
-            hiddenMessage.style.display = 'block';
-        });
+                <div class="letter-content">
+                    <p class="greeting">Mi Amor,</p>
+                    
+                    <p class="main-text">
+                        En este día donde el mundo celebra el amor,
+                        quiero celebrarte a ti. Cada momento a tu lado
+                        es un regalo que atesoro en mi corazón y te amo infinito latosa.
+                    </p>
 
-        confirmarButton.addEventListener('click', () => {
-            const selectedDate = document.querySelector('input[name="date"]:checked');
-            if (selectedDate) {
-                const place = selectedDate.value;
-                alert('¡Muchas gracias! Le confirmaré el lugar a André por WhatsApp.');
-            } else {
-                alert('Por favor, selecciona un lugar.');
-            }
-        });
-    </script>
+                    <div class="date-section">
+                        <div class="date-line"></div>
+                        <div class="date-content">
+                            <p class="date-label">Te invito a una cita especial</p>
+                            <p class="date-main">14 de Febrero, 2025</p>
+                            <p class="date-sub">Día de San Valentín</p>
+                        </div>
+                        <div class="date-line"></div>
+                    </div>
+
+                    <p class="main-text">
+                        Un día para celebrar lo nuestro, para crear nuevos recuerdos
+                        y recordarte que eres la razón de mis sonrisas y mi persona más favorita.
+                    </p>
+
+                    <div class="roses-decoration">
+                        <span class="rose">🌹</span>
+                        <span class="rose">🌹</span>
+                        <span class="rose">🌹</span>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <button class="valentine-button" id="valentineButton">
+                        <span class="button-text">Will You Be My Valentine?</span>
+                        <span class="button-heart">💖</span>
+                    </button>
+                </div>
+
+                <p class="signature">
+                    Con todo mi amor,<br>
+                    <span class="signature-name">Tu Amor Eterno</span>
+                </p>
+            </div>
+
+            <!-- Sparkles -->
+            <div class="sparkles" id="sparkles"></div>
+        </div>
+    </div>
+
+    <!-- Success modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-hearts"></div>
+            <h2 class="modal-title">¡Sí Aceptaste! 💕</h2>
+            <p class="modal-text">
+                ¡Prepárate para este día especial pq te amooo!<br>
+                Nos vemos el 14 de Febrero 🌹
+            </p>
+            <div class="modal-animation">
+                <div class="heart-burst"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
